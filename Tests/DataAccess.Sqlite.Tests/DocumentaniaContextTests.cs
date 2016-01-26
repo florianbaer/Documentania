@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace DataAccess.Sqlite.Tests
 {
@@ -8,10 +8,10 @@ namespace DataAccess.Sqlite.Tests
 
     using ExAs;
 
-    [TestClass]
+    [TestFixture]
     public class DocumentaniaContextTests
     {
-        [TestInitialize]
+        [OneTimeSetUp]
         public void TestsInitialize()
         {
             using (var db = new DocumentaniaContext())
@@ -20,7 +20,7 @@ namespace DataAccess.Sqlite.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void DatabaseIsCreated_Under_Documentania_DB()
         {
             File.Exists("Documentania.db").Evaluate(x => x);

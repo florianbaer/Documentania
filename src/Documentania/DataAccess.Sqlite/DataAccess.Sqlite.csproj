@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="DocumentaniaContext.cs" />
     <Compile Include="Entities\Document.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

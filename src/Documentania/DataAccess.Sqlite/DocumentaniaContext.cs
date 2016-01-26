@@ -13,8 +13,9 @@ namespace DataAccess.Sqlite
 
     public class DocumentaniaContext : DbContext
     {
+        public DbSet<Tag> Tags { get; set; }
         // This property defines the table
-        public DbSet<Document> Document { get; set; }
+        public DbSet<Document> Documents { get; set; }
 
         // This method connects the context with the database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
