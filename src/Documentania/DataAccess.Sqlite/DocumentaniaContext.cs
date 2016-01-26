@@ -26,5 +26,13 @@ namespace DataAccess.Sqlite
 
             optionsBuilder.UseSqlite(connection);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Document>().HasMany(c => c.Tags);
+            modelBuilder.Entity<Tag>().HasMany(x => x.Documents);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
