@@ -10,13 +10,19 @@ namespace DataAccess.Sqlite.Entities
 
     public class Document
     {
+
+        public Document()
+        {
+            this.DocumentTags = new HashSet<DocumentTag>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; } 
 
         public string Path { get; set; }
 
-        public virtual ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<DocumentTag> DocumentTags { get; set; }
 
         public DateTime Imported { get; set; }
     }

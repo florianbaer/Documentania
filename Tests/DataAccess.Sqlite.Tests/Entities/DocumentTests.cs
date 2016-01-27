@@ -27,31 +27,30 @@ namespace DataAccess.Sqlite.Tests.Entities
 
         private static void SetupTestEnvironment(DocumentaniaContext db)
         {
-            db.Documents.Add(new Document()
+            var doc = new Document()
             {
                 Imported = new DateTime(2014, 03, 13),
                 Path = "Baden",
-                Tags = new List<Tag>()
-                {
-                    new Tag()
-                    {
-                        Name = "BGF"
-                    }
-                }
-            });
+                DocumentTags =
+                                  new List<DocumentTag>()
+            };
 
-            db.Documents.Add(new Document()
-            {
-                Imported = new DateTime(1997, 04, 28),
-                Path = "Oberrohrdorf",
-                Tags = new List<Tag>()
-                {
-                    new Tag()
-                    {
-                        Name = "Love"
-                    }
-                }
-            });
+            var docTag = new DocumentTag() { Tag = new Tag() { Name = "BGF" }, Document = doc };
+
+            doc.DocumentTags.Add(docTag);
+
+            db.Documents.Add(doc);
+
+            doc = new Document()
+                          {
+                              Imported = new DateTime(1997, 04, 28),
+                              Path = "Oberrohrdorf",
+                              DocumentTags =
+                                  new List<DocumentTag>()
+                          };
+            docTag = new DocumentTag() { Tag = new Tag() { Name = "Love" } ,Document = doc};
+            doc.DocumentTags.Add(docTag);
+            db.Documents.Add(doc);
 
             db.SaveChanges();
         }
@@ -65,13 +64,13 @@ namespace DataAccess.Sqlite.Tests.Entities
 
                 firstDocument.ExAssert(r => r.Member(x => x.Path).IsEqualTo("Oberrohrdorf")
                     .Member(x => x.Imported).IsOnSameDayAs(new DateTime(1997, 04, 28))
-                    .Member(x => x.Tags.FirstOrDefault()).Fulfills(n => n.Member(x => x.Name).IsEqualTo("Love")));
+                    .Member(x => x.DocumentTags.FirstOrDefault().Tag).Fulfills(n => n.Member(x => x.Name).IsEqualTo("Love")));
 
-                Document secondDocument = db.Documents.FirstOrDefault(x => x.Path == "TestPath");
+                Document secondDocument = db.Documents.FirstOrDefault(x => x.Path == "Baden");
 
                 secondDocument.ExAssert(r => r.Member(x => x.Path).IsEqualTo("Baden")
                          .Member(x => x.Imported).IsOnSameDayAs(new DateTime(2014, 3, 13))
-                         .Member(x => x.Tags.FirstOrDefault()).Fulfills(n => n.Member(x => x.Name).IsEqualTo("BGF")));
+                         .Member(x => x.DocumentTags.FirstOrDefault().Tag).Fulfills(n => n.Member(x => x.Name).IsEqualTo("BGF")));
             }
         }
 
