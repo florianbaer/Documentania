@@ -12,6 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Release.testsettings = Release.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.RavenDB", "DataAccess.RavenDB\DataAccess.RavenDB.csproj", "{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2FF6D539-549F-4F59-811F-FE7DF7370813}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{56A57E7C-40EF-4059-AFB8-B8271ED628D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.RavenDB.Tests", "DataAccess.RavenDB.Tests\DataAccess.RavenDB.Tests.csproj", "{067456C0-086C-46A8-B37F-1405717B7BFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +34,21 @@ Global
 		{8C46F9C6-1594-4E31-9160-D628F1E77E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C46F9C6-1594-4E31-9160-D628F1E77E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C46F9C6-1594-4E31-9160-D628F1E77E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C46F9C6-1594-4E31-9160-D628F1E77E03} = {56A57E7C-40EF-4059-AFB8-B8271ED628D8}
+		{56A57E7C-40EF-4059-AFB8-B8271ED628D8} = {2FF6D539-549F-4F59-811F-FE7DF7370813}
+		{067456C0-086C-46A8-B37F-1405717B7BFC} = {56A57E7C-40EF-4059-AFB8-B8271ED628D8}
 	EndGlobalSection
 EndGlobal
