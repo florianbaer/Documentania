@@ -121,7 +121,7 @@ namespace DataAccess.RavenDB.Tests
 
                     string documentId = document.Id; // Session.Store will assign Id to employee, if it is not set
 
-                    var answer = session.Advanced.DocumentQuery<Document>().Where(x => x.Tags.Where(p => p.Value == "Test"));
+                    //  var answer = session.Advanced.DocumentQuery<Document>().Where(x => x.Tags.Where(p => p.Value == "Test"));
 
                     session.SaveChanges(); // sends all changes to server
 
