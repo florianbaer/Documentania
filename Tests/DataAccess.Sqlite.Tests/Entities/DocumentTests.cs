@@ -1,4 +1,13 @@
-﻿using NUnit.Framework;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DocumentTests.cs" company="BaerDev">
+// Copyright (c) BaerDev. All rights reserved.
+// </copyright>
+// <summary>
+// The file 'DocumentTests.cs'.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +22,7 @@ using ExAs.Results;
 namespace DataAccess.Sqlite.Tests.Entities
 {
     [TestFixture]
+    [Ignore("Sqlite is not used")]
     public class DocumentTests
     {
         [OneTimeSetUp]
@@ -32,27 +42,33 @@ namespace DataAccess.Sqlite.Tests.Entities
                 Imported = new DateTime(2014, 03, 13),
                 Path = "Baden",
                 DocumentTags =
-                                  new List<DocumentTag>()
+                    new List<DocumentTag>()
             };
 
-            var docTag = new DocumentTag() { Tag = new Tag() { Name = "BGF" }, Document = doc };
+            var docTag = new DocumentTag() {Tag = new Tag() {Name = "BGF"}, Document = doc};
 
             doc.DocumentTags.Add(docTag);
 
             db.Documents.Add(doc);
 
             doc = new Document()
-                          {
-                              Imported = new DateTime(1997, 04, 28),
-                              Path = "Oberrohrdorf",
-                              DocumentTags =
-                                  new List<DocumentTag>()
-                          };
-            docTag = new DocumentTag() { Tag = new Tag() { Name = "Love" } ,Document = doc};
+            {
+                Imported = new DateTime(1997, 04, 28),
+                Path = "Oberrohrdorf",
+                DocumentTags =
+                    new List<DocumentTag>()
+            };
+            docTag = new DocumentTag() {Tag = new Tag() {Name = "Love"}, Document = doc};
             doc.DocumentTags.Add(docTag);
             db.Documents.Add(doc);
 
             db.SaveChanges();
+        }
+
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            File.Delete("Documentania.db");
         }
 
         [Test]
@@ -64,20 +80,16 @@ namespace DataAccess.Sqlite.Tests.Entities
 
                 firstDocument.ExAssert(r => r.Member(x => x.Path).IsEqualTo("Oberrohrdorf")
                     .Member(x => x.Imported).IsOnSameDayAs(new DateTime(1997, 04, 28))
-                    .Member(x => x.DocumentTags.FirstOrDefault().Tag).Fulfills(n => n.Member(x => x.Name).IsEqualTo("Love")));
+                    .Member(x => x.DocumentTags.FirstOrDefault().Tag)
+                    .Fulfills(n => n.Member(x => x.Name).IsEqualTo("Love")));
 
                 Document secondDocument = db.Documents.FirstOrDefault(x => x.Path == "Baden");
 
                 secondDocument.ExAssert(r => r.Member(x => x.Path).IsEqualTo("Baden")
-                         .Member(x => x.Imported).IsOnSameDayAs(new DateTime(2014, 3, 13))
-                         .Member(x => x.DocumentTags.FirstOrDefault().Tag).Fulfills(n => n.Member(x => x.Name).IsEqualTo("BGF")));
+                    .Member(x => x.Imported).IsOnSameDayAs(new DateTime(2014, 3, 13))
+                    .Member(x => x.DocumentTags.FirstOrDefault().Tag)
+                    .Fulfills(n => n.Member(x => x.Name).IsEqualTo("BGF")));
             }
-        }
-
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-            File.Delete("Documentania.db");
         }
     }
 }

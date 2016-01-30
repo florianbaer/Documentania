@@ -1,4 +1,13 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DocumentaniaContext.cs" company="BaerDev">
+// Copyright (c) BaerDev. All rights reserved.
+// </copyright>
+// <summary>
+// The file 'DocumentaniaContext.cs'.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +15,14 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Sqlite
 {
-    using DataAccess.Sqlite.Entities;
-
+    using Entities;
     using Microsoft.Data.Entity;
     using Microsoft.Data.Sqlite;
 
     public class DocumentaniaContext : DbContext
     {
-        public DocumentaniaContext(): base()
+        public DocumentaniaContext() : base()
         {
-
         }
 
 
@@ -25,7 +32,7 @@ namespace DataAccess.Sqlite
         // This method connects the context with the database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "Documentania.db" };
+            var connectionStringBuilder = new SqliteConnectionStringBuilder {DataSource = "Documentania.db"};
             var connectionString = connectionStringBuilder.ToString();
             var connection = new SqliteConnection(connectionString);
 
@@ -35,7 +42,7 @@ namespace DataAccess.Sqlite
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DocumentTag>()
-                .HasKey(t => new { t.DocumentId, t.TagId });
+                .HasKey(t => new {t.DocumentId, t.TagId});
 
             modelBuilder.Entity<DocumentTag>()
                 .HasOne(pt => pt.Document)

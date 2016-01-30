@@ -1,14 +1,23 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DocumentaniaContextTests.cs" company="BaerDev">
+// Copyright (c) BaerDev. All rights reserved.
+// </copyright>
+// <summary>
+// The file 'DocumentaniaContextTests.cs'.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using NUnit.Framework;
 
 namespace DataAccess.Sqlite.Tests
 {
     using System.IO;
     using System.Runtime.CompilerServices;
-
     using ExAs;
 
     [TestFixture]
+    [Ignore("Sqlite is not used")]
     public class DocumentaniaContextTests
     {
         [OneTimeSetUp]

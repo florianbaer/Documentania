@@ -1,4 +1,13 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Tag.cs" company="BaerDev">
+// Copyright (c) BaerDev. All rights reserved.
+// </copyright>
+// <summary>
+// The file 'Tag.cs'.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,7 +21,7 @@ namespace DataAccess.Sqlite.Entities
     {
         public Tag()
         {
-            this.DocumentTags = new HashSet<DocumentTag>();
+            DocumentTags = new HashSet<DocumentTag>();
         }
 
         [Key]
@@ -20,6 +29,6 @@ namespace DataAccess.Sqlite.Entities
         public int Id { get; set; }
 
         public string Name { get; set; }
-        public virtual ICollection<DocumentTag> DocumentTags { get; set; } 
+        public virtual ICollection<DocumentTag> DocumentTags { get; set; }
     }
 }
