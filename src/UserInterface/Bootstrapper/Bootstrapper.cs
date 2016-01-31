@@ -19,6 +19,8 @@ namespace UserInterface.Bootstrapper
         public void StartUp()
         {
             Logger.Info("Starting up bootstrapper...");
+            MainWindow window = new MainWindow();
+            window.Show();
         }
 
         public void ShutDown()
