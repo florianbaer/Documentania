@@ -23,6 +23,8 @@ namespace DataAccess.RavenDB
 
         public virtual DateTime Imported { get; set; }
 
+        public virtual DateTime DateReceived { get; set; }
+        
         public List<Tag> Tags { get; set; } = new List<Tag>();
     }
 }
