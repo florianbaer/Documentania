@@ -62,7 +62,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess.RavenDB\DataAccess.RavenDB.csproj">
+    <ProjectReference Include="..\..\src\DataAccess.RavenDB\DataAccess.RavenDB.csproj">
       <Project>{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}</Project>
       <Name>DataAccess.RavenDB</Name>
     </ProjectReference>

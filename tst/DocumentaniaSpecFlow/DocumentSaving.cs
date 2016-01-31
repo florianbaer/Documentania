@@ -20,7 +20,7 @@ namespace DocumentaniaSpecFlow
             // additional string/Table parameters can be defined on the step definition
             // method. 
 
-            ScenarioContext.Current.Pending();
+            //// ScenarioContext.Current.Pending();
         }
 
         [When("I press add")]
@@ -28,7 +28,7 @@ namespace DocumentaniaSpecFlow
         {
             //TODO: implement act (action) logic
 
-            ScenarioContext.Current.Pending();
+            //// ScenarioContext.Current.Pending();
         }
 
         [Then("the result should be (.*) on the screen")]
@@ -36,7 +36,7 @@ namespace DocumentaniaSpecFlow
         {
             //TODO: implement assert (verification) logic
 
-            ScenarioContext.Current.Pending();
+            //// ScenarioContext.Current.Pending();
         }
     }
 }
