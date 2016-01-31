@@ -86,7 +86,6 @@ namespace DataAccess.RavenDB.Tests
                 store.Initialize();
                 // initializes document store, by connecting to server and downloading various configurations
 
-
                 // opens a session that will work in context of 'DefaultDatabase'
                 using (IDocumentSession session = store.OpenSession())
                 {
@@ -119,18 +118,13 @@ namespace DataAccess.RavenDB.Tests
                     session.Store(document); 
                     session.Store(testDocument);
 
+                    session.SaveChanges(); // sends all changes to server
+                    
                     string documentId = document.Id; // Session.Store will assign Id to employee, if it is not set
 
-                    //  var answer = session.Advanced.DocumentQuery<Document>().Where(x => x.Tags.Where(p => p.Value == "Test"));
-
-                    session.SaveChanges(); // sends all changes to server
-
-                    // Session implements Unit of Work pattern,
-                    // therefore employee instance would be the same and no server call will be made
-                    Document loadedDocument = session.Load<Document>(documentId);
-                    document.ExAssert(d => d.Member(m => m.Path).IsEqualTo(loadedDocument.Path)
-                        .Member(m => m.Imported).IsOnSameDayAs(loadedDocument.Imported)
-                        .Member(m => m.Tags.FirstOrDefault(x => x.Value == "Test")).IsNotNull());
+                    List<Document> documents = session.Query<Document>().Where(doc => doc.Tags.Any(tag => tag.Value == "Test")).ToList();
+                    
+                    documents.ExAssert(x => x.Member(m => m.Count).IsEqualTo(2));
                 }
             }
         }
