@@ -1,11 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{619791DE-CDD7-4B46-9D53-3C8652D84CAD}"
 	ProjectSection(SolutionItems) = preProject
 		Documentania.DotSettings = Documentania.DotSettings
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.RavenDB", "DataAccess.RavenDB\DataAccess.RavenDB.csproj", "{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}"
@@ -34,7 +35,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania.Interfaces", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B3C30B40-870B-42A5-BFFC-AE59FF68716B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterfaceTest", "UserInterfaceTest\UserInterfaceTest.csproj", "{50A25837-B9D7-46A9-A7C2-F6E575DA5D41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterfaceTest", "..\tst\UserInterfaceTest\UserInterfaceTest.csproj", "{50A25837-B9D7-46A9-A7C2-F6E575DA5D41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{746CF7BF-AEBE-494F-8A51-DAED907EAF24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania.Common", "Documentania.Common\Documentania.Common.csproj", "{88DAC866-6EA3-449A-9F4D-0E657F94610E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,6 +149,22 @@ Global
 		{50A25837-B9D7-46A9-A7C2-F6E575DA5D41}.Release|x64.Build.0 = Release|Any CPU
 		{50A25837-B9D7-46A9-A7C2-F6E575DA5D41}.Release|x86.ActiveCfg = Release|Any CPU
 		{50A25837-B9D7-46A9-A7C2-F6E575DA5D41}.Release|x86.Build.0 = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|x64.Build.0 = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Debug|x86.Build.0 = Debug|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|ARM.Build.0 = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|x64.ActiveCfg = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|x64.Build.0 = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|x86.ActiveCfg = Release|Any CPU
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,5 +181,7 @@ Global
 		{5061AFCF-C667-4530-A992-37DFD2BA05AF} = {0DB18A1F-B53D-4F05-8C09-5C5FC0726F63}
 		{B3C30B40-870B-42A5-BFFC-AE59FF68716B} = {2FF6D539-549F-4F59-811F-FE7DF7370813}
 		{50A25837-B9D7-46A9-A7C2-F6E575DA5D41} = {B3C30B40-870B-42A5-BFFC-AE59FF68716B}
+		{746CF7BF-AEBE-494F-8A51-DAED907EAF24} = {4D297269-8934-42A5-8478-3D89590D796F}
+		{88DAC866-6EA3-449A-9F4D-0E657F94610E} = {746CF7BF-AEBE-494F-8A51-DAED907EAF24}
 	EndGlobalSection
 EndGlobal

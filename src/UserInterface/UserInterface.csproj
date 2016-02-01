@@ -97,7 +97,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper\Bootstrapper.cs" />
-    <Compile Include="Bootstrapper\DocumentaniaLogger.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -132,6 +131,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Documentania.Common\Documentania.Common.csproj">
+      <Project>{88dac866-6ea3-449a-9f4d-0e657f94610e}</Project>
+      <Name>Documentania.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Documentania.Interfaces\Documentania.Interfaces.csproj">
       <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
       <Name>Documentania.Interfaces</Name>
