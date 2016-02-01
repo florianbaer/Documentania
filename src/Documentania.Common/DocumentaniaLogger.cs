@@ -7,12 +7,12 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using log4net;
+
 namespace Documentania.Common
 {
     using Prism.Logging;
-
-    using Raven.Abstractions.Logging;
-
+    
     public class DocumentaniaLogger : ILoggerFacade
     {
         private readonly ILog logger;

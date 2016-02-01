@@ -6,8 +6,8 @@
     <ProjectGuid>{6CC6F1AA-1403-4A56-A4FB-D15E14F77093}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DocumentaniaSpecFlow</RootNamespace>
-    <AssemblyName>DocumentaniaSpecFlow</AssemblyName>
+    <RootNamespace>DocumentaniaSpecFlow.Tests</RootNamespace>
+    <AssemblyName>DocumentaniaSpecFlow.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

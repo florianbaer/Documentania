@@ -7,14 +7,13 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Microsoft.Practices.ServiceLocation;
+
 namespace DataAccess.RavenDB
 {
     using System;
 
     using Documentania.Common;
-
-    using Microsoft.Practices.ServiceLocation;
-
     using Prism.Logging;
 
     using Raven.Client.Document;
