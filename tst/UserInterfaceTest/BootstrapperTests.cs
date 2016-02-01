@@ -7,12 +7,10 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace UserInterfaceTest
+using NUnit.Framework;
+
+namespace UserInterface.Tests
 {
-    using NUnit.Framework;
-
-    using UserInterface.Bootstrapper;
-
     [TestFixture]
     [Ignore("Bootstrapper testing is not necessary")]
     public class BootstrapperTests
@@ -20,7 +18,7 @@ namespace UserInterfaceTest
         [Test]
         public void StartUpBootstrapperTest()
         {
-            Bootstrapper bootstrapper = new Bootstrapper();
+            Bootstrapper.Bootstrapper bootstrapper = new Bootstrapper.Bootstrapper();
             bootstrapper.Run();
         }
     }

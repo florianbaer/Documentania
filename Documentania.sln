@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{619791DE-CDD7-4B46-9D53-3C8652D84CAD}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,11 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{746CF7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BFF4112D-F8C4-40E0-975A-ED953388DF95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentaniaSpecFlow", "tst\DocumentaniaSpecFlow\DocumentaniaSpecFlow.csproj", "{6CC6F1AA-1403-4A56-A4FB-D15E14F77093}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentaniaSpecFlow.Tests", "tst\DocumentaniaSpecFlow\DocumentaniaSpecFlow.Tests.csproj", "{6CC6F1AA-1403-4A56-A4FB-D15E14F77093}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.RavenDB.Tests", "tst\DataAccess.RavenDB.Tests\DataAccess.RavenDB.Tests.csproj", "{067456C0-086C-46A8-B37F-1405717B7BFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterfaceTest", "tst\UserInterfaceTest\UserInterfaceTest.csproj", "{50A25837-B9D7-46A9-A7C2-F6E575DA5D41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface.Tests", "tst\UserInterfaceTest\UserInterface.Tests.csproj", "{50A25837-B9D7-46A9-A7C2-F6E575DA5D41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania.Common", "src\Documentania.Common\Documentania.Common.csproj", "{88DAC866-6EA3-449A-9F4D-0E657F94610E}"
 EndProject

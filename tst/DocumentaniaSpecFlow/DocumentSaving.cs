@@ -7,10 +7,10 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace DocumentaniaSpecFlow
-{
-    using TechTalk.SpecFlow;
+using TechTalk.SpecFlow;
 
+namespace DocumentaniaSpecFlow.Tests
+{
     [Binding]
     public sealed class DocumentSaving
     {
