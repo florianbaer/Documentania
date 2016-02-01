@@ -1,4 +1,13 @@
-﻿namespace Documentania.Common.Bootstrapper
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DocumentaniaLogger.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'DocumentaniaLogger.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Documentania.Common
 {
     using Prism.Logging;
 
@@ -6,13 +15,12 @@
 
     public class DocumentaniaLogger : ILoggerFacade
     {
+        private readonly ILog logger;
 
         public DocumentaniaLogger()
         {
-            this.logger = LogManager.GetLogger(this.GetType()); 
+            this.logger = LogManager.GetLogger(this.GetType());
         }
-
-        private readonly ILog logger;
 
         /// <summary>
         /// Writes a log message.
@@ -38,7 +46,5 @@
                     break;
             }
         }
-
-        
     }
 }

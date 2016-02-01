@@ -11,7 +11,7 @@ namespace DataAccess.RavenDB
 {
     using System;
 
-    using Documentania.Common.Bootstrapper;
+    using Documentania.Common;
 
     using Microsoft.Practices.ServiceLocation;
 

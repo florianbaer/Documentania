@@ -11,7 +11,7 @@ namespace UserInterface.Bootstrapper
 {
     using System.Windows;
 
-    using Documentania.Common.Bootstrapper;
+    using Documentania.Common;
 
     using Prism.Logging;
     using Prism.Unity;

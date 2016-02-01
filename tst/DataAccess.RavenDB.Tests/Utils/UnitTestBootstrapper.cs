@@ -8,7 +8,7 @@ namespace DataAccess.RavenDB.Tests.Utils
 {
     using System.Windows;
 
-    using Documentania.Common.Bootstrapper;
+    using Documentania.Common;
 
     using Prism.Logging;
     using Prism.Unity;
