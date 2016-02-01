@@ -26,6 +26,7 @@ namespace DataAccess.RavenDB.Tests
     /// Summary description for DocumentaniaDocumentStoreTests
     /// </summary>
     [TestFixture]
+    [Ignore("Needs connection to database server")]
     public class DocumentaniaDocumentStoreTests
     {
         [OneTimeSetUp]
