@@ -11,9 +11,7 @@ namespace UserInterface.Bootstrapper
 {
     using System.Windows;
 
-    using log4net;
-
-    using Microsoft.Practices.ServiceLocation;
+    using Documentania.Common.Bootstrapper;
 
     using Prism.Logging;
     using Prism.Unity;
@@ -23,7 +21,6 @@ namespace UserInterface.Bootstrapper
         public Bootstrapper()
         {
             log4net.Config.XmlConfigurator.Configure();
-            var logger = (DocumentaniaLogger)ServiceLocator.Current.GetInstance(typeof(ILoggerFacade));
         }
 
         protected override ILoggerFacade CreateLogger()

@@ -28,6 +28,13 @@ namespace DataAccess.RavenDB.Tests
     [TestFixture]
     public class DocumentaniaDocumentStoreTests
     {
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            UnitTestBootstrapper bootstrapper = new UnitTestBootstrapper();
+            bootstrapper.Run();
+        }
+
         [Test]
         public void CreateDocumentAndReadTagsTest()
         {
