@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="App.xaml.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'App.xaml.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace UserInterface
 {
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -22,12 +25,8 @@ namespace UserInterface
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            this.bootstrapper.StartUp();
-        }
-
-        private void App_OnExit(object sender, ExitEventArgs e)
-        {
-            this.bootstrapper.ShutDown();
+            base.OnStartup(e);
+            this.bootstrapper.Run();
         }
     }
 }

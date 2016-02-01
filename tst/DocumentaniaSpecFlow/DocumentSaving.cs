@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DocumentSaving.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'DocumentSaving.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace DocumentaniaSpecFlow
 {
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class DocumentSaving
     {
@@ -23,18 +28,18 @@ namespace DocumentaniaSpecFlow
             //// ScenarioContext.Current.Pending();
         }
 
-        [When("I press add")]
-        public void WhenIPressAdd()
-        {
-            //TODO: implement act (action) logic
-
-            //// ScenarioContext.Current.Pending();
-        }
-
         [Then("the result should be (.*) on the screen")]
         public void ThenTheResultShouldBe(int result)
         {
             //TODO: implement assert (verification) logic
+
+            //// ScenarioContext.Current.Pending();
+        }
+
+        [When("I press add")]
+        public void WhenIPressAdd()
+        {
+            //TODO: implement act (action) logic
 
             //// ScenarioContext.Current.Pending();
         }
