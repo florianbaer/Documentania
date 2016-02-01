@@ -76,12 +76,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Documentania.Interfaces\Documentania.Interfaces.csproj">
-      <Project>{5061afcf-c667-4530-a992-37dfd2ba05af}</Project>
-      <Name>Documentania.Interfaces</Name>
+    <ProjectReference Include="..\..\src\Documentania.Common\Documentania.Common.csproj">
+      <Project>{88dac866-6ea3-449a-9f4d-0e657f94610e}</Project>
+      <Name>Documentania.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\UserInterface\UserInterface.csproj">
-      <Project>{8F216F98-1855-497D-AABA-59859538CFEF}</Project>
+      <Project>{8f216f98-1855-497d-aaba-59859538cfef}</Project>
       <Name>UserInterface</Name>
     </ProjectReference>
   </ItemGroup>
