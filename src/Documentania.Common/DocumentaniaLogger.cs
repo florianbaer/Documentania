@@ -7,13 +7,14 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Documentania.Interfaces;
 using log4net;
 
 namespace Documentania.Common
 {
     using Prism.Logging;
     
-    public class DocumentaniaLogger : ILoggerFacade
+    public class DocumentaniaLogger : IDocumentaniaLogger
     {
         private readonly ILog logger;
 

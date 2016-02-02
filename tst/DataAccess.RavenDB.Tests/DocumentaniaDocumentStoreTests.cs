@@ -7,6 +7,8 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Modules.Document;
+
 namespace DataAccess.RavenDB.Tests
 {
     using System;

@@ -65,6 +65,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Documentania.Interfaces\Documentania.Interfaces.csproj">
+      <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
+      <Name>Documentania.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

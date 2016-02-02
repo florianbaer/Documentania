@@ -7,11 +7,11 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataAccess.RavenDB
-{
-    using System.Collections.Generic;
+using System.Collections.Generic;
+using Documentania.Interfaces;
 
-    using Documentania.Interfaces;
+namespace Modules.Document
+{
     public class Tag : IStorable
     {
         public virtual string Id { get; set; }
