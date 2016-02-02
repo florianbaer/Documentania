@@ -25,14 +25,6 @@ namespace DataAccess.RavenDB
         public virtual string Path { get; set; }
 
         public List<Tag> Tags { get; set; } = new List<Tag>();
-
-        public void Store(bool withRelation)
-        {
-            if (withRelation)
-            {
-                this.Tags.ForEach(x => repo.Add(x));
-            }
-        }
         
     }
 }

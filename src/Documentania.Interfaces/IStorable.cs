@@ -10,6 +10,6 @@ namespace Documentania.Interfaces
 {
     public interface IStorable
     {
-        void Store(bool withRelation);
+        string Id { get; set; }
     }
 }
