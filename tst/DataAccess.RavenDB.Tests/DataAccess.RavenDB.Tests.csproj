@@ -99,6 +99,14 @@
       <Project>{88DAC866-6EA3-449A-9F4D-0E657F94610E}</Project>
       <Name>Documentania.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Documentania.Interfaces\Documentania.Interfaces.csproj">
+      <Project>{5061afcf-c667-4530-a992-37dfd2ba05af}</Project>
+      <Name>Documentania.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Modules.Document\Modules.Document.csproj">
+      <Project>{DCB9B047-1F17-469D-80D8-F0FCB229DE26}</Project>
+      <Name>Modules.Document</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

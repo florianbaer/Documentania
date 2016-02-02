@@ -7,6 +7,8 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Modules.Document;
+
 namespace DataAccess.RavenDB.Tests
 {
     using System;
@@ -26,6 +28,7 @@ namespace DataAccess.RavenDB.Tests
     /// Summary description for DocumentaniaDocumentStoreTests
     /// </summary>
     [TestFixture]
+    [Ignore("Needs connection to database server")]
     public class DocumentaniaDocumentStoreTests
     {
         [OneTimeSetUp]

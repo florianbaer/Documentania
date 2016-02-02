@@ -7,6 +7,8 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Prism.Modularity;
+
 namespace UserInterface.Bootstrapper
 {
     using System.Windows;
@@ -16,7 +18,7 @@ namespace UserInterface.Bootstrapper
     using Prism.Logging;
     using Prism.Unity;
 
-    public class Bootstrapper : UnityBootstrapper
+    public class Bootstrapper : Prism.Unity.UnityBootstrapper
     {
         public Bootstrapper()
         {
@@ -27,6 +29,13 @@ namespace UserInterface.Bootstrapper
         {
             return new DocumentaniaLogger();
         }
+
+
+        protected override IModuleCatalog CreateModuleCatalog()
+        {
+            return new ConfigurationModuleCatalog();
+        }
+
 
         protected override DependencyObject CreateShell()
         {

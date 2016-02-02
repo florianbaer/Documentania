@@ -7,6 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace UserInterface
 {
     using System.Windows;
@@ -25,7 +26,6 @@ namespace UserInterface
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            base.OnStartup(e);
             this.bootstrapper.Run();
         }
     }

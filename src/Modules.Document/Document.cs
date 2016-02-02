@@ -7,12 +7,13 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataAccess.RavenDB
-{
-    using System;
-    using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using Documentania.Interfaces;
 
-    public class Document
+namespace Modules.Document
+{
+    public class Document : IStorable
     {
         public virtual DateTime DateReceived { get; set; }
 
@@ -23,5 +24,6 @@ namespace DataAccess.RavenDB
         public virtual string Path { get; set; }
 
         public List<Tag> Tags { get; set; } = new List<Tag>();
+        
     }
 }

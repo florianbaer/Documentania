@@ -1,18 +1,15 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="IBootstrapper.cs" company="BaerDev">
+// // <copyright file="IStorable.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'IBootstrapper.cs'.
+// // The file 'IStorable.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-
 namespace Documentania.Interfaces
 {
-    public interface IBootstrapper
+    public interface IStorable
     {
-        void ShutDown();
-
-        void StartUp();
+        string Id { get; set; }
     }
 }
