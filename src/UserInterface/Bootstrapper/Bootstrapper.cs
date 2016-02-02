@@ -7,18 +7,19 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using System.Windows;
+using Documentania.Common;
+using Prism.Logging;
 using Prism.Modularity;
+using Prism.Unity;
 
 namespace UserInterface.Bootstrapper
 {
-    using System.Windows;
-
-    using Documentania.Common;
-
-    using Prism.Logging;
-    using Prism.Unity;
-
-    public class Bootstrapper : Prism.Unity.UnityBootstrapper
+    /// <summary>
+    /// The Bootstrapper of Documentania which is as prism implemented.
+    /// </summary>
+    /// <seealso cref="Prism.Unity.UnityBootstrapper" />
+    public class Bootstrapper : UnityBootstrapper
     {
         public Bootstrapper()
         {
