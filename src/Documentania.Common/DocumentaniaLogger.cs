@@ -13,18 +13,18 @@ using log4net;
 namespace Documentania.Common
 {
     using Prism.Logging;
-    
+
     public class DocumentaniaLogger : IDocumentaniaLogger
     {
         private readonly ILog logger;
 
         public DocumentaniaLogger()
         {
-            this.logger = LogManager.GetLogger(this.GetType());
+            logger = LogManager.GetLogger(GetType());
         }
 
         /// <summary>
-        /// Writes a log message.
+        ///     Writes a log message.
         /// </summary>
         /// <param name="message">The message to write.</param>
         /// <param name="category">The message category.</param>
@@ -34,16 +34,16 @@ namespace Documentania.Common
             switch (category)
             {
                 case Category.Debug:
-                    this.logger.Debug(message);
+                    logger.Debug(message);
                     break;
                 case Category.Warn:
-                    this.logger.Warn(message);
+                    logger.Warn(message);
                     break;
                 case Category.Exception:
-                    this.logger.Error(message);
+                    logger.Error(message);
                     break;
                 case Category.Info:
-                    this.logger.Info(message);
+                    logger.Info(message);
                     break;
             }
         }

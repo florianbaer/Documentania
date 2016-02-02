@@ -6,6 +6,7 @@
 // // The file 'IStorable.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Documentania.Interfaces
 {
     public interface IStorable

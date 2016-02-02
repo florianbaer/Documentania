@@ -1,4 +1,13 @@
-﻿using System;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitTestBootstrapper.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'UnitTestBootstrapper.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +16,7 @@ using System.Threading.Tasks;
 namespace DataAccess.RavenDB.Tests.Utils
 {
     using System.Windows;
-
     using Documentania.Common;
-
     using Prism.Logging;
     using Prism.Unity;
 
@@ -24,6 +31,5 @@ namespace DataAccess.RavenDB.Tests.Utils
         {
             return new DocumentaniaLogger();
         }
-        
     }
 }

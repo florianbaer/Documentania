@@ -6,6 +6,7 @@
 // // The file 'IRepository.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Documentania.Interfaces
 {
     using System;

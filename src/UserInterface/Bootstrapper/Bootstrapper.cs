@@ -16,7 +16,7 @@ using Prism.Unity;
 namespace UserInterface.Bootstrapper
 {
     /// <summary>
-    /// The Bootstrapper of Documentania which is as prism implemented.
+    ///     The Bootstrapper of Documentania which is as prism implemented.
     /// </summary>
     /// <seealso cref="Prism.Unity.UnityBootstrapper" />
     public class Bootstrapper : UnityBootstrapper
@@ -40,7 +40,7 @@ namespace UserInterface.Bootstrapper
 
         protected override DependencyObject CreateShell()
         {
-            this.Logger.Log("Show MainWindow", Category.Info, Priority.Low);
+            Logger.Log("Show MainWindow", Category.Info, Priority.Low);
             MainWindow window = new MainWindow();
             window.Show();
             return window;
