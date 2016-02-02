@@ -12,7 +12,9 @@ namespace DataAccess.RavenDB
     using System;
     using System.Collections.Generic;
 
-    public class Document
+    using Documentania.Interfaces;
+
+    public class Document : IStorable
     {
         public virtual DateTime DateReceived { get; set; }
 
@@ -23,5 +25,14 @@ namespace DataAccess.RavenDB
         public virtual string Path { get; set; }
 
         public List<Tag> Tags { get; set; } = new List<Tag>();
+
+        public void Store(bool withRelation)
+        {
+            if (withRelation)
+            {
+                this.Tags.ForEach(x => repo.Add(x));
+            }
+        }
+        
     }
 }

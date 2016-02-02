@@ -9,8 +9,23 @@
 
 namespace DataAccess.RavenDB
 {
-    public class Tag
+    using System.Collections.Generic;
+
+    using Documentania.Interfaces;
+    public class Tag : IStorable
     {
+        public virtual string Id { get; set; }
         public virtual string Value { get; set; }
+
+        public List<Document> Documents { get; set; } = new List<Document>();
+
+        public void Store(bool withRelation)
+        {
+            if (withRelation)
+            {
+                // Todo: implement intelligent save 
+                //// this.Documents.ForEach(x => repo.Add(x));
+            }
+        }
     }
 }

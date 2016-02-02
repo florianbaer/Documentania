@@ -20,11 +20,10 @@ namespace DataAccess.RavenDB
 
     public class DocumentaniaDocumentStore : DocumentStore
     {
-        DocumentaniaLogger logger;
+        DocumentaniaLogger logger = (DocumentaniaLogger)ServiceLocator.Current.GetInstance(typeof(ILoggerFacade));
+
         public DocumentaniaDocumentStore(string url, string defaultDatabase)
         {
-            this.logger = (DocumentaniaLogger)ServiceLocator.Current.GetInstance(typeof(ILoggerFacade));
-
             this.logger.Log($"Create instance of logger for url {url} with databasename {defaultDatabase}", Category.Info, Priority.Low);
 
             this.Url = url;
