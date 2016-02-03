@@ -23,5 +23,7 @@ namespace Documentania.Interfaces
         System.Linq.IQueryable<T> All<T>(int page, int pageSize) where T : class, IStorable, new();
         void Add<T>(T item) where T : class, IStorable, new();
         void Add<T>(IEnumerable<T> items) where T : class, IStorable, new();
+
+        IList<T> GetAll<T>();
     }
 }

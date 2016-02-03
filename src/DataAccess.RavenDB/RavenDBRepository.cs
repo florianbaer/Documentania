@@ -86,5 +86,10 @@ namespace DataAccess.RavenDB
         {
             items.ForEach(x => Add(x));
         }
+
+        public IList<T> GetAll<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
