@@ -7,6 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using log4net;
 using Microsoft.Practices.ServiceLocation;
 
 namespace DataAccess.RavenDB
@@ -18,14 +19,12 @@ namespace DataAccess.RavenDB
 
     public class DocumentaniaDocumentStore : DocumentStore
     {
-        private readonly DocumentaniaLogger Log =
-            (DocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
+        private static ILog Log = LogManager.GetLogger(typeof (DocumentaniaDocumentStore));
 
         public DocumentaniaDocumentStore(string url, string defaultDatabase)
         {
-            this.Log.Debug($"Create instance of logger for url {url} with databasename {defaultDatabase}");
-
-            Url = url;
+            Log.Debug($"Create instance of logger for url {url} with databasename {defaultDatabase}");
+                        Url = url;
             DefaultDatabase = defaultDatabase;
         }
     }

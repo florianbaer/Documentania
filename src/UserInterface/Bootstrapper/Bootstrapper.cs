@@ -9,6 +9,8 @@
 
 using System.Windows;
 using Documentania.Common;
+using log4net;
+using Microsoft.Practices.ServiceLocation;
 using Prism.Logging;
 using Prism.Modularity;
 using Prism.Unity;
@@ -21,6 +23,8 @@ namespace UserInterface.Bootstrapper
     /// <seealso cref="Prism.Unity.UnityBootstrapper" />
     public class Bootstrapper : UnityBootstrapper
     {
+        private static ILog Log = LogManager.GetLogger(typeof (Bootstrapper));
+
         public Bootstrapper()
         {
             log4net.Config.XmlConfigurator.Configure();
@@ -40,8 +44,8 @@ namespace UserInterface.Bootstrapper
 
         protected override DependencyObject CreateShell()
         {
-            Logger.Log("Show MainWindow", Category.Info, Priority.Low);
-            MainWindow window = new MainWindow();
+            Log.Info("Show Shell");
+            Shell window = new Shell();
             window.Show();
             return window;
         }

@@ -22,7 +22,7 @@ namespace Documentania.Common
 
         public DocumentaniaLogger()
         {
-            Logger = LogManager.GetLogger(GetType());
+            Logger = LogManager.GetLogger(this.GetType());
         }
 
         /// <summary>

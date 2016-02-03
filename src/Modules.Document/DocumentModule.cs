@@ -12,7 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Documentania.Common;
 using Documentania.Interfaces;
+using log4net;
 using Microsoft.Practices.ServiceLocation;
 using Prism.Logging;
 using Prism.Modularity;
@@ -22,12 +24,11 @@ namespace Modules.Document
     [Module(ModuleName = "DocumentModule")]
     public class DocumentModule : IModule
     {
-        private readonly IDocumentaniaLogger logger =
-            (IDocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentModule));
 
         public void Initialize()
         {
-            logger.Log("Initialize DocumentModule", Category.Info, Priority.None);
+            Log.Info("Initialize DocumentModule");
         }
     }
 }

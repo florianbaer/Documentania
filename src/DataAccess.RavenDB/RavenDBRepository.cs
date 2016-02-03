@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 
 namespace DataAccess.RavenDB
 {
@@ -26,8 +27,7 @@ namespace DataAccess.RavenDB
 
     public class RavenDBRepository : IRepository
     {
-        private readonly DocumentaniaLogger Log =
-            (DocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
+        private static ILog Log = LogManager.GetLogger(typeof (RavenDBRepository));
 
         private readonly IDocumentSession session;
         private readonly IDocumentStore store;
@@ -43,7 +43,7 @@ namespace DataAccess.RavenDB
         {
             session.Dispose();
             store.Dispose();
-            this.Log.Debug("Disposed Ravendb repository.");
+            Log.Debug("Disposed Ravendb repository.");
         }
 
         public void Delete<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new()
@@ -79,7 +79,7 @@ namespace DataAccess.RavenDB
         public void Add<T>(T item) where T : class, IStorable, new()
         {
             session.Store(item);
-            this.Log.Debug($"Added {typeof(T)} : {item}");
+            Log.Debug($"Added {typeof(T)} : {item}");
         }
 
         public void Add<T>(IEnumerable<T> items) where T : class, IStorable, new()
