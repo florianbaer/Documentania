@@ -7,13 +7,12 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-
 namespace UserInterface
 {
     using System.Windows;
 
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
@@ -21,12 +20,12 @@ namespace UserInterface
 
         public App()
         {
-            this.bootstrapper = new Bootstrapper.Bootstrapper();
+            bootstrapper = new Bootstrapper.Bootstrapper();
         }
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            this.bootstrapper.Run();
+            bootstrapper.Run();
         }
     }
 }

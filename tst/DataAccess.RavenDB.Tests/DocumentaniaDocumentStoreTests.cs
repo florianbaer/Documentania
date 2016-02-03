@@ -14,23 +14,25 @@ namespace DataAccess.RavenDB.Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-    using DataAccess.RavenDB.Tests.Utils;
-
+    using Utils;
     using ExAs;
-
     using NUnit.Framework;
-
     using Raven.Client;
     using Raven.Client.Linq;
 
     /// <summary>
-    /// Summary description for DocumentaniaDocumentStoreTests
+    ///     Summary description for DocumentaniaDocumentStoreTests
     /// </summary>
     [TestFixture]
     [Ignore("Needs connection to database server")]
     public class DocumentaniaDocumentStoreTests
     {
+        [TearDown]
+        public void DeleteDatebase()
+        {
+            DatabaseEnvironment.DropDatabase();
+        }
+
         [OneTimeSetUp]
         public void Setup()
         {
@@ -50,18 +52,18 @@ namespace DataAccess.RavenDB.Tests
                 using (IDocumentSession session = store.OpenSession())
                 {
                     Document document = new Document
-                                            {
-                                                Imported = DateTime.Now,
-                                                Path = "Baden",
-                                                Tags = new List<Tag> { new Tag { Value = "Test" } }
-                                            };
+                    {
+                        Imported = DateTime.Now,
+                        Path = "Baden",
+                        Tags = new List<Tag> {new Tag {Value = "Test"}}
+                    };
 
                     Document testDocument = new Document
-                                                {
-                                                    Imported = DateTime.Now,
-                                                    Path = "Baden",
-                                                    Tags = new List<Tag> { new Tag { Value = "Test" } }
-                                                };
+                    {
+                        Imported = DateTime.Now,
+                        Path = "Baden",
+                        Tags = new List<Tag> {new Tag {Value = "Test"}}
+                    };
 
                     session.Store(document);
                     session.Store(testDocument);
@@ -90,11 +92,11 @@ namespace DataAccess.RavenDB.Tests
                 using (IDocumentSession session = store.OpenSession())
                 {
                     Document document = new Document
-                                            {
-                                                Imported = DateTime.Now,
-                                                Path = "Baden",
-                                                Tags = new List<Tag> { new Tag { Value = "Test" } }
-                                            };
+                    {
+                        Imported = DateTime.Now,
+                        Path = "Baden",
+                        Tags = new List<Tag> {new Tag {Value = "Test"}}
+                    };
 
                     session.Store(document); // stores employee in session, assigning it to a collection `Employees`
 
@@ -107,20 +109,14 @@ namespace DataAccess.RavenDB.Tests
                     Document loadedDocument = session.Load<Document>(documentId);
                     document.ExAssert(
                         d =>
-                        d.Member(m => m.Path)
-                            .IsEqualTo(loadedDocument.Path)
-                            .Member(m => m.Imported)
-                            .IsOnSameDayAs(loadedDocument.Imported)
-                            .Member(m => m.Tags.FirstOrDefault(x => x.Value == "Test"))
-                            .IsNotNull());
+                            d.Member(m => m.Path)
+                                .IsEqualTo(loadedDocument.Path)
+                                .Member(m => m.Imported)
+                                .IsOnSameDayAs(loadedDocument.Imported)
+                                .Member(m => m.Tags.FirstOrDefault(x => x.Value == "Test"))
+                                .IsNotNull());
                 }
             }
-        }
-
-        [TearDown]
-        public void DeleteDatebase()
-        {
-            DatabaseEnvironment.DropDatabase();
         }
     }
 }

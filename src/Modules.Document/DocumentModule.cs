@@ -1,4 +1,13 @@
-﻿using System;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DocumentModule.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'DocumentModule.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +22,12 @@ namespace Modules.Document
     [Module(ModuleName = "DocumentModule")]
     public class DocumentModule : IModule
     {
-        IDocumentaniaLogger logger = (IDocumentaniaLogger)ServiceLocator.Current.GetInstance(typeof(ILoggerFacade));
+        private readonly IDocumentaniaLogger logger =
+            (IDocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
+
         public void Initialize()
         {
-            this.logger.Log("Initialize DocumentModule", Category.Info, Priority.None);
+            logger.Log("Initialize DocumentModule", Category.Info, Priority.None);
         }
     }
 }

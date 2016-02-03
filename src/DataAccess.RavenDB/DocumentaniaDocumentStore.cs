@@ -12,22 +12,21 @@ using Microsoft.Practices.ServiceLocation;
 namespace DataAccess.RavenDB
 {
     using System;
-
     using Documentania.Common;
     using Prism.Logging;
-
     using Raven.Client.Document;
 
     public class DocumentaniaDocumentStore : DocumentStore
     {
-        DocumentaniaLogger logger = (DocumentaniaLogger)ServiceLocator.Current.GetInstance(typeof(ILoggerFacade));
+        private readonly DocumentaniaLogger Log =
+            (DocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
 
         public DocumentaniaDocumentStore(string url, string defaultDatabase)
         {
-            this.logger.Log($"Create instance of logger for url {url} with databasename {defaultDatabase}", Category.Info, Priority.Low);
+            this.Log.Debug($"Create instance of logger for url {url} with databasename {defaultDatabase}");
 
-            this.Url = url;
-            this.DefaultDatabase = defaultDatabase;
+            Url = url;
+            DefaultDatabase = defaultDatabase;
         }
     }
 }
