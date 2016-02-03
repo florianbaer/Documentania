@@ -12,15 +12,17 @@ using log4net;
 
 namespace Documentania.Common
 {
+    using System;
+
     using Prism.Logging;
 
     public class DocumentaniaLogger : IDocumentaniaLogger
     {
-        private readonly ILog logger;
+        private readonly ILog Logger;
 
         public DocumentaniaLogger()
         {
-            logger = LogManager.GetLogger(GetType());
+            Logger = LogManager.GetLogger(GetType());
         }
 
         /// <summary>
@@ -34,18 +36,56 @@ namespace Documentania.Common
             switch (category)
             {
                 case Category.Debug:
-                    logger.Debug(message);
+                    Logger.Debug(message);
                     break;
                 case Category.Warn:
-                    logger.Warn(message);
+                    Logger.Warn(message);
                     break;
                 case Category.Exception:
-                    logger.Error(message);
+                    Logger.Error(message);
                     break;
                 case Category.Info:
-                    logger.Info(message);
+                    Logger.Info(message);
                     break;
             }
         }
+
+        public void Debug(object message)
+        {
+            this.Logger.Debug(message);
+        }
+        public void Debug(object message, Exception exception)
+        {
+            this.Logger.Debug(message, exception);
+        }
+
+        public void Warn(object message)
+        {
+            this.Logger.Warn(message);
+        }
+        public void Warn(object message, Exception exception)
+        {
+            this.Logger.Warn(message, exception);
+        }
+
+        public void Exception(object message)
+        {
+            this.Logger.Error(message);
+        }
+
+        public void Exception(object message, Exception exception)
+        {
+            this.Logger.Error(message, exception);
+        }
+
+        public void Info(object message)
+        {
+            this.Logger.Info(message);
+        }
+        public void Info(object message, Exception exception)
+        {
+            this.Logger.Info(message, exception);
+        }
+        
     }
 }

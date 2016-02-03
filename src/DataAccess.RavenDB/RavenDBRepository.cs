@@ -26,7 +26,7 @@ namespace DataAccess.RavenDB
 
     public class RavenDBRepository : IRepository
     {
-        private readonly DocumentaniaLogger logger =
+        private readonly DocumentaniaLogger Log =
             (DocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
 
         private readonly IDocumentSession session;
@@ -43,7 +43,7 @@ namespace DataAccess.RavenDB
         {
             session.Dispose();
             store.Dispose();
-            logger.Log("Disposed Ravendb repository.", Category.Info, Priority.None);
+            this.Log.Debug("Disposed Ravendb repository.");
         }
 
         public void Delete<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new()
@@ -78,8 +78,8 @@ namespace DataAccess.RavenDB
 
         public void Add<T>(T item) where T : class, IStorable, new()
         {
-            logger.Log($"Add {typeof (T)} : {item}", Category.Debug, Priority.None);
             session.Store(item);
+            this.Log.Debug($"Added {typeof(T)} : {item}");
         }
 
         public void Add<T>(IEnumerable<T> items) where T : class, IStorable, new()
