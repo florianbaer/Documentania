@@ -27,12 +27,12 @@ namespace DataAccess.RavenDB
 
     public class RavenDBRepository : IRepository
     {
-        private static ILog Log = LogManager.GetLogger(typeof (RavenDBRepository));
+        private static ILog Log = LogManager.GetLogger(typeof(RavenDBRepository));
 
         private readonly IDocumentSession session;
         private readonly IDocumentStore store;
 
-        public RavenDBRepository(DocumentaniaDocumentStore store)
+        public RavenDBRepository(IDocumentStore store)
         {
             this.store = store;
             store.Initialize();
@@ -53,7 +53,8 @@ namespace DataAccess.RavenDB
 
         public void Delete<T>(T item) where T : class, IStorable, new()
         {
-            throw new NotImplementedException();
+            this.session.Delete(item);
+            Log.Debug($"Deleted {typeof(T)} : {item}");
         }
 
         public void DeleteAll<T>() where T : class, IStorable, new()
@@ -76,20 +77,20 @@ namespace DataAccess.RavenDB
             throw new NotImplementedException();
         }
 
-        public void Add<T>(T item) where T : class, IStorable, new()
+        public void Add<T>(T item) where T : class, IStorable
         {
-            session.Store(item);
+            this.session.Store(item);
             Log.Debug($"Added {typeof(T)} : {item}");
         }
 
-        public void Add<T>(IEnumerable<T> items) where T : class, IStorable, new()
+        public void Add<T>(IEnumerable<T> items) where T : class, IStorable
         {
             items.ForEach(x => Add(x));
         }
 
         public IList<T> GetAll<T>()
         {
-            throw new NotImplementedException();
+            return this.session.Load<T>();
         }
     }
 }

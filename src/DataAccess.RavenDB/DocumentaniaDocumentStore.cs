@@ -24,8 +24,8 @@ namespace DataAccess.RavenDB
         public DocumentaniaDocumentStore(string url, string defaultDatabase)
         {
             Log.Debug($"Create instance of logger for url {url} with databasename {defaultDatabase}");
-                        Url = url;
-            DefaultDatabase = defaultDatabase;
+            this.Url = url;
+            this.DefaultDatabase = defaultDatabase;
         }
     }
 }

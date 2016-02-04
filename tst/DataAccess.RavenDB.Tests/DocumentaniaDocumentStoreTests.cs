@@ -24,99 +24,16 @@ namespace DataAccess.RavenDB.Tests
     ///     Summary description for DocumentaniaDocumentStoreTests
     /// </summary>
     [TestFixture]
-    [Ignore("Needs connection to database server")]
     public class DocumentaniaDocumentStoreTests
     {
-        [TearDown]
-        public void DeleteDatebase()
-        {
-            DatabaseEnvironment.DropDatabase();
-        }
-
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            UnitTestBootstrapper bootstrapper = new UnitTestBootstrapper();
-            bootstrapper.Run();
-        }
-
         [Test]
-        public void CreateDocumentAndReadTagsTest()
+        public void ConstructorPassingParameterTest()
         {
-            using (IDocumentStore store = new DocumentaniaDocumentStore("http://localhost:1303", "Documentania"))
-            {
-                store.Initialize();
-                // initializes document store, by connecting to server and downloading various configurations
+            const string defaultDatabase = "defaultDatabase";
+            const string url = "url";
 
-                // opens a session that will work in context of 'DefaultDatabase'
-                using (IDocumentSession session = store.OpenSession())
-                {
-                    Document document = new Document
-                    {
-                        Imported = DateTime.Now,
-                        Path = "Baden",
-                        Tags = new List<Tag> {new Tag {Value = "Test"}}
-                    };
-
-                    Document testDocument = new Document
-                    {
-                        Imported = DateTime.Now,
-                        Path = "Baden",
-                        Tags = new List<Tag> {new Tag {Value = "Test"}}
-                    };
-
-                    session.Store(document);
-                    session.Store(testDocument);
-
-                    session.SaveChanges(); // sends all changes to server
-
-                    string documentId = document.Id; // Session.Store will assign Id to employee, if it is not set
-
-                    List<Document> documents =
-                        session.Query<Document>().Where(doc => doc.Tags.Any(tag => tag.Value == "Test")).ToList();
-
-                    documents.ExAssert(x => x.Member(m => m.Count).IsEqualTo(2));
-                }
-            }
-        }
-
-        [Test]
-        public void CreateDocumentAndReadTest()
-        {
-            using (IDocumentStore store = new DocumentaniaDocumentStore("http://localhost:1303", "Documentania"))
-            {
-                store.Initialize();
-                // initializes document store, by connecting to server and downloading various configurations
-
-                // opens a session that will work in context of 'DefaultDatabase'
-                using (IDocumentSession session = store.OpenSession())
-                {
-                    Document document = new Document
-                    {
-                        Imported = DateTime.Now,
-                        Path = "Baden",
-                        Tags = new List<Tag> {new Tag {Value = "Test"}}
-                    };
-
-                    session.Store(document); // stores employee in session, assigning it to a collection `Employees`
-
-                    string documentId = document.Id; // Session.Store will assign Id to employee, if it is not set
-
-                    session.SaveChanges(); // sends all changes to server
-
-                    // Session implements Unit of Work pattern,
-                    // therefore employee instance would be the same and no server call will be made
-                    Document loadedDocument = session.Load<Document>(documentId);
-                    document.ExAssert(
-                        d =>
-                            d.Member(m => m.Path)
-                                .IsEqualTo(loadedDocument.Path)
-                                .Member(m => m.Imported)
-                                .IsOnSameDayAs(loadedDocument.Imported)
-                                .Member(m => m.Tags.FirstOrDefault(x => x.Value == "Test"))
-                                .IsNotNull());
-                }
-            }
+            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore(url, defaultDatabase);
+            store.ExAssert(x => x.Member(m => m.Url).IsEqualTo(url).Member(m => m.DefaultDatabase).IsEqualTo(defaultDatabase));
         }
     }
 }
