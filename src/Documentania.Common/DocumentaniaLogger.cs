@@ -7,22 +7,24 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Documentania.Interfaces;
-using log4net;
-
 namespace Documentania.Common
 {
     using System;
-
+    using Documentania.Interfaces;
+    using log4net;
     using Prism.Logging;
 
+    /// <summary>
+    /// The documentania logger.
+    /// </summary>
+    /// <seealso cref="Documentania.Interfaces.IDocumentaniaLogger" />
     public class DocumentaniaLogger : IDocumentaniaLogger
     {
         private readonly ILog Logger;
 
         public DocumentaniaLogger()
         {
-            Logger = LogManager.GetLogger(this.GetType());
+            this.Logger = LogManager.GetLogger(this.GetType());
         }
 
         /// <summary>
@@ -36,16 +38,16 @@ namespace Documentania.Common
             switch (category)
             {
                 case Category.Debug:
-                    Logger.Debug(message);
+                    this.Logger.Debug(message);
                     break;
                 case Category.Warn:
-                    Logger.Warn(message);
+                    this.Logger.Warn(message);
                     break;
                 case Category.Exception:
-                    Logger.Error(message);
+                    this.Logger.Error(message);
                     break;
                 case Category.Info:
-                    Logger.Info(message);
+                    this.Logger.Info(message);
                     break;
             }
         }
@@ -54,6 +56,7 @@ namespace Documentania.Common
         {
             this.Logger.Debug(message);
         }
+
         public void Debug(object message, Exception exception)
         {
             this.Logger.Debug(message, exception);
@@ -63,6 +66,7 @@ namespace Documentania.Common
         {
             this.Logger.Warn(message);
         }
+
         public void Warn(object message, Exception exception)
         {
             this.Logger.Warn(message, exception);
@@ -82,10 +86,10 @@ namespace Documentania.Common
         {
             this.Logger.Info(message);
         }
+
         public void Info(object message, Exception exception)
         {
             this.Logger.Info(message, exception);
         }
-        
     }
 }

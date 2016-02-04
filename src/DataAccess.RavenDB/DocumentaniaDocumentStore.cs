@@ -7,19 +7,14 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using log4net;
-using Microsoft.Practices.ServiceLocation;
-
 namespace DataAccess.RavenDB
 {
-    using System;
-    using Documentania.Common;
-    using Prism.Logging;
+    using log4net;
     using Raven.Client.Document;
 
     public class DocumentaniaDocumentStore : DocumentStore
     {
-        private static ILog Log = LogManager.GetLogger(typeof (DocumentaniaDocumentStore));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentaniaDocumentStore));
 
         public DocumentaniaDocumentStore(string url, string defaultDatabase)
         {

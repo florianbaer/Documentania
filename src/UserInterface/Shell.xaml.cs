@@ -18,7 +18,7 @@ namespace UserInterface
     {
         public Shell()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

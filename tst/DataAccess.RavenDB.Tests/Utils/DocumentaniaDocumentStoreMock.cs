@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DocumentaniaDocumentStoreMock.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'DocumentaniaDocumentStoreMock.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace DataAccess.RavenDB.Tests.Utils
 {
     using Moq;
-
     using Raven.Client;
 
     public class DocumentaniaDocumentStoreMock
     {
-        public Mock<IDocumentStore> Mock { get; }
-
         public DocumentaniaDocumentStoreMock()
         {
             this.Mock = new Mock<IDocumentStore>();
             this.DocumentSession = new DocumentSessionMock();
         }
+
+        public Mock<IDocumentStore> Mock { get; }
 
         public DocumentSessionMock DocumentSession { get; }
 

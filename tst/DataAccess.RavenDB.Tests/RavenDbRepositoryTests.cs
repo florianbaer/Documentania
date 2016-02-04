@@ -1,22 +1,24 @@
-﻿using System;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="RavenDbRepositoryTests.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'RavenDbRepositoryTests.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace DataAccess.RavenDB.Tests
 {
     using DataAccess.RavenDB.Tests.Utils;
-
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
-    using NUnit.Framework;
-
-    using Raven.Client.Document;
-
-    [TestFixture]
+    [TestClass]
     public class RavenDbRepositoryTests
     {
-        [Test]
+        [TestMethod]
         public void InitializeRavenDbTest()
         {
-            const string defaultDatabase = "defaultDatabase";
             const string url = "url";
 
             DocumentaniaDocumentStoreMock documentStoreMock = new DocumentaniaDocumentStoreMock().WireUp();
@@ -33,14 +35,13 @@ namespace DataAccess.RavenDB.Tests
             documentStoreMock.DocumentSession.Mock.Verify(x => x.Dispose(), Times.Once);
         }
 
-        [Test]
+        [TestMethod]
         public void AddItemTest()
         {
-            const string defaultDatabase = "defaultDatabase";
             const string url = "url";
 
             DocumentaniaDocumentStoreMock documentStoreMock = new DocumentaniaDocumentStoreMock().WireUp();
-            
+
             documentStoreMock.Mock.Setup(x => x.Url).Returns(url);
             documentStoreMock.Mock.Setup(x => x.Initialize());
 
@@ -48,9 +49,9 @@ namespace DataAccess.RavenDB.Tests
 
             documentStoreMock.DocumentSession.Mock.Setup(x => x.Store(item));
 
-            using (RavenDBRepository repository = new RavenDBRepository(documentStoreMock.Mock.Object))
+            using(RavenDBRepository repository = new RavenDBRepository(documentStoreMock.Mock.Object))
             {
-                repository.Add<Item>(item);
+                repository.Add(item);
             }
 
             documentStoreMock.DocumentSession.Mock.Verify(x => x.Store(item), Times.Once);

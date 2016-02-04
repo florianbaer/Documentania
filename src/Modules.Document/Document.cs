@@ -7,12 +7,12 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Documentania.Interfaces;
-
 namespace Modules.Document
 {
+    using System;
+    using System.Collections.Generic;
+    using Documentania.Interfaces;
+
     public class Document : IStorable
     {
         public virtual DateTime DateReceived { get; set; }

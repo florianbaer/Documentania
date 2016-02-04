@@ -7,15 +7,15 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using NUnit.Framework;
-
 namespace UserInterface.Tests
 {
-    [TestFixture]
-    [Ignore("Bootstrapper testing is not necessary")]
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    [TestClass]
+    [Ignore]
     public class BootstrapperTests
     {
-        [Test]
+        [TestMethod]
         public void StartUpBootstrapperTest()
         {
             Bootstrapper.Bootstrapper bootstrapper = new Bootstrapper.Bootstrapper();

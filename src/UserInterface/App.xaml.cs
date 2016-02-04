@@ -20,12 +20,12 @@ namespace UserInterface
 
         public App()
         {
-            bootstrapper = new Bootstrapper.Bootstrapper();
+            this.bootstrapper = new Bootstrapper.Bootstrapper();
         }
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            bootstrapper.Run();
+            this.bootstrapper.Run();
         }
     }
 }

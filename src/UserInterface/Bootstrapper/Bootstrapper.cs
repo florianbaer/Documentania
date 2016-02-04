@@ -7,23 +7,22 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System.Windows;
-using Documentania.Common;
-using log4net;
-using Microsoft.Practices.ServiceLocation;
-using Prism.Logging;
-using Prism.Modularity;
-using Prism.Unity;
-
 namespace UserInterface.Bootstrapper
 {
+    using System.Windows;
+    using Documentania.Common;
+    using log4net;
+    using Prism.Logging;
+    using Prism.Modularity;
+    using Prism.Unity;
+
     /// <summary>
     ///     The Bootstrapper of Documentania which is as prism implemented.
     /// </summary>
     /// <seealso cref="Prism.Unity.UnityBootstrapper" />
     public class Bootstrapper : UnityBootstrapper
     {
-        private static ILog Log = LogManager.GetLogger(typeof (Bootstrapper));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Bootstrapper));
 
         public Bootstrapper()
         {
@@ -35,12 +34,10 @@ namespace UserInterface.Bootstrapper
             return new DocumentaniaLogger();
         }
 
-
         protected override IModuleCatalog CreateModuleCatalog()
         {
             return new ConfigurationModuleCatalog();
         }
-
 
         protected override DependencyObject CreateShell()
         {

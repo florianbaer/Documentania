@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Documentania.DotSettings = Documentania.DotSettings
 		README.md = README.md
+		StyleCopSettings.StyleCop = StyleCopSettings.StyleCop
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{2FF6D539-549F-4F59-811F-FE7DF7370813}"

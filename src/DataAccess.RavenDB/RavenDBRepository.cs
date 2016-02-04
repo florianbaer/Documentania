@@ -7,42 +7,36 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using log4net;
-
 namespace DataAccess.RavenDB
 {
-    using System.Collections;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Linq.Expressions;
-    using Documentania.Common;
     using Documentania.Interfaces;
-    using Microsoft.Practices.ServiceLocation;
-    using Prism.Logging;
+    using log4net;
     using Raven.Abstractions.Extensions;
     using Raven.Client;
 
     public class RavenDBRepository : IRepository
     {
-        private static ILog Log = LogManager.GetLogger(typeof(RavenDBRepository));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RavenDBRepository));
 
         private readonly IDocumentSession session;
+
         private readonly IDocumentStore store;
 
         public RavenDBRepository(IDocumentStore store)
         {
             this.store = store;
             store.Initialize();
-            session = store.OpenSession();
+            this.session = store.OpenSession();
         }
 
         public void Dispose()
         {
-            session.Dispose();
-            store.Dispose();
+            this.session.Dispose();
+            this.store.Dispose();
             Log.Debug("Disposed Ravendb repository.");
         }
 
@@ -85,7 +79,7 @@ namespace DataAccess.RavenDB
 
         public void Add<T>(IEnumerable<T> items) where T : class, IStorable
         {
-            items.ForEach(x => Add(x));
+            items.ForEach(x => this.Add(x));
         }
 
         public IList<T> GetAll<T>()

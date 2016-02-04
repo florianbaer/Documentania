@@ -7,20 +7,11 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Documentania.Common;
-using Documentania.Interfaces;
-using log4net;
-using Microsoft.Practices.ServiceLocation;
-using Prism.Logging;
-using Prism.Modularity;
-
 namespace Modules.Document
 {
+    using log4net;
+    using Prism.Modularity;
+
     [Module(ModuleName = "DocumentModule")]
     public class DocumentModule : IModule
     {

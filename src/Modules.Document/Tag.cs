@@ -7,16 +7,17 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Documentania.Interfaces;
-
 namespace Modules.Document
 {
+    using System.Collections.Generic;
+    using Documentania.Interfaces;
+
     public class Tag : IStorable
     {
         public virtual string Value { get; set; }
 
         public List<Document> Documents { get; set; } = new List<Document>();
+
         public virtual string Id { get; set; }
 
         public void Store(bool withRelation)
