@@ -3,7 +3,7 @@
 	As a chaotic developer
 	I want to be sure that the repository works
 
-@mytag
+@RavenDBRepository
 Scenario: Add and get a Document
 	Given I have a RavenDB Repository
 	When I add a Document to the Repository

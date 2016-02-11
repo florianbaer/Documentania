@@ -11,7 +11,12 @@ namespace UserInterface.Bootstrapper
 {
     using System.Windows;
     using Documentania.Common;
+    using Documentania.Interfaces;
+
     using log4net;
+
+    using Microsoft.Practices.Unity;
+
     using Prism.Logging;
     using Prism.Modularity;
     using Prism.Unity;
@@ -34,6 +39,11 @@ namespace UserInterface.Bootstrapper
             return new DocumentaniaLogger();
         }
 
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+        }
+
         protected override IModuleCatalog CreateModuleCatalog()
         {
             return new ConfigurationModuleCatalog();
@@ -45,6 +55,12 @@ namespace UserInterface.Bootstrapper
             Shell window = new Shell();
             window.Show();
             return window;
+        }
+
+        protected override void InitializeModules()
+        {
+            base.InitializeModules();
+            var all = this.Container.ResolveAll<IStorable>();
         }
     }
 }
