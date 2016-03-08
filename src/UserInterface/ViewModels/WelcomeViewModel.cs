@@ -8,7 +8,7 @@ namespace UserInterface.ViewModels
 {
     using Prism.Mvvm;
 
-    internal interface IWelcomeViewModel
+    public interface IWelcomeViewModel
     {
         string Text { get; }
     }

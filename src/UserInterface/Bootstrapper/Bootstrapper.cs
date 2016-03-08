@@ -75,8 +75,9 @@ namespace UserInterface.Bootstrapper
 
             var regionManager = this.Container.Resolve<IRegionManager>();
             regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(WelcomeView));
+            regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(NavigationView));
 
-            shell.ShowDialog();
+            shell.Show();
         }
 
         protected override void InitializeModules()
