@@ -32,13 +32,7 @@ namespace Documentania.Interfaces
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="item">The item.</param>
         void Delete<T>(T item) where T : class, IStorable, new();
-
-        /// <summary>
-        /// Deletes all from the given type.
-        /// </summary>
-        /// <typeparam name="T">The given type.</typeparam>
-        void DeleteAll<T>() where T : class, IStorable, new();
-
+        
         /// <summary>
         /// Gets the specified single expression.
         /// </summary>

@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extension\Extensions.cs" />
     <Compile Include="RavenDbModule.cs" />
     <Compile Include="DocumentaniaDocumentStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
