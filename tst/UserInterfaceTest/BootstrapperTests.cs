@@ -15,6 +15,7 @@ namespace UserInterface.Tests
     public class BootstrapperTests
     {
         [TestMethod]
+        [Ignore]
         public void StartUpBootstrapperTest()
         {
             Bootstrapper.Bootstrapper bootstrapper = new Bootstrapper.Bootstrapper();

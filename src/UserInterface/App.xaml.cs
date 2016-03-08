@@ -23,8 +23,9 @@ namespace UserInterface
             this.bootstrapper = new Bootstrapper.Bootstrapper();
         }
 
-        private void App_OnStartup(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
             this.bootstrapper.Run();
         }
     }

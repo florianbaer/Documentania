@@ -54,9 +54,14 @@ namespace UserInterface.Bootstrapper
         protected override DependencyObject CreateShell()
         {
             Log.Debug("Show Shell");
-            Shell window = new Shell();
-            window.Show();
-            return window;
+            return new Shell();
+        }
+
+        protected override void InitializeShell()
+        {
+            var shell = (Shell)this.Shell;
+            Application.Current.MainWindow = shell;
+            shell.ShowDialog();
         }
 
         protected override void InitializeModules()
