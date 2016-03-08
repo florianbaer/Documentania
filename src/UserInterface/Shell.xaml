@@ -4,7 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface"
+        xmlns:regions="http://prismlibrary.com/"
+        xmlns:common="clr-namespace:Documentania.Common;assembly=Documentania.Common"
         mc:Ignorable="d"
         Title="Shell" Height="350" Width="525">
-    <Grid />
+    <Grid>
+        <ContentControl regions:RegionManager.RegionName="{x:Static common:RegionNames.ContentRegion}"></ContentControl>
+    </Grid>
 </Window>

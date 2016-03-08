@@ -33,6 +33,7 @@ namespace Documentania.Common
         /// <param name="message">The message to write.</param>
         /// <param name="category">The message category.</param>
         /// <param name="priority">Not used by Log4Net; pass Priority.None.</param>
+        [Obsolete("Use 'private static readonly ILog Log = LogManager.GetLogger(TYPE));'")]
         public void Log(string message, Category category, Priority priority)
         {
             switch (category)
@@ -44,6 +45,10 @@ namespace Documentania.Common
                     this.Logger.Warn(message);
                     break;
                 case Category.Exception:
+                    if (priority == Priority.High)
+                    {
+                        this.Logger.Fatal(message);
+                    }
                     this.Logger.Error(message);
                     break;
                 case Category.Info:

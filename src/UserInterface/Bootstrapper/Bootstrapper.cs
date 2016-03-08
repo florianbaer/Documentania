@@ -19,7 +19,10 @@ namespace UserInterface.Bootstrapper
 
     using Prism.Logging;
     using Prism.Modularity;
+    using Prism.Regions;
     using Prism.Unity;
+
+    using UserInterface.Views;
 
     /// <summary>
     ///     The Bootstrapper of Documentania which is as prism implemented.
@@ -41,9 +44,14 @@ namespace UserInterface.Bootstrapper
 
         protected override void ConfigureContainer()
         {
+            base.ConfigureContainer();
             var serviceLocator = new UnityServiceLocator(this.Container);
             this.Container.RegisterInstance(serviceLocator);
-            base.ConfigureContainer();
+        }
+
+        protected override void ConfigureServiceLocator()
+        {
+            base.ConfigureServiceLocator();
         }
 
         protected override IModuleCatalog CreateModuleCatalog()
@@ -54,13 +62,17 @@ namespace UserInterface.Bootstrapper
         protected override DependencyObject CreateShell()
         {
             Log.Debug("Show Shell");
-            return new Shell();
+            return this.Container.Resolve<Shell>();
         }
 
         protected override void InitializeShell()
         {
             var shell = (Shell)this.Shell;
             Application.Current.MainWindow = shell;
+
+            var regionManager = this.Container.Resolve<IRegionManager>();
+            regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(WelcomeUserControl));
+
             shell.ShowDialog();
         }
 
