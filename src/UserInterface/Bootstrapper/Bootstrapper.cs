@@ -41,6 +41,8 @@ namespace UserInterface.Bootstrapper
 
         protected override void ConfigureContainer()
         {
+            var serviceLocator = new UnityServiceLocator(this.Container);
+            this.Container.RegisterInstance(serviceLocator);
             base.ConfigureContainer();
         }
 
@@ -51,7 +53,7 @@ namespace UserInterface.Bootstrapper
 
         protected override DependencyObject CreateShell()
         {
-            Log.Info("Show Shell");
+            Log.Debug("Show Shell");
             Shell window = new Shell();
             window.Show();
             return window;
@@ -60,7 +62,6 @@ namespace UserInterface.Bootstrapper
         protected override void InitializeModules()
         {
             base.InitializeModules();
-            var all = this.Container.ResolveAll<IStorable>();
         }
     }
 }

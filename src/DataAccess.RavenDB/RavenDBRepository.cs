@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="RavenDBRepository.cs" company="BaerDev">
+// // <copyright file="RavenDbRepository.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'RavenDBRepository.cs'.
+// // The file 'RavenDbRepository.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -21,15 +21,15 @@ namespace DataAccess.RavenDB
     using Raven.Abstractions.Extensions;
     using Raven.Client;
 
-    public class RavenDBRepository : IRepository
+    public class RavenDbRepository : IRepository
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RavenDBRepository));
+        private readonly ILog log = LogManager.GetLogger(typeof(RavenDbRepository));
 
         private readonly IDocumentSession session;
 
         private readonly IDocumentStore store;
 
-        public RavenDBRepository(IDocumentStore store)
+        public RavenDbRepository(IDocumentStore store)
         {
             this.store = store;
             store.Initialize();
@@ -40,7 +40,7 @@ namespace DataAccess.RavenDB
         {
             this.session.Dispose();
             this.store.Dispose();
-            Log.Debug("Disposed Ravendb repository.");
+            this.log.Debug("Disposed Ravendb repository.");
         }
 
         public void Delete<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new()
@@ -55,7 +55,7 @@ namespace DataAccess.RavenDB
         public void Delete<T>(T item) where T : class, IStorable, new()
         {
             this.session.Delete(item);
-            Log.Debug($"Deleted {typeof(T)} : {item}");
+            this.log.Debug($"Deleted {typeof(T)} : {item}");
         }
 
         public T Single<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new()
@@ -76,7 +76,7 @@ namespace DataAccess.RavenDB
         public void Add<T>(T item) where T : class, IStorable
         {
             this.session.Store(item);
-            Log.Debug($"Added {typeof(T)} : {item}");
+            this.log.Debug($"Added {typeof(T)} : {item}");
         }
 
         public void Add<T>(IEnumerable<T> items) where T : class, IStorable

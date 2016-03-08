@@ -66,11 +66,11 @@ namespace DocumentaniaSpecFlow.Tests
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add and get a Document")]
-        [NUnit.Framework.CategoryAttribute("RavenDBRepository")]
+        [NUnit.Framework.CategoryAttribute("RavenDbRepository")]
         public virtual void AddAndGetADocument()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add and get a Document", new string[] {
-                        "RavenDBRepository"});
+                        "RavenDbRepository"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8

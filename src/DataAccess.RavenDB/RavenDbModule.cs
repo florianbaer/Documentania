@@ -24,7 +24,7 @@ namespace DataAccess.RavenDB
         public void Initialize()
         {
             Log.Debug("Initialize RaveDbModule");
-            //// container.RegisterInstance(new RavenDBRepository(new DocumentaniaDocumentStore("http://localhost:1303", "Documentania")));
+            this.container.RegisterInstance(new RavenDbRepository(new DocumentaniaDocumentStore("http://localhost:1303", "Documentania")));
         }
     }
 }

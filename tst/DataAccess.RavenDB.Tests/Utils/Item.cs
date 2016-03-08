@@ -19,6 +19,10 @@ namespace DataAccess.RavenDB.Tests.Utils
             this.Name = name;
         }
 
+        public Item()
+        {
+        }
+
         public string Name { get; set; }
 
         public string Id { get; set; }
