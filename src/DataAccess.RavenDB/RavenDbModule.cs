@@ -9,10 +9,14 @@
 
 namespace DataAccess.RavenDB
 {
+    using Documentania.Interfaces;
+
     using log4net;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
+
+    using Raven.Client;
 
     [Module(ModuleName = "RavenDbModule")]
     public class RavenDbModule : IModule
@@ -24,7 +28,10 @@ namespace DataAccess.RavenDB
         public void Initialize()
         {
             Log.Debug("Initialize RaveDbModule");
-            this.container.RegisterInstance(new RavenDbRepository(new DocumentaniaDocumentStore("http://localhost:1303", "Documentania")));
+            this.container.RegisterInstance(
+                typeof(IDocumentStore),
+                new DocumentaniaDocumentStore("http://localhost:1303", "Documentania"));
+            this.container.RegisterType(typeof(IRepository), typeof(RavenDbRepository), new ContainerControlledLifetimeManager());
         }
     }
 }
