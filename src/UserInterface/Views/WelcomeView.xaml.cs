@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace UserInterface.Views
 {
     /// <summary>
-    /// Interaction logic for WelcomeUserControl.xaml
+    /// Interaction logic for WelcomeView.xaml
     /// </summary>
-    public partial class WelcomeUserControl : UserControl
+    public partial class WelcomeView : UserControl
     {
-        public WelcomeUserControl()
+        public WelcomeView()
         {
             InitializeComponent();
         }

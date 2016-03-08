@@ -19,6 +19,7 @@ namespace UserInterface.Bootstrapper
 
     using Prism.Logging;
     using Prism.Modularity;
+    using Prism.Mvvm;
     using Prism.Regions;
     using Prism.Unity;
 
@@ -70,8 +71,10 @@ namespace UserInterface.Bootstrapper
             var shell = (Shell)this.Shell;
             Application.Current.MainWindow = shell;
 
+            ViewModelLocationProvider.SetDefaultViewModelFactory(type => this.Container.Resolve(type));
+
             var regionManager = this.Container.Resolve<IRegionManager>();
-            regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(WelcomeUserControl));
+            regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(WelcomeView));
 
             shell.ShowDialog();
         }
