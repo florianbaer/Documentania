@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:regions="http://prismlibrary.com/"
-        xmlns:common="clr-namespace:Documentania.Common;assembly=Documentania.Common"
+        xmlns:interfaces="clr-namespace:Documentania.Interfaces;assembly=Documentania.Interfaces"
         mc:Ignorable="d"
         Title="Shell" Height="350" Width="525">
     <Grid>
@@ -16,8 +16,8 @@
             <RowDefinition Height="50px"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ContentControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" regions:RegionManager.RegionName="{x:Static common:RegionNames.NavigationRegion}"/>
-        <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="1" regions:RegionManager.RegionName="{x:Static common:RegionNames.SubNavigationRegion}"/>
-        <ContentControl Grid.Column="1" Grid.Row="1" regions:RegionManager.RegionName="{x:Static common:RegionNames.ContentRegion}"/>
+        <ContentControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" regions:RegionManager.RegionName="{x:Static interfaces:RegionNames.NavigationRegion}"/>
+        <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="1" regions:RegionManager.RegionName="{x:Static interfaces:RegionNames.SubNavigationRegion}"/>
+        <ContentControl Grid.Column="1" Grid.Row="1" regions:RegionManager.RegionName="{x:Static interfaces:RegionNames.ContentRegion}"/>
     </Grid>
 </Window>

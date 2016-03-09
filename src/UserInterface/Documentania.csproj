@@ -132,10 +132,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Documentania.Common\Documentania.Common.csproj">
-      <Project>{88dac866-6ea3-449a-9f4d-0e657f94610e}</Project>
-      <Name>Documentania.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
       <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
       <Name>Documentania.Infrastructure</Name>

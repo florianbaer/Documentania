@@ -9,7 +9,6 @@
 
 namespace Modules.Document
 {
-    using Documentania.Common;
     using Documentania.Interfaces;
 
     using log4net;

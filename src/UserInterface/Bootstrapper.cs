@@ -11,8 +11,9 @@ namespace Documentania
 {
     using System.Windows;
 
-    using Documentania.Common;
+    using Documentania.Infrastructure.Logger;
     using Documentania.Infrastructure.Views;
+    using Documentania.Interfaces;
 
     using log4net;
 

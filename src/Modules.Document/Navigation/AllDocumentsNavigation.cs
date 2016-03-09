@@ -8,7 +8,6 @@ namespace Modules.Document.Navigation
 {
     using System.CodeDom;
 
-    using Documentania.Common;
     using Documentania.Interfaces;
 
     using Modules.Document.Views;

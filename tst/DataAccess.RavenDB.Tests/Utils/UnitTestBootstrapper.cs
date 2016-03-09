@@ -9,7 +9,8 @@
 
 namespace DataAccess.RavenDB.Tests.Utils
 {
-    using Documentania.Common;
+    using Documentania.Infrastructure.Logger;
+
     using Prism.Logging;
     using Prism.Unity;
 

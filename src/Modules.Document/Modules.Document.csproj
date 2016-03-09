@@ -92,10 +92,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Documentania.Common\Documentania.Common.csproj">
-      <Project>{88DAC866-6EA3-449A-9F4D-0E657F94610E}</Project>
-      <Name>Documentania.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Documentania.Interfaces\Documentania.Interfaces.csproj">
       <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
       <Name>Documentania.Interfaces</Name>
