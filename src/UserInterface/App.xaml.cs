@@ -7,20 +7,22 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace UserInterface
+namespace Documentania
 {
     using System.Windows;
+
+    using Documentania;
 
     /// <summary>
     ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-        private readonly Bootstrapper.Bootstrapper bootstrapper;
+        private readonly Bootstrapper bootstrapper;
 
         public App()
         {
-            this.bootstrapper = new Bootstrapper.Bootstrapper();
+            this.bootstrapper = new Bootstrapper();
         }
 
         protected override void OnStartup(StartupEventArgs e)

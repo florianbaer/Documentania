@@ -9,26 +9,36 @@
 
 namespace Modules.Document
 {
+    using Documentania.Common;
     using Documentania.Interfaces;
 
     using log4net;
+
+    using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
     using Modules.Document.Navigation;
     using Modules.Document.Views;
 
     using Prism.Modularity;
+    using Prism.Regions;
 
     [Module(ModuleName = "DocumentModule")]
     public class DocumentModule : IModule
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentModule));
 
-        private readonly IUnityContainer container;
+        private readonly IServiceLocator locator;
 
-        public DocumentModule(IUnityContainer container)
+        private IUnityContainer container;
+
+        private IRegionManager regionManager;
+
+        public DocumentModule(IServiceLocator locator)
         {
-            this.container = container;
+            this.locator = locator;
+            this.container = this.locator.GetInstance<IUnityContainer>();
+            this.regionManager = this.locator.GetInstance<IRegionManager>();
         }
 
         public void Initialize()
@@ -41,7 +51,7 @@ namespace Modules.Document
             Log.Debug("Tag is registered as type.");
 
             // Views
-            this.container.RegisterType<object, AllDocumentsView>(typeof(AllDocumentsView).ToString());
+            this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
 
             // Navigation
             this.container.RegisterType<INavigationItem, AllDocumentsNavigation>();

@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{4D297269-893
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{3775EDDD-79EB-4624-9CF6-9D8D68A6A73A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{A09C4E64-FE90-4523-8F86-1DB4D8A58D94}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A09C4E64-FE90-4523-8F86-1DB4D8A58D94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SubsystemTest", "SubsystemTest", "{2F74BC08-2A0B-4DAC-B3BA-6B1E80CCC4D8}"
 EndProject
@@ -42,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.RavenDB", "src\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania.Interfaces", "src\Documentania.Interfaces\Documentania.Interfaces.csproj", "{5061AFCF-C667-4530-A992-37DFD2BA05AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "src\UserInterface\UserInterface.csproj", "{8F216F98-1855-497D-AABA-59859538CFEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania", "src\UserInterface\Documentania.csproj", "{8F216F98-1855-497D-AABA-59859538CFEF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A14B7E9D-150E-494B-A36F-B0FD11329A72}"
 EndProject
@@ -57,6 +57,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1F77F7DA-B355-4BEF-A27F-1079CE1664DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemNotifier", "src\FileSystemNotifier\FileSystemNotifier.csproj", "{F61144C9-05C0-44EC-A9A5-294E0B208648}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania.Infrastructure", "src\Documentania.Infrastructure\Documentania.Infrastructure.csproj", "{6029CF48-AD40-4944-BD95-3675613B2B37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -230,6 +232,22 @@ Global
 		{F61144C9-05C0-44EC-A9A5-294E0B208648}.Release|x64.Build.0 = Release|Any CPU
 		{F61144C9-05C0-44EC-A9A5-294E0B208648}.Release|x86.ActiveCfg = Release|Any CPU
 		{F61144C9-05C0-44EC-A9A5-294E0B208648}.Release|x86.Build.0 = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|ARM.Build.0 = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|x64.Build.0 = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Debug|x86.Build.0 = Debug|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|ARM.ActiveCfg = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|ARM.Build.0 = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|x64.ActiveCfg = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|x64.Build.0 = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|x86.ActiveCfg = Release|Any CPU
+		{6029CF48-AD40-4944-BD95-3675613B2B37}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -257,5 +275,6 @@ Global
 		{41AFCDE4-1973-45BB-908C-B5FEEAEED47E} = {A14B7E9D-150E-494B-A36F-B0FD11329A72}
 		{1F77F7DA-B355-4BEF-A27F-1079CE1664DD} = {A14B7E9D-150E-494B-A36F-B0FD11329A72}
 		{F61144C9-05C0-44EC-A9A5-294E0B208648} = {1F77F7DA-B355-4BEF-A27F-1079CE1664DD}
+		{6029CF48-AD40-4944-BD95-3675613B2B37} = {A09C4E64-FE90-4523-8F86-1DB4D8A58D94}
 	EndGlobalSection
 EndGlobal

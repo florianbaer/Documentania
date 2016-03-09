@@ -7,8 +7,8 @@
     <ProjectGuid>{8F216F98-1855-497D-AABA-59859538CFEF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UserInterface</RootNamespace>
-    <AssemblyName>UserInterface</AssemblyName>
+    <RootNamespace>Documentania</RootNamespace>
+    <AssemblyName>Documentania</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -64,7 +64,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Prism.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Prism.Wpf.6.1.1-pre2\lib\net45\Prism.Wpf.dll</HintPath>
+      <HintPath>..\..\packages\Prism.Wpf.6.1.0\lib\net45\Prism.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -89,14 +89,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\NavigationViewModel.cs" />
-    <Compile Include="ViewModels\WelcomeViewModel.cs" />
-    <Compile Include="Views\NavigationView.xaml.cs">
-      <DependentUpon>NavigationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WelcomeView.xaml.cs">
-      <DependentUpon>WelcomeView.xaml</DependentUpon>
-    </Compile>
     <Page Include="Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,19 +97,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bootstrapper\Bootstrapper.cs" />
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\NavigationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WelcomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -151,6 +135,10 @@
     <ProjectReference Include="..\Documentania.Common\Documentania.Common.csproj">
       <Project>{88dac866-6ea3-449a-9f4d-0e657f94610e}</Project>
       <Name>Documentania.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
+      <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
+      <Name>Documentania.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Documentania.Interfaces\Documentania.Interfaces.csproj">
       <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>

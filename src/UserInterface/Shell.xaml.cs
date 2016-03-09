@@ -7,7 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace UserInterface
+namespace Documentania
 {
     using System.Windows;
 

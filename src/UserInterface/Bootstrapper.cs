@@ -7,11 +7,12 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace UserInterface.Bootstrapper
+namespace Documentania
 {
     using System.Windows;
+
     using Documentania.Common;
-    using Documentania.Interfaces;
+    using Documentania.Infrastructure.Views;
 
     using log4net;
 
@@ -22,9 +23,7 @@ namespace UserInterface.Bootstrapper
     using Prism.Mvvm;
     using Prism.Regions;
     using Prism.Unity;
-
-    using UserInterface.Views;
-
+    
     /// <summary>
     ///     The Bootstrapper of Documentania which is as prism implemented.
     /// </summary>
@@ -49,12 +48,7 @@ namespace UserInterface.Bootstrapper
             var serviceLocator = new UnityServiceLocator(this.Container);
             this.Container.RegisterInstance(serviceLocator);
         }
-
-        protected override void ConfigureServiceLocator()
-        {
-            base.ConfigureServiceLocator();
-        }
-
+        
         protected override IModuleCatalog CreateModuleCatalog()
         {
             return new ConfigurationModuleCatalog();
@@ -62,7 +56,7 @@ namespace UserInterface.Bootstrapper
 
         protected override DependencyObject CreateShell()
         {
-            Log.Debug("Show Shell");
+            Log.Debug("Create Shell");
             return this.Container.Resolve<Shell>();
         }
 
@@ -74,8 +68,12 @@ namespace UserInterface.Bootstrapper
             ViewModelLocationProvider.SetDefaultViewModelFactory(type => this.Container.Resolve(type));
 
             var regionManager = this.Container.Resolve<IRegionManager>();
-            regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(WelcomeView));
-            regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(NavigationView));
+
+            this.Container.RegisterType<object, WelcomeView>(typeof(WelcomeView).ToString());
+            this.Container.RegisterType<object, NavigationView>(typeof(NavigationView).ToString());
+            
+            regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
+            regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
 
             shell.Show();
         }

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UserInterface.ViewModels
+﻿namespace Documentania.Infrastructure.ViewModels
 {
     using Documentania.Interfaces;
 
-    using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
     using Prism.Commands;
     using Prism.Mvvm;
+
     public class NavigationViewModel : BindableBase
     {
         IUnityContainer serviceLocator;
@@ -20,7 +14,7 @@ namespace UserInterface.ViewModels
         public NavigationViewModel(IUnityContainer locator)
         {
             
-            serviceLocator = locator;
+            this.serviceLocator = locator;
         }
 
         public DelegateCommand OnNavigateDelegateCommand

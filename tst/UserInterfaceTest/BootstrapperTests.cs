@@ -9,6 +9,8 @@
 
 namespace UserInterface.Tests
 {
+    using Documentania;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -18,7 +20,7 @@ namespace UserInterface.Tests
         [Ignore]
         public void StartUpBootstrapperTest()
         {
-            Bootstrapper.Bootstrapper bootstrapper = new Bootstrapper.Bootstrapper();
+            Bootstrapper bootstrapper = new Bootstrapper();
             bootstrapper.Run();
         }
     }
