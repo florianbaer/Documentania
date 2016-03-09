@@ -15,6 +15,7 @@ namespace Documentania
 
     using Documentania.Infrastructure.Configuration;
     using Documentania.Infrastructure.Logger;
+    using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;
     using Documentania.Interfaces;
 
@@ -60,6 +61,7 @@ namespace Documentania
 
             this.Container.RegisterType<object, WelcomeView>(typeof(WelcomeView).ToString());
             this.Container.RegisterType<object, NavigationView>(typeof(NavigationView).ToString());
+            this.Container.RegisterType<NavigationConfigurationService>();
         }
         
         protected override IModuleCatalog CreateModuleCatalog()
@@ -83,16 +85,14 @@ namespace Documentania
             regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
 
+            Application.Current.MainWindow = (Shell)this.Shell;
+
+            Application.Current.MainWindow.Show();
         }
 
         protected override void InitializeModules()
         {
             base.InitializeModules();
-            
-            var shell = (Shell)this.Shell;
-            Application.Current.MainWindow = shell;
-            // http://stackoverflow.com/questions/7597917/is-it-possible-to-show-a-shell-only-once-all-the-modules-have-been-loaded
-            Application.Current.MainWindow.Show();
         }
     }
 }
