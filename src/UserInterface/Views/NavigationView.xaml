@@ -11,7 +11,7 @@
              d:DataContext="{d:DesignInstance viewModels:NavigationViewModel, IsDesignTimeCreatable=True }"
              d:DesignHeight="300" d:DesignWidth="100">
     <UniformGrid Background="Green" Columns="1">
-        <Button Height="50">Show Documents</Button>
+        <Button Height="50" Command="{Binding OnNavigateDelegateCommand}">Show Documents</Button>
         <Button Height="50">Filter Documents</Button>
         
     </UniformGrid>
