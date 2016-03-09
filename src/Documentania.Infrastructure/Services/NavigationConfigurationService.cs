@@ -14,8 +14,7 @@ namespace Documentania.Infrastructure.Services
     {
         public NavigationElementCollection GetNavigationConfiguration()
         {
-            var section = (NavigationViewConfigurationSection)ConfigurationManager.GetSection("NavigationViewConfigurationSection");
-            return section.NavigationElements;
+            return ((NavigationViewConfigurationSection)ConfigurationManager.GetSection("NavigationViewConfigurationSection")).NavigationElements;
         }
     }
 }

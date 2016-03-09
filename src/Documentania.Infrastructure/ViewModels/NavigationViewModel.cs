@@ -1,29 +1,48 @@
 ﻿namespace Documentania.Infrastructure.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Documentania.Infrastructure.Configuration;
+    using Documentania.Infrastructure.Services;
     using Documentania.Interfaces;
 
+    using Microsoft.Practices.ObjectBuilder2;
+    using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
     using Prism.Commands;
     using Prism.Mvvm;
+    using Prism.Regions;
 
     public class NavigationViewModel : BindableBase
     {
-        IUnityContainer serviceLocator;
+        private readonly IServiceLocator serviceLocator;
 
-        public NavigationViewModel(IUnityContainer locator)
+        private readonly NavigationConfigurationService configurationService;
+
+        private ICollection<NavigationElementViewModel> navigationElements;
+
+        public NavigationViewModel(IServiceLocator locator)
         {
-            
             this.serviceLocator = locator;
+            this.configurationService = this.serviceLocator.GetInstance<NavigationConfigurationService>();
         }
 
-        public DelegateCommand OnNavigateDelegateCommand
+        public ICollection<NavigationElementViewModel> NavigationElements
         {
             get
             {
-                return new DelegateCommand(() => this.serviceLocator.Resolve<INavigationItem>().NavigateTo());
+                if (this.navigationElements == null)
+                {
+                    this.navigationElements = this.configurationService.GetNavigationConfiguration().Select(navigationElement => new NavigationElementViewModel(this.serviceLocator.GetInstance<IRegionManager>(), navigationElement)).ToList();
+                }
+                return this.navigationElements;
+            }
+            set
+            {
+                this.navigationElements = value;
             }
         }
-
     }
 }

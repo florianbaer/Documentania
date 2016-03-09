@@ -84,6 +84,7 @@
     <Compile Include="Logger\DocumentaniaLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NavigationConfigurationService.cs" />
+    <Compile Include="ViewModels\NavigationElementViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Views\NavigationView.xaml.cs">

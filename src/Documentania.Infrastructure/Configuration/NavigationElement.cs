@@ -26,5 +26,18 @@ namespace Documentania.Infrastructure.Configuration
                 base["Type"] = value;
             }
         }
+
+        [ConfigurationProperty("Title", IsRequired = true)]
+        public string Title
+        {
+            get
+            {
+                return base["Title"] as string;
+            }
+            set
+            {
+                base["Title"] = value;
+            }
+        }
     }
 }
