@@ -9,8 +9,11 @@
 
 namespace Documentania
 {
+    using System;
+    using System.Configuration;
     using System.Windows;
 
+    using Documentania.Infrastructure.Configuration;
     using Documentania.Infrastructure.Logger;
     using Documentania.Infrastructure.Views;
     using Documentania.Interfaces;
@@ -43,11 +46,20 @@ namespace Documentania
             return new DocumentaniaLogger();
         }
 
+        protected override void ConfigureServiceLocator()
+        {
+            base.ConfigureServiceLocator();
+
+            var serviceLocator = new UnityServiceLocator(this.Container);
+            this.Container.RegisterInstance(serviceLocator);
+        }
+
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
-            var serviceLocator = new UnityServiceLocator(this.Container);
-            this.Container.RegisterInstance(serviceLocator);
+
+            this.Container.RegisterType<object, WelcomeView>(typeof(WelcomeView).ToString());
+            this.Container.RegisterType<object, NavigationView>(typeof(NavigationView).ToString());
         }
         
         protected override IModuleCatalog CreateModuleCatalog()
@@ -63,25 +75,24 @@ namespace Documentania
 
         protected override void InitializeShell()
         {
-            var shell = (Shell)this.Shell;
-            Application.Current.MainWindow = shell;
 
             ViewModelLocationProvider.SetDefaultViewModelFactory(type => this.Container.Resolve(type));
 
             var regionManager = this.Container.Resolve<IRegionManager>();
-
-            this.Container.RegisterType<object, WelcomeView>(typeof(WelcomeView).ToString());
-            this.Container.RegisterType<object, NavigationView>(typeof(NavigationView).ToString());
             
             regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
 
-            shell.Show();
         }
 
         protected override void InitializeModules()
         {
             base.InitializeModules();
+            
+            var shell = (Shell)this.Shell;
+            Application.Current.MainWindow = shell;
+            // http://stackoverflow.com/questions/7597917/is-it-possible-to-show-a-shell-only-once-all-the-modules-have-been-loaded
+            Application.Current.MainWindow.Show();
         }
     }
 }

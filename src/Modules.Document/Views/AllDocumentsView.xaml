@@ -9,6 +9,6 @@
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Label>Test content</Label>
     </Grid>
 </UserControl>
