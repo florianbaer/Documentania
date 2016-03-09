@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 namespace UserInterface.ViewModels
 {
     using Prism.Mvvm;
+    using Prism.Regions;
 
     public interface IWelcomeViewModel
     {
         string Text { get; }
     }
 
-    class WelcomeViewModel : BindableBase, IWelcomeViewModel
+    class WelcomeViewModel : BindableBase, IWelcomeViewModel, INavigationAware
     {
         public string Text
         {
@@ -21,6 +22,36 @@ namespace UserInterface.ViewModels
             {
                 return "HALLO";
             }
+        }
+
+        /// <summary>
+        /// Called when the implementer has been navigated to.
+        /// </summary>
+        /// <param name="navigationContext">The navigation context.</param>
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            
+        }
+
+        /// <summary>
+        /// Called to determine if this instance can handle the navigation request.
+        /// </summary>
+        /// <param name="navigationContext">The navigation context.</param>
+        /// <returns>
+        /// <see langword="true"/> if this instance accepts the navigation request; otherwise, <see langword="false"/>.
+        /// </returns>
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Called when the implementer is being navigated away from.
+        /// </summary>
+        /// <param name="navigationContext">The navigation context.</param>
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            
         }
     }
 
