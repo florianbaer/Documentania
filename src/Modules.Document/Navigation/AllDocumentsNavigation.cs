@@ -1,21 +1,27 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="NavigationExecution.cs" company="BaerDev">
+// // <copyright file="AllDocumentsNavigation.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'NavigationExecution.cs'.
+// // The file 'AllDocumentsNavigation.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Modules.Document.NavigationExecution
+namespace Modules.Document.Navigation
 {
     using Documentania.Contracts;
 
     using Modules.Document.Views;
 
-    using Prism.Regions;
-
-    public class NavigationExecution : NavigationExecutionBase
+    public class AllDocumentsNavigation : NavigationExecutionBase
     {
+        public override string Title
+        {
+            get
+            {
+                return "All Documents";
+            }
+        }
+
         public override void NavigateTo()
         {
             base.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AllDocumentsView).ToString());

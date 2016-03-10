@@ -12,6 +12,8 @@ namespace Documentania.Contracts
 
     public interface INavigationExecution
     {
+        string Title { get; }
+
         void NavigateTo();
 
         void SetRegionManager(IRegionManager regionManager);

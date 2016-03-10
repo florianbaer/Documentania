@@ -38,17 +38,20 @@
 
                 foreach (NavigationElement navigationElement in this.configurationService.GetNavigationConfiguration().ToList())
                 {
-                    Assembly asm = Assembly.Load(navigationElement.Type);
+                    Assembly asm = Assembly.Load(navigationElement.Assembly);
 
                     var enumerable = asm.GetTypes().Where(x => typeof(INavigationExecution).IsAssignableFrom(x));
 
                     foreach (Type type in enumerable)
                     {
-                        var navigationElementViewModel = new NavigationElementViewModel(this.serviceLocator.GetInstance<IRegionManager>(), type);
-                        var navigationItemView = new NavigationItemView();
-                        navigationItemView.DataContext = navigationElementViewModel;
-                        views.Add(navigationItemView);
-                        // this.serviceLocator.GetInstance<IUnityContainer>().RegisterType(typeof(INavigationExecution), type);
+                        if (navigationElement.Type == type.Name)
+                        {
+                            var navigationElementViewModel =
+                                new NavigationElementViewModel(this.serviceLocator.GetInstance<IRegionManager>(), type);
+                            var navigationItemView = new NavigationItemView();
+                            navigationItemView.DataContext = navigationElementViewModel;
+                            views.Add(navigationItemView);
+                        }
                     }
                 }
                 return views;

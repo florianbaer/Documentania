@@ -83,7 +83,7 @@
     <Compile Include="DocumentService.cs" />
     <Compile Include="DocumentModule.cs" />
     <Compile Include="IDocumentService.cs" />
-    <Compile Include="NavigationExecution\NavigationExecution.cs" />
+    <Compile Include="Navigation\AllDocumentsNavigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="ViewModels\AllDocumentsViewModel.cs" />

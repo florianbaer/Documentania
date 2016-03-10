@@ -20,13 +20,17 @@ namespace Documentania.Infrastructure.ViewModels
 
         private readonly Type type;
 
+        INavigationExecution instance;
+
         public NavigationElementViewModel(IRegionManager regionManager, Type type)
         {
             this.regionManager = regionManager;
             this.type = type;
+            instance = (INavigationExecution)Activator.CreateInstance(this.Type);
+            instance.SetRegionManager(this.regionManager);
         }
 
-        public string Titel => "Test";
+        public string Titel => this.instance.Title;
 
         public Type Type => this.type;
 
@@ -37,8 +41,6 @@ namespace Documentania.Infrastructure.ViewModels
                 return new DelegateCommand(
                     () =>
                         {
-                            INavigationExecution instance = (INavigationExecution)Activator.CreateInstance(this.Type);
-                            instance.SetRegionManager(this.regionManager);
                             var methodInfo = this.Type.GetMethod("NavigateTo");
                             methodInfo.Invoke(instance, null);
                         });

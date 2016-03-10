@@ -12,6 +12,8 @@ namespace Documentania.Contracts
     {
         protected IRegionManager regionManager;
 
+        public abstract string Title { get; }
+
         public abstract void NavigateTo();
 
         public void SetRegionManager(IRegionManager regionManager)

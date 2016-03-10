@@ -27,16 +27,16 @@ namespace Documentania.Infrastructure.Configuration
             }
         }
 
-        [ConfigurationProperty("Title", IsRequired = true)]
-        public string Title
+        [ConfigurationProperty("Assembly", IsRequired = true)]
+        public string Assembly
         {
             get
             {
-                return base["Title"] as string;
+                return base["Assembly"] as string;
             }
             set
             {
-                base["Title"] = value;
+                base["Assembly"] = value;
             }
         }
     }
