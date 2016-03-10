@@ -5,6 +5,7 @@
 
     using Documentania.Infrastructure.Configuration;
     using Documentania.Infrastructure.Services;
+    using Documentania.Infrastructure.Views;
     using Documentania.Interfaces;
 
     using Microsoft.Practices.ObjectBuilder2;
@@ -21,27 +22,25 @@
 
         private readonly NavigationConfigurationService configurationService;
 
-        private ICollection<NavigationElementViewModel> navigationElements;
-
         public NavigationViewModel(IServiceLocator locator)
         {
             this.serviceLocator = locator;
             this.configurationService = this.serviceLocator.GetInstance<NavigationConfigurationService>();
         }
 
-        public ICollection<NavigationElementViewModel> NavigationElements
+        public ICollection<NavigationItemView> NavigationElements
         {
             get
             {
-                if (this.navigationElements == null)
+                ICollection<NavigationItemView> views = new List<NavigationItemView>();
+
+                foreach (NavigationElementViewModel navigationElementViewModel in this.configurationService.GetNavigationConfiguration().Select(navigationElement => new NavigationElementViewModel(this.serviceLocator.GetInstance<IRegionManager>(), navigationElement)).ToList())
                 {
-                    this.navigationElements = this.configurationService.GetNavigationConfiguration().Select(navigationElement => new NavigationElementViewModel(this.serviceLocator.GetInstance<IRegionManager>(), navigationElement)).ToList();
+                    var navigationItemView = new NavigationItemView();
+                    navigationItemView.DataContext = navigationElementViewModel;
+                    views.Add(navigationItemView);
                 }
-                return this.navigationElements;
-            }
-            set
-            {
-                this.navigationElements = value;
+                return views;
             }
         }
     }

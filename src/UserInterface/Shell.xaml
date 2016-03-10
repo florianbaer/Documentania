@@ -6,7 +6,7 @@
         xmlns:regions="http://prismlibrary.com/"
         xmlns:interfaces="clr-namespace:Documentania.Interfaces;assembly=Documentania.Interfaces"
         mc:Ignorable="d"
-        Title="Shell" Height="350" Width="525">
+        Title="Documentania" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MaxWidth="100px"/>

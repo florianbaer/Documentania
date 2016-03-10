@@ -87,6 +87,9 @@
     <Compile Include="ViewModels\NavigationElementViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
+    <Compile Include="Views\NavigationItemView.xaml.cs">
+      <DependentUpon>NavigationItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\NavigationItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NavigationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
