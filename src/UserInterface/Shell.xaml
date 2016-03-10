@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:regions="http://prismlibrary.com/"
-        xmlns:interfaces="clr-namespace:Documentania.Interfaces;assembly=Documentania.Interfaces"
+        xmlns:interfaces="clr-namespace:Documentania.Contracts;assembly=Documentania.Contracts"
         mc:Ignorable="d"
         Title="Documentania" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MaxWidth="100px"/>
+            <ColumnDefinition MaxWidth="200px"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>

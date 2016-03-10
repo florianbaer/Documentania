@@ -9,7 +9,7 @@
 
 namespace DataAccess.RavenDB
 {
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     using log4net;
     using Microsoft.Practices.ServiceLocation;

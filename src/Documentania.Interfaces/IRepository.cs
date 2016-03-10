@@ -7,7 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Documentania.Interfaces
+namespace Documentania.Contracts
 {
     using System;
     using System.Collections.Generic;

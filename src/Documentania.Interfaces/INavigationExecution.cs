@@ -1,25 +1,19 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="IStorable.cs" company="BaerDev">
+// // <copyright file="INavigationExecution.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'IStorable.cs'.
+// // The file 'INavigationExecution.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-
 namespace Documentania.Contracts
 {
-    /// <summary>
-    /// Interface for a storable object.
-    /// </summary>
-    public interface IStorable
+    using Prism.Regions;
+
+    public interface INavigationExecution
     {
-        /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        string Id { get; set; }
+        void NavigateTo();
+
+        void SetRegionManager(IRegionManager regionManager);
     }
 }

@@ -11,7 +11,7 @@ namespace Modules.Document
 {
     using System;
     using System.Collections.Generic;
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     public class Document : IStorable
     {

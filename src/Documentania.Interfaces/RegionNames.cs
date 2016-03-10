@@ -1,4 +1,4 @@
-﻿namespace Documentania.Interfaces
+﻿namespace Documentania.Contracts
 {
     public class RegionNames
     {

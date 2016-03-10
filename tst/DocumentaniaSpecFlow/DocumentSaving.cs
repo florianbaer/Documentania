@@ -11,7 +11,7 @@ namespace DocumentaniaSpecFlow.Tests
 {
     using System;
     using System.Collections.Generic;
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
     using Modules.Document;
     using Moq;
     using NUnit.Framework;

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Documentania.Infrastructure.ViewModels
 {
+    using System.Reflection;
+
     using Documentania.Infrastructure.Configuration;
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     using Prism.Commands;
     using Prism.Regions;
@@ -16,17 +18,17 @@ namespace Documentania.Infrastructure.ViewModels
     {
         private readonly IRegionManager regionManager;
 
-        private readonly NavigationElement model;
+        private readonly Type type;
 
-        public NavigationElementViewModel(IRegionManager regionManager, NavigationElement model)
+        public NavigationElementViewModel(IRegionManager regionManager, Type type)
         {
             this.regionManager = regionManager;
-            this.model = model;
+            this.type = type;
         }
 
-        public string Titel => this.model.Title;
+        public string Titel => "Test";
 
-        public string Type => this.model.Type;
+        public Type Type => this.type;
 
         public DelegateCommand NavigateCommand
         {
@@ -35,7 +37,10 @@ namespace Documentania.Infrastructure.ViewModels
                 return new DelegateCommand(
                     () =>
                         {
-                            this.regionManager.RequestNavigate(RegionNames.ContentRegion, this.Type);
+                            INavigationExecution instance = (INavigationExecution)Activator.CreateInstance(this.Type);
+                            instance.SetRegionManager(this.regionManager);
+                            var methodInfo = this.Type.GetMethod("NavigateTo");
+                            methodInfo.Invoke(instance, null);
                         });
             }
         }

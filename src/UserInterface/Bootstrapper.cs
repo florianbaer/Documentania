@@ -17,7 +17,7 @@ namespace Documentania
     using Documentania.Infrastructure.Logger;
     using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     using log4net;
 

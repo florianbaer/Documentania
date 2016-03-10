@@ -45,9 +45,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Documentania.Interfaces\Documentania.Interfaces.csproj">
+    <ProjectReference Include="..\..\src\Documentania.Interfaces\Documentania.Contracts.csproj">
       <Project>{5061afcf-c667-4530-a992-37dfd2ba05af}</Project>
-      <Name>Documentania.Interfaces</Name>
+      <Name>Documentania.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Modules.Document\Modules.Document.csproj">
       <Project>{DCB9B047-1F17-469D-80D8-F0FCB229DE26}</Project>

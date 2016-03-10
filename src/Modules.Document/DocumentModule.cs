@@ -9,14 +9,13 @@
 
 namespace Modules.Document
 {
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
-    using Modules.Document.Navigation;
     using Modules.Document.Views;
 
     using Prism.Modularity;
@@ -51,9 +50,6 @@ namespace Modules.Document
 
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
-
-            // Navigation
-            this.container.RegisterType<INavigationItem, AllDocumentsNavigation>();
         }
     }
 }

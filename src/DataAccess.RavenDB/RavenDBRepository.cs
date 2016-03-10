@@ -16,7 +16,7 @@ namespace DataAccess.RavenDB
 
     using DataAccess.RavenDB.Extension;
 
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
     using log4net;
     using Raven.Abstractions.Extensions;
     using Raven.Client;

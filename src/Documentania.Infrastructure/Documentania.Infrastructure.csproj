@@ -115,9 +115,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Documentania.Interfaces\Documentania.Interfaces.csproj">
+    <ProjectReference Include="..\Documentania.Interfaces\Documentania.Contracts.csproj">
       <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
-      <Name>Documentania.Interfaces</Name>
+      <Name>Documentania.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

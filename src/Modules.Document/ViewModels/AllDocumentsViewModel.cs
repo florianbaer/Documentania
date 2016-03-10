@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modules.Document.ViewModels
 {
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     using Prism.Mvvm;
 

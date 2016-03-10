@@ -1,12 +1,14 @@
 ﻿namespace Documentania.Infrastructure.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
 
     using Documentania.Infrastructure.Configuration;
     using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     using Microsoft.Practices.ObjectBuilder2;
     using Microsoft.Practices.ServiceLocation;
@@ -34,11 +36,20 @@
             {
                 ICollection<NavigationItemView> views = new List<NavigationItemView>();
 
-                foreach (NavigationElementViewModel navigationElementViewModel in this.configurationService.GetNavigationConfiguration().Select(navigationElement => new NavigationElementViewModel(this.serviceLocator.GetInstance<IRegionManager>(), navigationElement)).ToList())
+                foreach (NavigationElement navigationElement in this.configurationService.GetNavigationConfiguration().ToList())
                 {
-                    var navigationItemView = new NavigationItemView();
-                    navigationItemView.DataContext = navigationElementViewModel;
-                    views.Add(navigationItemView);
+                    Assembly asm = Assembly.Load(navigationElement.Type);
+
+                    var enumerable = asm.GetTypes().Where(x => typeof(INavigationExecution).IsAssignableFrom(x));
+
+                    foreach (Type type in enumerable)
+                    {
+                        var navigationElementViewModel = new NavigationElementViewModel(this.serviceLocator.GetInstance<IRegionManager>(), type);
+                        var navigationItemView = new NavigationItemView();
+                        navigationItemView.DataContext = navigationElementViewModel;
+                        views.Add(navigationItemView);
+                        // this.serviceLocator.GetInstance<IUnityContainer>().RegisterType(typeof(INavigationExecution), type);
+                    }
                 }
                 return views;
             }

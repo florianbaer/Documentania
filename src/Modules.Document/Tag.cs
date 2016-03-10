@@ -10,7 +10,7 @@
 namespace Modules.Document
 {
     using System.Collections.Generic;
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     public class Tag : IStorable
     {

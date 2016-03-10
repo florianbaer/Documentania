@@ -11,7 +11,7 @@ namespace Documentania.Infrastructure.Logger
 {
     using System;
 
-    using Documentania.Interfaces;
+    using Documentania.Contracts;
 
     using log4net;
 
@@ -20,7 +20,7 @@ namespace Documentania.Infrastructure.Logger
     /// <summary>
     /// The documentania logger.
     /// </summary>
-    /// <seealso cref="Documentania.Interfaces.IDocumentaniaLogger" />
+    /// <seealso cref="Documentania.Contracts.IDocumentaniaLogger" />
     public class DocumentaniaLogger : IDocumentaniaLogger
     {
         private readonly ILog Logger;
