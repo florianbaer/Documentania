@@ -87,8 +87,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="ViewModels\AllDocumentsViewModel.cs" />
+    <Compile Include="ViewModels\DocumentsSubMenuViewModel.cs" />
     <Compile Include="Views\AllDocumentsView.xaml.cs">
       <DependentUpon>AllDocumentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DocumentsSubMenuView.xaml.cs">
+      <DependentUpon>DocumentsSubMenuView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AllDocumentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DocumentsSubMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -48,8 +48,11 @@ namespace Modules.Document
             this.container.RegisterType(typeof(IStorable), typeof(Tag), typeof(Tag).Name, new ContainerControlledLifetimeManager());
             Log.Debug("Tag is registered as type.");
 
+            this.container.RegisterType<IDocumentService, DocumentService>();
+
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
+            this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));
         }
     }
 }

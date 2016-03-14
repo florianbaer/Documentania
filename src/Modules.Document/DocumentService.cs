@@ -10,8 +10,24 @@ namespace Modules.Document
 {
     using System.Collections.Generic;
 
+    using Documentania.Contracts;
+
+    using Microsoft.Practices.ServiceLocation;
+
     public class DocumentService : IDocumentService
     {
+        private readonly IRepository repository;
+
+        public DocumentService(IRepository repo)
+        {
+            this.repository = repo;
+        }
+
+        public void AddDocument(Document document)
+        {
+            this.repository.Add(document);
+        }
+
         public Document GetDocumentById(string id)
         {
             throw new System.NotImplementedException();
@@ -24,7 +40,7 @@ namespace Modules.Document
 
         public ICollection<Document> GetAll()
         {
-            throw new System.NotImplementedException();
+            return this.repository.GetAll<Document>();
         }
 
         public ICollection<Document> SearchByTag(Tag tag)

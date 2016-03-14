@@ -14,6 +14,8 @@ namespace Modules.Document
 
     public interface IDocumentService
     {
+        void AddDocument(Document document);
+
         Document GetDocumentById(string id);
 
         Document GetDocumentByName(string name);
