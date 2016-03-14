@@ -21,8 +21,8 @@ namespace DataAccess.RavenDB.Tests
         [TestMethod]
         public void ConstructorPassingParameterTest()
         {
-            const string defaultDatabase = "defaultDatabase";
-            const string url = "url";
+            const string defaultDatabase = "Documentania";
+            const string url = "http://localhost:1303";
 
             DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
             store.ExAssert(
