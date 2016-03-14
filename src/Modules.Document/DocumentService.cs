@@ -52,5 +52,10 @@ namespace Modules.Document
         {
             throw new System.NotImplementedException();
         }
+
+        public void Dispose()
+        {
+            this.repository.Dispose();
+        }
     }
 }

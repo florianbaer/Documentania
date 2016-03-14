@@ -55,6 +55,7 @@ namespace DataAccess.RavenDB
         public void Delete<T>(T item) where T : class, IStorable, new()
         {
             this.session.Delete(item);
+            this.session.SaveChanges();
             this.log.Debug($"Deleted {typeof(T)} : {item}");
         }
 
@@ -76,6 +77,7 @@ namespace DataAccess.RavenDB
         public void Add<T>(T item) where T : class, IStorable
         {
             this.session.Store(item);
+            this.session.SaveChanges();
             this.log.Debug($"Added {typeof(T)} : {item}");
         }
 

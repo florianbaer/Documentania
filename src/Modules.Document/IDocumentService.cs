@@ -8,11 +8,12 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Modules.Document
 {
+    using System;
     using System.Collections.Generic;
 
     using Documentania.Contracts;
 
-    public interface IDocumentService
+    public interface IDocumentService : IDisposable
     {
         void AddDocument(Document document);
 

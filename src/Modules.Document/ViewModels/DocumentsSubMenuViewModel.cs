@@ -34,13 +34,16 @@ namespace Modules.Document.ViewModels
                         {
                             OpenFileDialog fileDialog = new OpenFileDialog();
                             fileDialog.ShowDialog();
-                            IDocumentService documentService = this.locator.GetInstance<IDocumentService>();
-                            documentService.AddDocument(new Document()
-                                                            {
-                                                                Path = fileDialog.FileName,
-                                                                DateReceived = DateTime.Now,
-                                                                Imported = DateTime.Now
-                                                            });
+                            using (IDocumentService documentService = this.locator.GetInstance<IDocumentService>())
+                            {
+                                documentService.AddDocument(
+                                    new Document()
+                                        {
+                                            Path = fileDialog.FileName,
+                                            DateReceived = DateTime.Now,
+                                            Imported = DateTime.Now
+                                        });
+                            }
                         });
             }
         }
