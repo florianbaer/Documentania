@@ -16,8 +16,10 @@ namespace DataAccess.RavenDB
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentaniaDocumentStore));
 
-        public DocumentaniaDocumentStore(string url, string defaultDatabase)
+        public DocumentaniaDocumentStore()
         {
+            var url = "http://localhost:1303";
+            var defaultDatabase = "Documentania";
             Log.Debug($"Create instance of logger for url {url} with databasename {defaultDatabase}");
             this.Url = url;
             this.DefaultDatabase = defaultDatabase;

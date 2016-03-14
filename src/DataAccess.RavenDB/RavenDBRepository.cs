@@ -88,7 +88,20 @@ namespace DataAccess.RavenDB
 
         public IList<T> GetAll<T>()
         {
-            return this.session.Load<T>();
+            int start = 0;
+            IList<T> allItems = new List<T>();
+
+            var current = session.Query<T>().Take(1024).Skip(start).ToList();
+
+            while (current.Count > 0)
+            {
+                start += current.Count;
+                allItems.AddRange(current);
+
+                current = session.Query<T>().Take(1024).Skip(start).ToList();
+            }
+
+            return allItems;
         }
     }
 }

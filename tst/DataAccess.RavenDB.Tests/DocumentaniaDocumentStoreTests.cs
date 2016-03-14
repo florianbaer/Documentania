@@ -24,7 +24,7 @@ namespace DataAccess.RavenDB.Tests
             const string defaultDatabase = "defaultDatabase";
             const string url = "url";
 
-            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore(url, defaultDatabase);
+            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
             store.ExAssert(
                 x => x.Member(m => m.Url).IsEqualTo(url).Member(m => m.DefaultDatabase).IsEqualTo(defaultDatabase));
         }

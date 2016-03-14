@@ -9,6 +9,7 @@
 namespace Modules.Document.ViewModels
 {
     using System;
+    using System.Windows;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Win32;
@@ -43,6 +44,8 @@ namespace Modules.Document.ViewModels
                                             DateReceived = DateTime.Now,
                                             Imported = DateTime.Now
                                         });
+
+                                MessageBox.Show(documentService.GetAll().Count.ToString());
                             }
                         });
             }

@@ -15,7 +15,7 @@ namespace DataAccess.RavenDB.Tests.Utils
     {
         public static void DropDatabase()
         {
-            using(IDocumentStore store = new DocumentaniaDocumentStore("http://localhost:1303", "Documentania"))
+            using(IDocumentStore store = new DocumentaniaDocumentStore())
             {
                 store.Initialize();
                 store.DatabaseCommands.GlobalAdmin.DeleteDatabase("Documentania", true);

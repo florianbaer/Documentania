@@ -28,10 +28,8 @@ namespace DataAccess.RavenDB
         public void Initialize()
         {
             Log.Debug("Initialize RaveDbModule");
-            this.container.RegisterInstance(
-                typeof(IDocumentStore),
-                new DocumentaniaDocumentStore("http://localhost:1303", "Documentania"));
-            this.container.RegisterType(typeof(IRepository), typeof(RavenDbRepository), new ContainerControlledLifetimeManager());
+            this.container.RegisterType<IDocumentStore, DocumentaniaDocumentStore>();
+            this.container.RegisterType(typeof(IRepository), typeof(RavenDbRepository), new TransientLifetimeManager());
         }
     }
 }
