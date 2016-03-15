@@ -16,6 +16,7 @@ namespace Modules.Document
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
+    using Modules.Document.ViewModels;
     using Modules.Document.Views;
 
     using Prism.Modularity;
@@ -48,8 +49,11 @@ namespace Modules.Document
             this.container.RegisterType(typeof(IStorable), typeof(Tag), typeof(Tag).Name, new ContainerControlledLifetimeManager());
             Log.Debug("Tag is registered as type.");
 
+
             this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
 
+            this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
+            
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
             this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));
