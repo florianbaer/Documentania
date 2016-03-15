@@ -6,17 +6,25 @@
              xmlns:local="clr-namespace:Modules.Document.Views"
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:viewModels="clr-namespace:Modules.Document.ViewModels"
+             xmlns:extensions="clr-namespace:Modules.Document.Extensions"
              x:Class="Modules.Document.Views.AllDocumentsView"
              mc:Ignorable="d" 
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <ListBox ItemsSource="{Binding Documents}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="{Binding Path}"></Label>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <!--<WebBrowser Grid.Column="1" Source="{Binding SelectedPath}" />-->
+        <WebBrowser Grid.Column="1" extensions:WebBrowserExtension.BindableSource="{Binding Path=SelectedPath}"/>
     </Grid>
 </UserControl>

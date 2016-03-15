@@ -82,6 +82,7 @@
     <Compile Include="Document.cs" />
     <Compile Include="DocumentService.cs" />
     <Compile Include="DocumentModule.cs" />
+    <Compile Include="Extensions\WebBrowserExtension.cs" />
     <Compile Include="IDocumentService.cs" />
     <Compile Include="Navigation\AllDocumentsNavigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
