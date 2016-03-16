@@ -15,6 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <ListBox Grid.Column="0" ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
@@ -25,17 +26,30 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <!--<WebBrowser Grid.Column="1" Source="{Binding SelectedPath}" />-->
-        <WebBrowser Grid.Column="1" extensions:WebBrowserExtension.BindableSource="{Binding Path=Selected.Path}"/>
-        <Grid Grid.Column="2" Background="White">
+        <Grid Grid.Column="1" Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0">Name: </Label>
-            <Label Grid.Column="1" Content="{Binding Selected.Name}"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0">Name: </Label>
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
+            <ItemsControl Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Value}"></Label>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
         </Grid>
+        
+        <GridSplitter Grid.Column="2" ResizeBehavior="PreviousAndNext" VerticalAlignment="Stretch" Width="4" />
+        
+        <WebBrowser Grid.Column="3" extensions:WebBrowserExtension.BindableSource="{Binding Path=Selected.Path}"/>
     </Grid>
 </UserControl>
