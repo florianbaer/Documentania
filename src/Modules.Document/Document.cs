@@ -18,6 +18,7 @@ namespace Modules.Document
         public virtual DateTime DateReceived { get; set; }
 
         public virtual DateTime Imported { get; set; }
+        public virtual string Name { get; set; }
 
         public virtual string Path { get; set; }
 

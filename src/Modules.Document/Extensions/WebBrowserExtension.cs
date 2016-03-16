@@ -42,7 +42,7 @@ namespace Modules.Document.Extensions
             {
                 uri = e.NewValue as Uri;
             }
-            browser.Source = uri;
+            browser.Navigate(@uri);
         }
     }
 }

@@ -19,8 +19,6 @@ namespace Modules.Document.ViewModels
 
         private Document selected;
 
-        private string selectedPath;
-
         public AllDocumentsViewModel(IDocumentService service)
         {
             this.service = service;
@@ -36,17 +34,9 @@ namespace Modules.Document.ViewModels
             set
             {
                 this.SetProperty(ref this.selected, value);
-                this.SetProperty(ref this.selectedPath, value.Path);
             }
         }
-
-        public string SelectedPath
-        {
-            get
-            {
-                return this.selectedPath;
-            }
-        }
+       
 
         public ICollection<Document> Documents
         {

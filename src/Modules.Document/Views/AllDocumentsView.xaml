@@ -25,6 +25,6 @@
         </ListBox>
 
         <!--<WebBrowser Grid.Column="1" Source="{Binding SelectedPath}" />-->
-        <WebBrowser Grid.Column="1" extensions:WebBrowserExtension.BindableSource="{Binding Path=SelectedPath}"/>
+        <WebBrowser Grid.Column="1" extensions:WebBrowserExtension.BindableSource="{Binding Path=Selected.Path}"/>
     </Grid>
 </UserControl>
