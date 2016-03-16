@@ -89,11 +89,15 @@
     <Compile Include="Tag.cs" />
     <Compile Include="ViewModels\AllDocumentsViewModel.cs" />
     <Compile Include="ViewModels\DocumentsSubMenuViewModel.cs" />
+    <Compile Include="ViewModels\NewDocumentViewModel.cs" />
     <Compile Include="Views\AllDocumentsView.xaml.cs">
       <DependentUpon>AllDocumentsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DocumentsSubMenuView.xaml.cs">
       <DependentUpon>DocumentsSubMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewDocumentView.xaml.cs">
+      <DependentUpon>NewDocumentView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DocumentsSubMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewDocumentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
