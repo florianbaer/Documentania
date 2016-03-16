@@ -44,8 +44,6 @@ namespace Modules.Document.ViewModels
                                             DateReceived = DateTime.Now,
                                             Imported = DateTime.Now
                                         });
-
-                                MessageBox.Show(documentService.GetAll().Count.ToString());
                             }
                         });
             }

@@ -13,8 +13,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <ListBox Grid.Column="0" ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
             <ListBox.ItemTemplate>
@@ -26,5 +27,15 @@
 
         <!--<WebBrowser Grid.Column="1" Source="{Binding SelectedPath}" />-->
         <WebBrowser Grid.Column="1" extensions:WebBrowserExtension.BindableSource="{Binding Path=Selected.Path}"/>
+        <Grid Grid.Column="2" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+           </Grid.ColumnDefinitions>
+            <Label Grid.Column="0">Name: </Label>
+            <Label Grid.Column="1" Content="{Binding Selected.Name}"/>
+        </Grid>
     </Grid>
 </UserControl>
