@@ -28,9 +28,8 @@
 
         <Grid Grid.Column="1" Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -38,7 +37,7 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0">Name: </Label>
             <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
-            <ItemsControl Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
+            <ItemsControl Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Value}"></Label>
