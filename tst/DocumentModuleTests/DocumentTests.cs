@@ -28,7 +28,9 @@ namespace DocumentModule.Tests
                                         Path = "Path",
                                         Tags = new List<Tag> { tagToAssert },
                                         DateReceived = DateTime.Now,
-                                        Id = "Document"
+                                        Id = "Document",
+                                        Name = "MyDocument",
+                                        Imported = new DateTime(2014, 03, 13, 19, 24, 00)
                                     };
 
             document.ExAssert(
