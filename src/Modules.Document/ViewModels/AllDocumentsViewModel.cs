@@ -8,21 +8,26 @@ namespace Modules.Document.ViewModels
 {
     using Documentania.Contracts;
 
+    using Microsoft.Practices.ServiceLocation;
+
     using Prism.Mvvm;
     using Prism.Regions;
 
     public class AllDocumentsViewModel : BindableBase, INavigationAware
     {
-        private readonly IDocumentService service;
+        private readonly IServiceLocator service;
 
         private ICollection<Document> documents = new List<Document>();
 
         private Document selected;
 
-        public AllDocumentsViewModel(IDocumentService service)
+        public AllDocumentsViewModel(IServiceLocator service)
         {
             this.service = service;
-            this.Documents = this.service.GetAll();
+            using (var store = this.service.GetInstance<IDocumentService>())
+            {
+                this.Documents = store.GetAll();
+            }
         }
 
         public Document Selected
@@ -52,7 +57,10 @@ namespace Modules.Document.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            this.Documents = this.service.GetAll();
+            using (var store = this.service.GetInstance<IDocumentService>())
+            {
+                this.Documents = store.GetAll();
+            }
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

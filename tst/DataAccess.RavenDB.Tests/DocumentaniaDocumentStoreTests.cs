@@ -19,14 +19,25 @@ namespace DataAccess.RavenDB.Tests
     public class DocumentaniaDocumentStoreTests
     {
         [TestMethod]
+        [TestCategory("RavenDb")]
         public void ConstructorPassingParameterTest()
         {
-            const string defaultDatabase = "Documentania";
-            const string url = "http://localhost:1303";
+            const string dataDirectory = @"C:\Documentania\";
+            
+            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore(dataDirectory);
+            store.ExAssert(
+                x => x.Member(m => m.DataDirectory).IsEqualTo(dataDirectory));
+        }
+
+        [TestMethod]
+        [TestCategory("RavenDb")]
+        public void ConstructorDefaultParameterTest()
+        {
+            const string defaultDataDirectory = @"C:\Documentania\Data\";
 
             DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
             store.ExAssert(
-                x => x.Member(m => m.Url).IsEqualTo(url).Member(m => m.DefaultDatabase).IsEqualTo(defaultDatabase));
+                x => x.Member(m => m.DataDirectory).IsEqualTo(defaultDataDirectory));
         }
     }
 }

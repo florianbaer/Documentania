@@ -11,18 +11,16 @@ namespace DataAccess.RavenDB
 {
     using log4net;
     using Raven.Client.Document;
+    using Raven.Client.Embedded;
 
-    public class DocumentaniaDocumentStore : DocumentStore
+    public class DocumentaniaDocumentStore : EmbeddableDocumentStore
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentaniaDocumentStore));
 
-        public DocumentaniaDocumentStore()
+        public DocumentaniaDocumentStore(string dataDirectory = @"C:\Documentania\Data\") 
         {
-            var url = "http://localhost:1303";
-            var defaultDatabase = "Documentania";
-            Log.Debug($"Create instance of logger for url {url} with databasename {defaultDatabase}");
-            this.Url = url;
-            this.DefaultDatabase = defaultDatabase;
+            Log.Debug($"Create instance of logger for data directory {this.DataDirectory}");
+            this.DataDirectory = dataDirectory;
         }
     }
 }
