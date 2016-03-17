@@ -9,12 +9,16 @@
 
 namespace DataAccess.RavenDB.Tests
 {
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Security.RightsManagement;
 
     using DataAccess.RavenDB.Tests.Utils;
+
+    using ExAs;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Modules.Document;
@@ -74,10 +78,14 @@ namespace DataAccess.RavenDB.Tests
                                  new Item("2", "Path2")
                              }.ToArray());
 
+            List<Item> items;
             using (RavenDbRepository repository = new RavenDbRepository(documentStoreMock.Mock.Object))
             {
-                var items = repository.All<Item>().ToList();
+                items = repository.All<Item>().ToList();
             }
+
+            items[0].ExAssert(x => x.Member(m => m.Id).IsEqualTo("1").Member(m => m.Name).IsEqualTo("Path"));
+            items[1].ExAssert(x => x.Member(m => m.Id).IsEqualTo("2").Member(m => m.Name).IsEqualTo("Path2"));
 
             this.documentStoreMock.DocumentSession.Mock.Verify(x => x.Load<Item>());
         }

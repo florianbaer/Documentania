@@ -24,7 +24,7 @@ namespace Modules.Document.Navigation
 
         public override void NavigateTo()
         {
-            base.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AllDocumentsView).ToString());
+            this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AllDocumentsView).ToString());
             this.regionManager.RequestNavigate(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView).ToString());
         }
     }

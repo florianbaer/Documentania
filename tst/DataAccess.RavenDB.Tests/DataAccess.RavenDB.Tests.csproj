@@ -80,11 +80,9 @@
     <Compile Include="DocumentaniaDocumentStoreTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RavenDbRepositoryTests.cs" />
-    <Compile Include="Utils\DatabaseEnvironment.cs" />
     <Compile Include="Utils\DocumentaniaDocumentStoreMock.cs" />
     <Compile Include="Utils\DocumentSessionMock.cs" />
     <Compile Include="Utils\Item.cs" />
-    <Compile Include="Utils\UnitTestBootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\UserInterface\App.config">
