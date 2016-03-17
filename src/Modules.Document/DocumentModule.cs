@@ -43,13 +43,7 @@ namespace Modules.Document
         public void Initialize()
         {
             Log.Info("Initialize DocumentModule");
-
-            this.container.RegisterType(typeof(IStorable), typeof(Document), typeof(Document).Name, new ContainerControlledLifetimeManager());
-            Log.Debug("Document is registered as type.");
-            this.container.RegisterType(typeof(IStorable), typeof(Tag), typeof(Tag).Name, new ContainerControlledLifetimeManager());
-            Log.Debug("Tag is registered as type.");
-
-
+            
             this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
 
             this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();

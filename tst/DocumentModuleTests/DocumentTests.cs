@@ -19,6 +19,11 @@ namespace DocumentModule.Tests
     public class DocumentTests
     {
         [TestMethod]
+        [TestCategory("PropertyTests")]
+        [TestCategory("DocumentModule")]
+        [TestProperty("Created", "2016-03-17")]
+        [TestProperty("Creator", "baerf")]
+        [TestCategory("HappyCase")]
         public void PropertyTest()
         {
             Tag tagToAssert = new Tag { Id = "Tag", Value = "Tag" };
@@ -37,8 +42,12 @@ namespace DocumentModule.Tests
                 x =>
                 x.Member(m => m.Id)
                     .IsEqualTo(document.Id)
+                    .Member(m => m.Name)
+                    .IsEqualTo(document.Name)
                     .Member(m => m.DateReceived)
                     .IsOnSameDayAs(document.DateReceived)
+                    .Member(m => m.Imported)
+                    .IsOnSameDayAs(document.Imported)
                     .Member(m => m.Path)
                     .IsEqualTo(document.Path)
                     .Member(m => m.Tags[0])
