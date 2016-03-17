@@ -9,6 +9,7 @@
 namespace Modules.Document
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using Documentania.Contracts;
 
@@ -30,12 +31,12 @@ namespace Modules.Document
 
         public Document GetDocumentById(string id)
         {
-            throw new System.NotImplementedException();
+            return this.repository.Single<Modules.Document.Document>(document => document.Id == id);
         }
 
         public Document GetDocumentByName(string name)
         {
-            throw new System.NotImplementedException();
+            return this.repository.Single<Modules.Document.Document>(document => document.Name == name);
         }
 
         public ICollection<Document> GetAll()
