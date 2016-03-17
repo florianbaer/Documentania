@@ -91,9 +91,6 @@
       <Link>App.config</Link>
     </None>
     <None Include="packages.config" />
-    <None Include="Raven.Studio.Html5.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\DataAccess.RavenDB\DataAccess.RavenDB.csproj">
