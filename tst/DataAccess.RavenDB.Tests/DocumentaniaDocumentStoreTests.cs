@@ -24,7 +24,8 @@ namespace DataAccess.RavenDB.Tests
         {
             const string dataDirectory = @"C:\Documentania\";
             
-            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore(dataDirectory);
+            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
+            store.DataDirectory = dataDirectory;
             store.ExAssert(
                 x => x.Member(m => m.DataDirectory).IsEqualTo(dataDirectory));
         }
