@@ -8,9 +8,12 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Documentania.Infrastructure.Configuration
 {
+    using System;
     using System.Collections.Generic;
     using System.Configuration;
     using System.Linq;
+
+    using Microsoft.Practices.Unity.Utility;
 
     [ConfigurationCollection(typeof(NavigationElement), AddItemName = "NavigationElement")]
     public class NavigationElementCollection : ConfigurationElementCollection, IEnumerable<NavigationElement>
@@ -22,25 +25,20 @@ namespace Documentania.Infrastructure.Configuration
 
         protected override object GetElementKey(ConfigurationElement element)
         {
+            Guard.ArgumentNotNull(element, "element");
             var navigationElement = element as NavigationElement;
 
-            object type = null;
-            if (navigationElement != null)
+            if (navigationElement == null)
             {
-                type = navigationElement.Type;
+                throw new InvalidCastException($"Passed element {element.GetType()} can not be casted to {typeof(NavigationElement)}.");
             }
-            return type;
+
+            return navigationElement.Type;
         }
 
-        public NavigationElement this[int index]
-        {
-            get
-            {
-                return BaseGet(index) as NavigationElement;
-            }
-        }
-        
-        public IEnumerator<NavigationElement> GetEnumerator()
+        public NavigationElement this[int index] => this.BaseGet(index) as NavigationElement;
+
+        public new IEnumerator<NavigationElement> GetEnumerator()
         {
             return ( from i in Enumerable.Range( 0, this.Count )
                      select this[i] )

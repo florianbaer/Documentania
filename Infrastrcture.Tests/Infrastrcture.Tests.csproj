@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NavigationConfigurationServiceTest.cs" />
     <Compile Include="NavigationElementTests.cs" />
+    <Compile Include="NavigationElementCollectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\src\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
@@ -73,6 +74,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AppFail.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

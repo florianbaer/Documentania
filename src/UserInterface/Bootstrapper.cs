@@ -85,6 +85,11 @@ namespace Documentania
             regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
 
+            if (Application.Current == null)
+            {
+                new System.Windows.Application();
+            }
+
             Application.Current.MainWindow = (Shell)this.Shell;
 
             Application.Current.MainWindow.Show();
