@@ -23,14 +23,13 @@ namespace Documentania.Infrastructure.Configuration
         protected override object GetElementKey(ConfigurationElement element)
         {
             var navigationElement = element as NavigationElement;
+
+            object type = null;
             if (navigationElement != null)
             {
-                return navigationElement.Type;
+                type = navigationElement.Type;
             }
-            else
-            {
-                return null;
-            }
+            return type;
         }
 
         public NavigationElement this[int index]
