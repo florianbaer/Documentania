@@ -55,7 +55,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania.Infrastructure", "src\Documentania.Infrastructure\Documentania.Infrastructure.csproj", "{6029CF48-AD40-4944-BD95-3675613B2B37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastrcture.Tests", "Infrastrcture.Tests\Infrastrcture.Tests.csproj", "{EAA16A11-3081-4CE6-A628-3C55DBBBC15F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastrcture.Tests", "tst\Infrastrcture.Tests\Infrastrcture.Tests.csproj", "{EAA16A11-3081-4CE6-A628-3C55DBBBC15F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
