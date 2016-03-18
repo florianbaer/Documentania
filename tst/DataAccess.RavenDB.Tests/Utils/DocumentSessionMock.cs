@@ -1,25 +1,25 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="DatabaseEnvironment.cs" company="BaerDev">
+// // <copyright file="DocumentSessionMock.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'DatabaseEnvironment.cs'.
+// // The file 'DocumentSessionMock.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
 namespace DataAccess.RavenDB.Tests.Utils
 {
+    using Moq;
+
     using Raven.Client;
 
-    public class DatabaseEnvironment
+    public class DocumentSessionMock
     {
-        public static void DropDatabase()
+        public DocumentSessionMock()
         {
-            using (IDocumentStore store = new DocumentaniaDocumentStore("http://localhost:1303", "Documentania"))
-            {
-                store.Initialize();
-                store.DatabaseCommands.GlobalAdmin.DeleteDatabase("Documentania", true);
-            }
+            this.Mock = new Mock<IDocumentSession>();
         }
+
+        public Mock<IDocumentSession> Mock { get; }
     }
 }

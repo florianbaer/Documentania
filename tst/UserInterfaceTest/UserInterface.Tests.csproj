@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExAs, Version=0.1.1.125, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExtendedAssertions.0.1.1.125\lib\ExAs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -46,10 +54,8 @@
       <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
@@ -64,6 +70,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BootstrapperTests.cs" />
@@ -76,13 +84,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Documentania.Common\Documentania.Common.csproj">
-      <Project>{88dac866-6ea3-449a-9f4d-0e657f94610e}</Project>
-      <Name>Documentania.Common</Name>
+    <ProjectReference Include="..\..\src\DataAccess.RavenDB\DataAccess.RavenDB.csproj">
+      <Project>{9a04af41-a588-4fd4-bf90-0c2af4d7c279}</Project>
+      <Name>DataAccess.RavenDB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\UserInterface\UserInterface.csproj">
+    <ProjectReference Include="..\..\src\Modules.Document\Modules.Document.csproj">
+      <Project>{dcb9b047-1f17-469d-80d8-f0fcb229de26}</Project>
+      <Name>Modules.Document</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\UserInterface\Documentania.csproj">
       <Project>{8f216f98-1855-497d-aaba-59859538cfef}</Project>
-      <Name>UserInterface</Name>
+      <Name>Documentania</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

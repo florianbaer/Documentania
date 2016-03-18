@@ -7,27 +7,50 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Documentania.Interfaces;
-using Microsoft.Practices.ServiceLocation;
-using Prism.Logging;
-using Prism.Modularity;
-
 namespace Modules.Document
 {
+    using Documentania.Contracts;
+
+    using log4net;
+
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+
+    using Modules.Document.ViewModels;
+    using Modules.Document.Views;
+
+    using Prism.Modularity;
+    using Prism.Regions;
+
     [Module(ModuleName = "DocumentModule")]
     public class DocumentModule : IModule
     {
-        private readonly IDocumentaniaLogger logger =
-            (IDocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentModule));
+
+        private readonly IServiceLocator locator;
+
+        private IUnityContainer container;
+
+        private IRegionManager regionManager;
+
+        public DocumentModule(IServiceLocator locator)
+        {
+            this.locator = locator;
+            this.container = this.locator.GetInstance<IUnityContainer>();
+            this.regionManager = this.locator.GetInstance<IRegionManager>();
+        }
 
         public void Initialize()
         {
-            logger.Log("Initialize DocumentModule", Category.Info, Priority.None);
+            Log.Info("Initialize DocumentModule");
+
+            this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
+
+            this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
+
+            // Views
+            this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
+            this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));
         }
     }
 }

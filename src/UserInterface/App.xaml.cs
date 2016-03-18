@@ -7,7 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace UserInterface
+namespace Documentania
 {
     using System.Windows;
 
@@ -16,16 +16,17 @@ namespace UserInterface
     /// </summary>
     public partial class App : Application
     {
-        private readonly Bootstrapper.Bootstrapper bootstrapper;
+        private readonly Bootstrapper bootstrapper;
 
         public App()
         {
-            bootstrapper = new Bootstrapper.Bootstrapper();
+            this.bootstrapper = new Bootstrapper();
         }
 
-        private void App_OnStartup(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            bootstrapper.Run();
+            base.OnStartup(e);
+            this.bootstrapper.Run();
         }
     }
 }

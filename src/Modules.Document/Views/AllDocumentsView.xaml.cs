@@ -1,24 +1,24 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="MainWindow.xaml.cs" company="BaerDev">
+// // <copyright file="AllDocumentsView.xaml.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'MainWindow.xaml.cs'.
+// // The file 'AllDocumentsView.xaml.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace UserInterface
+namespace Modules.Document.Views
 {
-    using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
-    ///     Interaction logic for MainWindow.xaml
+    /// Interaction logic for AllDocumentsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AllDocumentsView : UserControl
     {
-        public MainWindow()
+        public AllDocumentsView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }
