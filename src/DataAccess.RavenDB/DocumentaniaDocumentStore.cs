@@ -7,26 +7,20 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Microsoft.Practices.ServiceLocation;
-
 namespace DataAccess.RavenDB
 {
-    using System;
-    using Documentania.Common;
-    using Prism.Logging;
-    using Raven.Client.Document;
+    using log4net;
 
-    public class DocumentaniaDocumentStore : DocumentStore
+    using Raven.Client.Embedded;
+
+    public class DocumentaniaDocumentStore : EmbeddableDocumentStore
     {
-        private readonly DocumentaniaLogger Log =
-            (DocumentaniaLogger) ServiceLocator.Current.GetInstance(typeof (ILoggerFacade));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentaniaDocumentStore));
 
-        public DocumentaniaDocumentStore(string url, string defaultDatabase)
+        public DocumentaniaDocumentStore()
         {
-            this.Log.Debug($"Create instance of logger for url {url} with databasename {defaultDatabase}");
-
-            Url = url;
-            DefaultDatabase = defaultDatabase;
+            this.DataDirectory = @"C:\Documentania\Data\";
+            Log.Debug($"Create instance of logger for data directory {this.DataDirectory}");
         }
     }
 }

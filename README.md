@@ -7,3 +7,5 @@ Dev    Build: [![Build status](https://ci.appveyor.com/api/projects/status/xldf1
 
 Latest Build: [![Build status](https://ci.appveyor.com/api/projects/status/xldf1a0v55go5glx)](https://ci.appveyor.com/project/binaryfr3ak/documentania)
 
+Coverage    : [![Code Coverage](https://img.shields.io/badge/coverage-85%-green.svg)](https://ci.appveyor.com/project/binaryfr3ak/documentania) - Status : 18-Mar-2016
+

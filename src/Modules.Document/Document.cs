@@ -7,17 +7,20 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Documentania.Interfaces;
-
 namespace Modules.Document
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Documentania.Contracts;
+
     public class Document : IStorable
     {
         public virtual DateTime DateReceived { get; set; }
 
         public virtual DateTime Imported { get; set; }
+
+        public virtual string Name { get; set; }
 
         public virtual string Path { get; set; }
 

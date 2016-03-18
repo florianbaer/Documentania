@@ -7,19 +7,47 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using NUnit.Framework;
-
 namespace UserInterface.Tests
 {
-    [TestFixture]
-    [Ignore("Bootstrapper testing is not necessary")]
+    using System.Windows;
+
+    using Documentania;
+
+    using ExAs;
+
+    using log4net;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    [TestClass]
     public class BootstrapperTests
     {
-        [Test]
-        public void StartUpBootstrapperTest()
+        [TestMethod]
+        [TestCategory("HappyCase")]
+        [TestProperty("Created", "2016-03-18")]
+        [TestProperty("Creator", "Florian Bär")]
+        [TestCategory("Bootstrapper")]
+        public void CreateInstanceOfBootstrapperTest()
         {
-            Bootstrapper.Bootstrapper bootstrapper = new Bootstrapper.Bootstrapper();
+            // act
+            var bootstrapper = new Bootstrapper();
+
+            // assert
+            var log = LogManager.GetLogger(typeof(BootstrapperTests));
+            log.ExAssert(x => x.IsNotNull());
+        }
+
+        [TestMethod]
+        [TestCategory("HappyCase")]
+        [TestProperty("Created", "2016-03-18")]
+        [TestProperty("Creator", "Florian Bär")]
+        [TestCategory("Bootstrapper")]
+        public void RunBootstrapperTest()
+        {
+            // act
+            var bootstrapper = new Bootstrapper();
             bootstrapper.Run();
+            Application.Current.Shutdown();
         }
     }
 }

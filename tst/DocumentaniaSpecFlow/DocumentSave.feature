@@ -1,11 +1,10 @@
 ﻿Feature: DocumentSave
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+	In order to verify the saving of scanned documents
+	As a chaotic developer
+	I want to be sure that the repository works
 
-@mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+@RavenDBRepository
+Scenario: Add and get a Document
+	Given I have a RavenDB Repository
+	When I add a Document to the Repository
+	Then I get 1 Document when i get all Documents
