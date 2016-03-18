@@ -1,9 +1,15 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NavigationExecuteBaseTests.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'NavigationExecuteBaseTests.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace Infrastrcture.Tests
 {
-    using Documentania.Contracts;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class NavigationExecuteBaseTests

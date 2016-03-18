@@ -11,10 +11,15 @@ namespace DocumentaniaSpecFlow.Tests
 {
     using System;
     using System.Collections.Generic;
+
     using Documentania.Contracts;
+
     using Modules.Document;
+
     using Moq;
+
     using NUnit.Framework;
+
     using TechTalk.SpecFlow;
 
     [Binding]

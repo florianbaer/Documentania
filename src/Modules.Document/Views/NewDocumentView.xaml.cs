@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NewDocumentView.xaml.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'NewDocumentView.xaml.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace Modules.Document.Views
 {
+    using System.Windows.Controls;
+
     /// <summary>
     /// Interaction logic for NewDocumentView.xaml
     /// </summary>
@@ -22,7 +18,7 @@ namespace Modules.Document.Views
     {
         public NewDocumentView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

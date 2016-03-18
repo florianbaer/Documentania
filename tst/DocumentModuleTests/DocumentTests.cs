@@ -11,8 +11,11 @@ namespace DocumentModule.Tests
 {
     using System;
     using System.Collections.Generic;
+
     using ExAs;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using Modules.Document;
 
     [TestClass]

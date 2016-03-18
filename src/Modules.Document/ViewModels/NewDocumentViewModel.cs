@@ -6,40 +6,43 @@
 // // The file 'NewDocumentViewModel.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Modules.Document.ViewModels
 {
     using System;
 
     using Prism.Mvvm;
+
     public class NewDocumentViewModel : BindableBase
     {
-         private Document model { get; set; }
+        public Document Model { get; set; }
 
-        public string Id => this.model.Id;
+        public string Id => this.Model.Id;
 
         public string Name
         {
             get
             {
-                return this.model.Name;
+                return this.Model.Name;
             }
             set
             {
-                this.model.Name = value;
+                this.Model.Name = value;
                 this.OnPropertyChanged();
             }
         }
 
-        public string Path => this.model.Path;
+        public string Path => this.Model.Path;
+
         public DateTime DateReceived
         {
             get
             {
-                return this.model.DateReceived;
+                return this.Model.DateReceived;
             }
             set
             {
-                this.model.DateReceived = value;
+                this.Model.DateReceived = value;
                 this.OnPropertyChanged();
             }
         }

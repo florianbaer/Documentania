@@ -9,7 +9,6 @@
 
 namespace Modules.Document
 {
-    using System.Collections.Generic;
     using Documentania.Contracts;
 
     public class Tag : IStorable
@@ -17,6 +16,5 @@ namespace Modules.Document
         public virtual string Value { get; set; }
 
         public virtual string Id { get; set; }
-        
     }
 }

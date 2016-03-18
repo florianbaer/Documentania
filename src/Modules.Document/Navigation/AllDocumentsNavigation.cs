@@ -6,6 +6,7 @@
 // // The file 'AllDocumentsNavigation.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Modules.Document.Navigation
 {
     using Documentania.Contracts;

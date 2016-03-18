@@ -10,6 +10,7 @@
 namespace DataAccess.RavenDB.Tests.Utils
 {
     using Moq;
+
     using Raven.Client;
 
     public class DocumentaniaDocumentStoreMock

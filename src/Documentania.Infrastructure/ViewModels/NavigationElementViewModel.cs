@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NavigationElementViewModel.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'NavigationElementViewModel.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace Documentania.Infrastructure.ViewModels
 {
-    using System.Reflection;
+    using System;
 
-    using Documentania.Infrastructure.Configuration;
     using Documentania.Contracts;
 
     using Prism.Commands;
@@ -26,8 +28,8 @@ namespace Documentania.Infrastructure.ViewModels
         {
             this.regionManager = regionManager;
             this.type = type;
-            instance = (INavigationExecution)Activator.CreateInstance(this.Type);
-            instance.SetRegionManager(this.regionManager);
+            this.instance = (INavigationExecution)Activator.CreateInstance(this.Type);
+            this.instance.SetRegionManager(this.regionManager);
         }
 
         public string Titel => this.instance.Title;
@@ -42,7 +44,7 @@ namespace Documentania.Infrastructure.ViewModels
                     () =>
                         {
                             var methodInfo = this.Type.GetMethod("NavigateTo");
-                            methodInfo.Invoke(instance, null);
+                            methodInfo.Invoke(this.instance, null);
                         });
             }
         }

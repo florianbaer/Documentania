@@ -6,14 +6,13 @@
 // // The file 'NavigationElement.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Documentania.Infrastructure.Configuration
 {
-    using System;
     using System.Configuration;
 
     public class NavigationElement : ConfigurationElement
     {
-
         [ConfigurationProperty("Type", IsKey = true, IsRequired = true)]
         public string Type
         {

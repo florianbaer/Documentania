@@ -10,7 +10,7 @@
 namespace DataAccess.RavenDB
 {
     using log4net;
-    using Raven.Client.Document;
+
     using Raven.Client.Embedded;
 
     public class DocumentaniaDocumentStore : EmbeddableDocumentStore

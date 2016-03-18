@@ -12,16 +12,12 @@ namespace DataAccess.RavenDB.Tests
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Runtime.CompilerServices;
-    using System.Security.RightsManagement;
 
     using DataAccess.RavenDB.Tests.Utils;
 
     using ExAs;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using Modules.Document;
 
     using Moq;
 
@@ -35,22 +31,22 @@ namespace DataAccess.RavenDB.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            documentStoreMock = new DocumentaniaDocumentStoreMock().WireUp();
+            this.documentStoreMock = new DocumentaniaDocumentStoreMock().WireUp();
 
-            documentStoreMock.Mock.Setup(x => x.Url).Returns(url);
-            documentStoreMock.Mock.Setup(x => x.Initialize());
+            this.documentStoreMock.Mock.Setup(x => x.Url).Returns(url);
+            this.documentStoreMock.Mock.Setup(x => x.Initialize());
         }
 
         [TestMethod]
         public void InitializeRavenDbTest()
         {
-            RavenDbRepository repository = new RavenDbRepository(documentStoreMock.Mock.Object);
+            RavenDbRepository repository = new RavenDbRepository(this.documentStoreMock.Mock.Object);
             repository.Dispose();
 
-            documentStoreMock.Mock.Verify(x => x.Initialize(), Times.Once);
-            documentStoreMock.Mock.Verify(x => x.OpenSession(), Times.Once);
-            documentStoreMock.Mock.Verify(x => x.Dispose(), Times.Once);
-            documentStoreMock.DocumentSession.Mock.Verify(x => x.Dispose(), Times.Once);
+            this.documentStoreMock.Mock.Verify(x => x.Initialize(), Times.Once);
+            this.documentStoreMock.Mock.Verify(x => x.OpenSession(), Times.Once);
+            this.documentStoreMock.Mock.Verify(x => x.Dispose(), Times.Once);
+            this.documentStoreMock.DocumentSession.Mock.Verify(x => x.Dispose(), Times.Once);
         }
 
         [TestMethod]
@@ -58,28 +54,24 @@ namespace DataAccess.RavenDB.Tests
         {
             Item item = new Item("1", "Name");
 
-            documentStoreMock.DocumentSession.Mock.Setup(x => x.Store(item));
+            this.documentStoreMock.DocumentSession.Mock.Setup(x => x.Store(item));
 
-            using (RavenDbRepository repository = new RavenDbRepository(documentStoreMock.Mock.Object))
+            using (RavenDbRepository repository = new RavenDbRepository(this.documentStoreMock.Mock.Object))
             {
                 repository.Add(item);
             }
 
-            documentStoreMock.DocumentSession.Mock.Verify(x => x.Store(item), Times.Once);
+            this.documentStoreMock.DocumentSession.Mock.Verify(x => x.Store(item), Times.Once);
         }
 
         [TestMethod]
         public void GetAllItems()
         {
             this.documentStoreMock.DocumentSession.Mock.Setup(x => x.Load<Item>())
-                .Returns(new Collection<Item>()
-                             {
-                                 new Item("1", "Path"),
-                                 new Item("2", "Path2")
-                             }.ToArray());
+                .Returns(new Collection<Item>() { new Item("1", "Path"), new Item("2", "Path2") }.ToArray());
 
             List<Item> items;
-            using (RavenDbRepository repository = new RavenDbRepository(documentStoreMock.Mock.Object))
+            using (RavenDbRepository repository = new RavenDbRepository(this.documentStoreMock.Mock.Object))
             {
                 items = repository.All<Item>().ToList();
             }

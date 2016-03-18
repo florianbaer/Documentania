@@ -6,14 +6,12 @@
 // // The file 'DocumentService.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Modules.Document
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     using Documentania.Contracts;
-
-    using Microsoft.Practices.ServiceLocation;
 
     public class DocumentService : IDocumentService
     {
@@ -31,12 +29,12 @@ namespace Modules.Document
 
         public Document GetDocumentById(string id)
         {
-            return this.repository.Single<Modules.Document.Document>(document => document.Id == id);
+            return this.repository.Single<Document>(document => document.Id == id);
         }
 
         public Document GetDocumentByName(string name)
         {
-            return this.repository.Single<Modules.Document.Document>(document => document.Name == name);
+            return this.repository.Single<Document>(document => document.Name == name);
         }
 
         public ICollection<Document> GetAll()

@@ -6,6 +6,7 @@
 // // The file 'DocumentsSubMenuViewModel.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Modules.Document.ViewModels
 {
     using System;
@@ -53,39 +54,33 @@ namespace Modules.Document.ViewModels
                         });
             }
         }
+
         public DelegateCommand NewFileDialogCommand
         {
             get
             {
                 return new DelegateCommand(
                     () =>
-                    {
-                        OpenFileDialog fileDialog = new OpenFileDialog();
-                        fileDialog.ShowDialog();
-                        using (IDocumentService documentService = this.locator.GetInstance<IDocumentService>())
                         {
-                            documentService.AddDocument(
-                                new Document()
-                                {
-                                    Path = fileDialog.FileName,
-                                    DateReceived = DateTime.Now,
-                                    Imported = DateTime.Now,
-                                    Tags = new List<Tag>()
-                                               {
-                                                   new Tag()
-                                                       {
-                                                           Value = "Test"
-                                                       }
-                                                   ,new Tag()
-                                                       {
-                                                           Value = "Test2"
-                                                       }
-                                               }
-
-                                });
-                        }
-
-                    });
+                            OpenFileDialog fileDialog = new OpenFileDialog();
+                            fileDialog.ShowDialog();
+                            using (IDocumentService documentService = this.locator.GetInstance<IDocumentService>())
+                            {
+                                documentService.AddDocument(
+                                    new Document()
+                                        {
+                                            Path = fileDialog.FileName,
+                                            DateReceived = DateTime.Now,
+                                            Imported = DateTime.Now,
+                                            Tags =
+                                                new List<Tag>()
+                                                    {
+                                                        new Tag() { Value = "Test" },
+                                                        new Tag() { Value = "Test2" }
+                                                    }
+                                        });
+                            }
+                        });
             }
         }
     }

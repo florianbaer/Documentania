@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="RavenDbRepository.cs" company="BaerDev">
+// // <copyright file="RavenDBRepository.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'RavenDbRepository.cs'.
+// // The file 'RavenDBRepository.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -17,6 +17,7 @@ namespace DataAccess.RavenDB
     using DataAccess.RavenDB.Extension;
 
     using Documentania.Contracts;
+
     using log4net;
 
     using Raven.Abstractions.Extensions;
@@ -46,10 +47,10 @@ namespace DataAccess.RavenDB
 
         public void Delete<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new()
         {
-            var items = All<T>().Where(expression);
+            var items = this.All<T>().Where(expression);
             foreach (T item in items)
             {
-                Delete(item);
+                this.Delete(item);
             }
         }
 
@@ -92,14 +93,14 @@ namespace DataAccess.RavenDB
             int start = 0;
             IList<T> allItems = new List<T>();
 
-            var current = session.Query<T>().Take(1024).Skip(start).ToList();
+            var current = this.session.Query<T>().Take(1024).Skip(start).ToList();
 
             while (current.Count > 0)
             {
                 start += current.Count;
                 allItems.AddRange(current);
 
-                current = session.Query<T>().Take(1024).Skip(start).ToList();
+                current = this.session.Query<T>().Take(1024).Skip(start).ToList();
             }
 
             return allItems;

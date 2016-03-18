@@ -79,6 +79,8 @@
     <Compile Include="TagTests.cs" />
     <Compile Include="DocumentServiceTests.cs" />
     <Compile Include="AllDocumentsNavigationTests.cs" />
+    <Compile Include="NewDocumentViewModelTests.cs" />
+    <Compile Include="WebBrowserExtensionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

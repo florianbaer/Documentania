@@ -11,8 +11,6 @@ namespace Documentania
 {
     using System.Windows;
 
-    using Documentania;
-
     /// <summary>
     ///     Interaction logic for App.xaml
     /// </summary>

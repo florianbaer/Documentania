@@ -9,8 +9,6 @@
 
 namespace UserInterface.Tests
 {
-    using System.Net.Mime;
-    using System.Runtime.Hosting;
     using System.Windows;
 
     using Documentania;
@@ -32,10 +30,10 @@ namespace UserInterface.Tests
         public void CreateInstanceOfBootstrapperTest()
         {
             // act
-            Bootstrapper bootstrapper = new Bootstrapper();
+            var bootstrapper = new Bootstrapper();
 
             // assert
-            ILog log = LogManager.GetLogger(typeof(BootstrapperTests));
+            var log = LogManager.GetLogger(typeof(BootstrapperTests));
             log.ExAssert(x => x.IsNotNull());
         }
 
@@ -47,7 +45,7 @@ namespace UserInterface.Tests
         public void RunBootstrapperTest()
         {
             // act
-            Bootstrapper bootstrapper = new Bootstrapper();
+            var bootstrapper = new Bootstrapper();
             bootstrapper.Run();
             Application.Current.Shutdown();
         }

@@ -32,7 +32,7 @@ namespace Documentania.Contracts
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="item">The item.</param>
         void Delete<T>(T item) where T : class, IStorable, new();
-        
+
         /// <summary>
         /// Gets the specified single expression.
         /// </summary>

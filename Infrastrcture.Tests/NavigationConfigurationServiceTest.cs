@@ -1,10 +1,18 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NavigationConfigurationServiceTest.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'NavigationConfigurationServiceTest.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace Infrastrcture.Tests
 {
     using Documentania.Infrastructure.Configuration;
     using Documentania.Infrastructure.Services;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class NavigationConfigurationServiceTest

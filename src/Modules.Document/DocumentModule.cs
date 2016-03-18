@@ -43,11 +43,11 @@ namespace Modules.Document
         public void Initialize()
         {
             Log.Info("Initialize DocumentModule");
-            
+
             this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
 
             this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
-            
+
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
             this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));

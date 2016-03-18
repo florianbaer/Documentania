@@ -20,8 +20,8 @@ namespace Documentania.Infrastructure.Logger
     /// <summary>
     /// The documentania logger.
     /// </summary>
-    /// <seealso cref="Documentania.Contracts.IDocumentaniaLogger" />
-    public class DocumentaniaLogger : IDocumentaniaLogger
+    /// <seealso cref="ILoggerFacade" />
+    public class DocumentaniaLogger : ILoggerFacade
     {
         private readonly ILog Logger;
 
@@ -58,46 +58,6 @@ namespace Documentania.Infrastructure.Logger
                     this.Logger.Info(message);
                     break;
             }
-        }
-
-        public void Debug(object message)
-        {
-            this.Logger.Debug(message);
-        }
-
-        public void Debug(object message, Exception exception)
-        {
-            this.Logger.Debug(message, exception);
-        }
-
-        public void Warn(object message)
-        {
-            this.Logger.Warn(message);
-        }
-
-        public void Warn(object message, Exception exception)
-        {
-            this.Logger.Warn(message, exception);
-        }
-
-        public void Exception(object message)
-        {
-            this.Logger.Error(message);
-        }
-
-        public void Exception(object message, Exception exception)
-        {
-            this.Logger.Error(message, exception);
-        }
-
-        public void Info(object message)
-        {
-            this.Logger.Info(message);
-        }
-
-        public void Info(object message, Exception exception)
-        {
-            this.Logger.Info(message, exception);
         }
     }
 }

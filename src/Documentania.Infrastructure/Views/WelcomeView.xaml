@@ -10,6 +10,7 @@
              d:DataContext="{d:DesignInstance viewModels:WelcomeDesignViewModel, IsDesignTimeCreatable=True }"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Label Content="{Binding Text}"></Label>
+        <Label Content="{Binding Text}" />
     </Grid>
 </UserControl>
+

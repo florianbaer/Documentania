@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DocumentModuleTests.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'DocumentModuleTests.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace DocumentModule.Tests
 {
@@ -13,7 +16,6 @@ namespace DocumentModule.Tests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Modules.Document;
-    using Modules.Document.ViewModels;
     using Modules.Document.Views;
 
     using Moq;
@@ -34,17 +36,17 @@ namespace DocumentModule.Tests
             Mock<IServiceLocator> locatorMock = new Mock<IServiceLocator>();
             Mock<IUnityContainer> unityMock = new Mock<IUnityContainer>();
             Mock<IRegionManager> regionManagerMock = new Mock<IRegionManager>();
-            
+
             locatorMock.Setup(x => x.GetInstance<IUnityContainer>()).Returns(unityMock.Object);
             locatorMock.Setup(x => x.GetInstance<IRegionManager>()).Returns(regionManagerMock.Object);
 
             DocumentModule module = new DocumentModule(locatorMock.Object);
             module.Initialize();
-            
+
             // Views
             regionManagerMock.Verify(x => x.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView)));
-            regionManagerMock.Verify(x => x.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView)));
+            regionManagerMock.Verify(
+                x => x.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView)));
         }
-
     }
 }

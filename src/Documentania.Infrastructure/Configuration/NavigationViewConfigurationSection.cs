@@ -6,11 +6,10 @@
 // // The file 'NavigationViewConfigurationSection.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Documentania.Infrastructure.Configuration
 {
-    using System.Collections.Generic;
     using System.Configuration;
-    using System.Linq;
 
     public class NavigationViewConfigurationSection : ConfigurationSection
     {

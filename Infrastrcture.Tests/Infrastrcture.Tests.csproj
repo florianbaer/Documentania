@@ -39,6 +39,14 @@
       <HintPath>..\packages\ExtendedAssertions.0.1.1.125\lib\ExAs.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
   </ItemGroup>
@@ -62,6 +70,7 @@
     <Compile Include="NavigationConfigurationServiceTest.cs" />
     <Compile Include="NavigationElementTests.cs" />
     <Compile Include="NavigationElementCollectionTests.cs" />
+    <Compile Include="LoggerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\src\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
@@ -71,6 +80,10 @@
     <ProjectReference Include="..\src\Documentania.Interfaces\Documentania.Contracts.csproj">
       <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
       <Name>Documentania.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\UserInterface\Documentania.csproj">
+      <Project>{8F216F98-1855-497D-AABA-59859538CFEF}</Project>
+      <Name>Documentania</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

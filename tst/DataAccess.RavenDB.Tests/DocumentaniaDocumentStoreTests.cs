@@ -10,6 +10,7 @@
 namespace DataAccess.RavenDB.Tests
 {
     using ExAs;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
@@ -23,11 +24,10 @@ namespace DataAccess.RavenDB.Tests
         public void ConstructorPassingParameterTest()
         {
             const string dataDirectory = @"C:\Documentania\";
-            
+
             DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
             store.DataDirectory = dataDirectory;
-            store.ExAssert(
-                x => x.Member(m => m.DataDirectory).IsEqualTo(dataDirectory));
+            store.ExAssert(x => x.Member(m => m.DataDirectory).IsEqualTo(dataDirectory));
         }
 
         [TestMethod]
@@ -37,8 +37,7 @@ namespace DataAccess.RavenDB.Tests
             const string defaultDataDirectory = @"C:\Documentania\Data\";
 
             DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
-            store.ExAssert(
-                x => x.Member(m => m.DataDirectory).IsEqualTo(defaultDataDirectory));
+            store.ExAssert(x => x.Member(m => m.DataDirectory).IsEqualTo(defaultDataDirectory));
         }
     }
 }

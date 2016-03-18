@@ -21,7 +21,7 @@
         <ListBox Grid.Column="0" ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding Path}"></Label>
+                    <Label Content="{Binding Path}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -32,15 +32,15 @@
                 <ColumnDefinition Width="5*"/>
            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0">Name: </Label>
             <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
             <ItemsControl Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Value}"></Label>
+                        <Label Content="{Binding Value}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -52,3 +52,18 @@
         <WebBrowser Grid.Column="3" extensions:WebBrowserExtension.BindableSource="{Binding Path=Selected.Path}"/>
     </Grid>
 </UserControl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

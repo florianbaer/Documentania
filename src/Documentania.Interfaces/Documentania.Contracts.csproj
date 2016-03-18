@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="INavigationExecution.cs" />
-    <Compile Include="IDocumentaniaLogger.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="NavigationExecutionBase.cs" />

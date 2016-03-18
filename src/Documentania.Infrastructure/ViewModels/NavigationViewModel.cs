@@ -1,28 +1,34 @@
-﻿namespace Documentania.Infrastructure.ViewModels
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NavigationViewModel.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'NavigationViewModel.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Documentania.Infrastructure.ViewModels
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
+    using Documentania.Contracts;
     using Documentania.Infrastructure.Configuration;
     using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;
-    using Documentania.Contracts;
 
-    using Microsoft.Practices.ObjectBuilder2;
     using Microsoft.Practices.ServiceLocation;
-    using Microsoft.Practices.Unity;
 
-    using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Regions;
 
     public class NavigationViewModel : BindableBase
     {
-        private readonly IServiceLocator serviceLocator;
-
         private readonly NavigationConfigurationService configurationService;
+
+        private readonly IServiceLocator serviceLocator;
 
         public NavigationViewModel(IServiceLocator locator)
         {
@@ -36,7 +42,9 @@
             {
                 ICollection<NavigationItemView> views = new List<NavigationItemView>();
 
-                foreach (NavigationElement navigationElement in this.configurationService.GetNavigationConfiguration().ToList())
+                foreach (
+                    NavigationElement navigationElement in
+                        this.configurationService.GetNavigationConfiguration().ToList())
                 {
                     Assembly asm = Assembly.Load(navigationElement.Assembly);
 

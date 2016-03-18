@@ -6,6 +6,7 @@
 // // The file 'NavigationElementCollection.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Documentania.Infrastructure.Configuration
 {
     using System;
@@ -18,6 +19,13 @@ namespace Documentania.Infrastructure.Configuration
     [ConfigurationCollection(typeof(NavigationElement), AddItemName = "NavigationElement")]
     public class NavigationElementCollection : ConfigurationElementCollection, IEnumerable<NavigationElement>
     {
+        public NavigationElement this[int index] => this.BaseGet(index) as NavigationElement;
+
+        public new IEnumerator<NavigationElement> GetEnumerator()
+        {
+            return (from i in Enumerable.Range(0, this.Count) select this[i]).GetEnumerator();
+        }
+
         protected override ConfigurationElement CreateNewElement()
         {
             return new NavigationElement();
@@ -30,19 +38,11 @@ namespace Documentania.Infrastructure.Configuration
 
             if (navigationElement == null)
             {
-                throw new InvalidCastException($"Passed element {element.GetType()} can not be casted to {typeof(NavigationElement)}.");
+                throw new InvalidCastException(
+                    $"Passed element {element.GetType()} can not be casted to {typeof(NavigationElement)}.");
             }
 
             return navigationElement.Type;
-        }
-
-        public NavigationElement this[int index] => this.BaseGet(index) as NavigationElement;
-
-        public new IEnumerator<NavigationElement> GetEnumerator()
-        {
-            return ( from i in Enumerable.Range( 0, this.Count )
-                     select this[i] )
-                    .GetEnumerator();
         }
     }
 }

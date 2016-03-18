@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NavigationConfigurationService.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'NavigationConfigurationService.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace Documentania.Infrastructure.Services
 {
@@ -14,7 +17,9 @@ namespace Documentania.Infrastructure.Services
     {
         public NavigationElementCollection GetNavigationConfiguration()
         {
-            return ((NavigationViewConfigurationSection)ConfigurationManager.GetSection("NavigationViewConfigurationSection")).NavigationElements;
+            return
+                ((NavigationViewConfigurationSection)
+                 ConfigurationManager.GetSection("NavigationViewConfigurationSection")).NavigationElements;
         }
     }
 }

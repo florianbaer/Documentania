@@ -12,8 +12,10 @@ namespace DataAccess.RavenDB
     using Documentania.Contracts;
 
     using log4net;
+
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
+
     using Prism.Modularity;
 
     using Raven.Client;

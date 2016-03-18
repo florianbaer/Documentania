@@ -9,15 +9,12 @@
 
 namespace Documentania
 {
-    using System;
-    using System.Configuration;
     using System.Windows;
 
-    using Documentania.Infrastructure.Configuration;
+    using Documentania.Contracts;
     using Documentania.Infrastructure.Logger;
     using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;
-    using Documentania.Contracts;
 
     using log4net;
 
@@ -28,7 +25,7 @@ namespace Documentania
     using Prism.Mvvm;
     using Prism.Regions;
     using Prism.Unity;
-    
+
     /// <summary>
     ///     The Bootstrapper of Documentania which is as prism implemented.
     /// </summary>
@@ -63,7 +60,7 @@ namespace Documentania
             this.Container.RegisterType<object, NavigationView>(typeof(NavigationView).ToString());
             this.Container.RegisterType<NavigationConfigurationService>();
         }
-        
+
         protected override IModuleCatalog CreateModuleCatalog()
         {
             return new ConfigurationModuleCatalog();
@@ -77,17 +74,16 @@ namespace Documentania
 
         protected override void InitializeShell()
         {
-
             ViewModelLocationProvider.SetDefaultViewModelFactory(type => this.Container.Resolve(type));
 
             var regionManager = this.Container.Resolve<IRegionManager>();
-            
+
             regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
 
             if (Application.Current == null)
             {
-                new System.Windows.Application();
+                new Application();
             }
 
             Application.Current.MainWindow = (Shell)this.Shell;

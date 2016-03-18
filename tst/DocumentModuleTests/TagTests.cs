@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="TagTests.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'TagTests.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace DocumentModule.Tests
 {
@@ -25,13 +28,8 @@ namespace DocumentModule.Tests
         {
             Tag tagToAssert = new Tag { Id = "Tag", Value = "Tag" };
 
-
-
             tagToAssert.ExAssert(
-                x => x.Member(m => m.Id)
-                .IsEqualTo(tagToAssert.Id)
-                .Member(m => m.Value)
-                .IsEqualTo(tagToAssert.Value));
+                x => x.Member(m => m.Id).IsEqualTo(tagToAssert.Id).Member(m => m.Value).IsEqualTo(tagToAssert.Value));
         }
     }
 }

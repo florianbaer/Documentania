@@ -6,6 +6,7 @@
 // // The file 'INavigationExecution.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Documentania.Contracts
 {
     using Prism.Regions;

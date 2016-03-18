@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="AllDocumentsViewModel.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'AllDocumentsViewModel.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace Modules.Document.ViewModels
 {
-    using Documentania.Contracts;
+    using System.Collections.Generic;
 
     using Microsoft.Practices.ServiceLocation;
 
@@ -41,7 +44,6 @@ namespace Modules.Document.ViewModels
                 this.SetProperty(ref this.selected, value);
             }
         }
-       
 
         public ICollection<Document> Documents
         {

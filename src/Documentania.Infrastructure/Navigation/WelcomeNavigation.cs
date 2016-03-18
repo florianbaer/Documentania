@@ -6,6 +6,7 @@
 // // The file 'WelcomeNavigation.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
+
 namespace Documentania.Infrastructure.Navigation
 {
     using Documentania.Contracts;

@@ -22,6 +22,17 @@
     <AgentRule name="LocalMachineDefaultRole">
       <DataCollectors>
         <DataCollector uri="datacollector://microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="Code Coverage (Visual Studio 2010)">
+          <Configuration>
+            <CodeCoverage xmlns="">
+              <Regular>
+                <CodeCoverageItem binaryFile="src\DataAccess.RavenDB\bin\Debug\DataAccess.RavenDB.dll" pdbFile="src\DataAccess.RavenDB\bin\Debug\DataAccess.RavenDB.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="src\UserInterface\bin\Debug\Documentania.exe" pdbFile="src\UserInterface\bin\Debug\Documentania.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="src\Documentania.Interfaces\bin\Debug\Documentania.Contracts.dll" pdbFile="src\Documentania.Interfaces\bin\Debug\Documentania.Contracts.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="src\Documentania.Infrastructure\bin\Debug\Documentania.Infrastructure.dll" pdbFile="src\Documentania.Infrastructure\bin\Debug\Documentania.Infrastructure.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="src\Modules.Document\bin\Debug\Modules.Document.dll" pdbFile="src\Modules.Document\bin\Debug\Modules.Document.pdb" instrumentInPlace="true" />
+              </Regular>
+            </CodeCoverage>
+          </Configuration>
         </DataCollector>
       </DataCollectors>
     </AgentRule>

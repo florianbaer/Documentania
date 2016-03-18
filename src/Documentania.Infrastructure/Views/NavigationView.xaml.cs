@@ -1,4 +1,13 @@
-﻿namespace Documentania.Infrastructure.Views
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NavigationView.xaml.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'NavigationView.xaml.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Documentania.Infrastructure.Views
 {
     using System.Windows.Controls;
 

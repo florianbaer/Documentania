@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Extensions.cs" company="BaerDev">
+// // Copyright (c) BaerDev. All rights reserved.
+// // </copyright>
+// // <summary>
+// // The file 'Extensions.cs'.
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
 
 namespace DataAccess.RavenDB.Extension
 {
+    using System.Linq;
+
     public static class Extensions
     {
         /// <summary>
