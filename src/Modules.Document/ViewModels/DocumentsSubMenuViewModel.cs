@@ -16,18 +16,23 @@ namespace Modules.Document.ViewModels
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Win32;
 
+    using Modules.Document.Event;
     using Modules.Document.Views;
 
     using Prism.Commands;
+    using Prism.Events;
     using Prism.Mvvm;
 
     public class DocumentsSubMenuViewModel : BindableBase
     {
         private readonly IServiceLocator locator;
 
-        public DocumentsSubMenuViewModel(IServiceLocator locator)
+        private readonly IEventAggregator eventAggregator;
+
+        public DocumentsSubMenuViewModel(IServiceLocator locator, IEventAggregator eventAggregator)
         {
             this.locator = locator;
+            this.eventAggregator = eventAggregator;
         }
 
         public DelegateCommand SaveDelegateCommand
@@ -37,18 +42,6 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(
                     () =>
                         {
-                            //OpenFileDialog fileDialog = new OpenFileDialog();
-                            //fileDialog.ShowDialog();
-                            //using (IDocumentService documentService = this.locator.GetInstance<IDocumentService>())
-                            //{
-                            //    documentService.AddDocument(
-                            //        new Document()
-                            //            {
-                            //                Path = fileDialog.FileName,
-                            //                DateReceived = DateTime.Now,
-                            //                Imported = DateTime.Now
-                            //            });
-                            //}
                             Window window = new Window() { Title = "New Document", Content = new NewDocumentView() };
                             window.ShowDialog();
                         });
@@ -62,24 +55,28 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(
                     () =>
                         {
+                            Document document;
                             OpenFileDialog fileDialog = new OpenFileDialog();
                             fileDialog.ShowDialog();
                             using (IDocumentService documentService = this.locator.GetInstance<IDocumentService>())
                             {
-                                documentService.AddDocument(
-                                    new Document()
-                                        {
-                                            Path = fileDialog.FileName,
-                                            DateReceived = DateTime.Now,
-                                            Imported = DateTime.Now,
-                                            Tags =
-                                                new List<Tag>()
-                                                    {
-                                                        new Tag() { Value = "Test" },
-                                                        new Tag() { Value = "Test2" }
-                                                    }
-                                        });
+                                document = new Document()
+                                               {
+                                                   Path = fileDialog.FileName,
+                                                   DateReceived = DateTime.Now,
+                                                   Imported = DateTime.Now,
+                                                   Tags =
+                                                       new List<Tag>()
+                                                           {
+                                                               new Tag() { Value = "Test" },
+                                                               new Tag() { Value = "Test2" }
+                                                           }
+                                               };
+                                documentService.AddDocument(document);
+
                             }
+                            this.eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Publish(new DocumentsCollectionUpdateEvent());
+                            this.eventAggregator.GetEvent<PubSubEvent<AddDocumentEvent>>().Publish(new AddDocumentEvent(document));
                         });
             }
         }

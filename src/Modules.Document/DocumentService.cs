@@ -10,6 +10,7 @@
 namespace Modules.Document
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using Documentania.Contracts;
 
@@ -44,12 +45,12 @@ namespace Modules.Document
 
         public ICollection<Document> SearchByTag(Tag tag)
         {
-            throw new System.NotImplementedException();
+            return this.repository.GetAll<Document>().Where(document => document.Tags.Any(x => x.Value == tag.Value)).ToList();
         }
 
         public ICollection<Document> SearchByName(string name)
         {
-            throw new System.NotImplementedException();
+            return this.repository.GetAll<Document>().Where(x => x.Name == name).ToList();
         }
 
         public void Dispose()

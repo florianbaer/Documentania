@@ -9,10 +9,14 @@
 
 namespace Modules.Document.ViewModels
 {
+    using System;
     using System.Collections.Generic;
 
     using Microsoft.Practices.ServiceLocation;
 
+    using Modules.Document.Event;
+
+    using Prism.Events;
     using Prism.Mvvm;
     using Prism.Regions;
 
@@ -20,16 +24,34 @@ namespace Modules.Document.ViewModels
     {
         private readonly IServiceLocator service;
 
+        private readonly IEventAggregator eventAggregator;
+
         private ICollection<Document> documents = new List<Document>();
 
         private Document selected;
 
-        public AllDocumentsViewModel(IServiceLocator service)
+        public AllDocumentsViewModel(IServiceLocator service, IEventAggregator eventAggregator)
         {
             this.service = service;
-            using (var store = this.service.GetInstance<IDocumentService>())
+            this.eventAggregator = eventAggregator;
+            eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
+            eventAggregator.GetEvent<PubSubEvent<AddDocumentEvent>>().Subscribe(localUpdate);
+            using (var documentService = this.service.GetInstance<IDocumentService>())
             {
-                this.Documents = store.GetAll();
+                this.Documents = documentService.GetAll();
+            }
+        }
+
+        private void localUpdate(AddDocumentEvent addDocumentEvent)
+        {
+            this.Documents.Add(addDocumentEvent.Document);
+        }
+
+        private void UpdateCollection(DocumentsCollectionUpdateEvent obj)
+        {
+            using (var documentService = this.service.GetInstance<IDocumentService>())
+            {
+                this.Documents = documentService.GetAll();
             }
         }
 
@@ -41,7 +63,8 @@ namespace Modules.Document.ViewModels
             }
             set
             {
-                this.SetProperty(ref this.selected, value);
+                this.selected = value;
+                this.OnPropertyChanged();
             }
         }
 
@@ -53,15 +76,16 @@ namespace Modules.Document.ViewModels
             }
             set
             {
-                this.SetProperty(ref this.documents, value);
+                this.documents = value;
+                this.OnPropertyChanged();
             }
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            using (var store = this.service.GetInstance<IDocumentService>())
+            using (var documentService = this.service.GetInstance<IDocumentService>())
             {
-                this.Documents = store.GetAll();
+                this.Documents = documentService.GetAll();
             }
         }
 
