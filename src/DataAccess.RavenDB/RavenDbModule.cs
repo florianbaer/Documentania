@@ -25,12 +25,12 @@ namespace DataAccess.RavenDB
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RavenDbModule));
 
-        private IUnityContainer container = ServiceLocator.Current.GetInstance<IUnityContainer>();
+        private readonly IUnityContainer container = ServiceLocator.Current.GetInstance<IUnityContainer>();
 
         public void Initialize()
         {
             Log.Debug("Initialize RaveDbModule");
-            this.container.RegisterType<IDocumentStore, DocumentaniaDocumentStore>();
+            this.container.RegisterType(typeof(IDocumentStore), typeof(DocumentaniaDocumentStore));
             this.container.RegisterType(typeof(IRepository), typeof(RavenDbRepository), new TransientLifetimeManager());
         }
     }
