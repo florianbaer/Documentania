@@ -14,6 +14,7 @@ namespace DocumentModule.Tests
     using System.Linq.Expressions;
 
     using Documentania.Contracts;
+    using Documentania.Infrastructure.Models;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

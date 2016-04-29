@@ -13,6 +13,8 @@ namespace Modules.Document.ViewModels
     using System.Collections.Generic;
     using System.Windows;
 
+    using Documentania.Infrastructure.Models;
+
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Win32;
 

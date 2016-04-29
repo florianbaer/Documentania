@@ -9,6 +9,8 @@
 
 namespace DocumentModule.Tests
 {
+    using Documentania.Infrastructure.Models;
+
     using ExAs;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;

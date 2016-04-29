@@ -12,20 +12,20 @@ namespace Modules.Document
     using System;
     using System.Collections.Generic;
 
-    using Documentania.Infrastructure.Models;
+    using Documentania.Contracts;
 
-    public interface IDocumentService : IDisposable
+    public interface IStorableService : IDisposable
     {
-        void AddDocument(Document document);
+        void AddDocument(IStorable document);
 
-        Document GetDocumentById(string id);
+        IStorable GetDocumentById(string id);
 
-        Document GetDocumentByName(string name);
+        IStorable GetDocumentByName(string name);
 
-        ICollection<Document> GetAll();
+        ICollection<IStorable> GetAll();
 
-        ICollection<Document> SearchByTag(Tag tag);
+        ICollection<IStorable> SearchByTag(IStorable tag);
 
-        ICollection<Document> SearchByName(string name);
+        ICollection<IStorable> SearchByName(string name);
     }
 }

@@ -7,7 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Modules.Document
+namespace Documentania.Infrastructure.Models
 {
     using System;
     using System.Collections.Generic;

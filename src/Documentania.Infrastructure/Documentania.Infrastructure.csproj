@@ -81,10 +81,13 @@
     <Compile Include="Configuration\NavigationElement.cs" />
     <Compile Include="Configuration\NavigationElementCollection.cs" />
     <Compile Include="Configuration\NavigationViewConfigurationSection.cs" />
+    <Compile Include="Interfaces\IStorableService.cs" />
     <Compile Include="Interfaces\INavigationExecution.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStorable.cs" />
     <Compile Include="Logger\DocumentaniaLogger.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="NavigationExecutionBase.cs" />
     <Compile Include="Navigation\WelcomeNavigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

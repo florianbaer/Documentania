@@ -12,6 +12,8 @@ namespace DocumentModule.Tests
     using System;
     using System.Collections.Generic;
 
+    using Documentania.Infrastructure.Models;
+
     using ExAs;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;

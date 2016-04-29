@@ -12,6 +12,8 @@ namespace Modules.Document.ViewModels
     using System;
     using System.Collections.Generic;
 
+    using Documentania.Infrastructure.Models;
+
     using Microsoft.Practices.ServiceLocation;
 
     using Modules.Document.Event;

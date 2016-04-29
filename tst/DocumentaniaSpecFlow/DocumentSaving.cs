@@ -13,6 +13,7 @@ namespace DocumentaniaSpecFlow.Tests
     using System.Collections.Generic;
 
     using Documentania.Contracts;
+    using Documentania.Infrastructure.Models;
 
     using Modules.Document;
 
