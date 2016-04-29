@@ -103,12 +103,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Documentania.Interfaces\Documentania.Contracts.csproj">
-      <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
-      <Name>Documentania.Contracts</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +118,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
+      <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
+      <Name>Documentania.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

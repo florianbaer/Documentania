@@ -77,10 +77,6 @@
       <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
       <Name>Documentania.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Documentania.Interfaces\Documentania.Contracts.csproj">
-      <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
-      <Name>Documentania.Contracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\UserInterface\Documentania.csproj">
       <Project>{8F216F98-1855-497D-AABA-59859538CFEF}</Project>
       <Name>Documentania</Name>
