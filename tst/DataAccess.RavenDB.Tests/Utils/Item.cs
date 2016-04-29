@@ -9,7 +9,7 @@
 
 namespace DataAccess.RavenDB.Tests.Utils
 {
-    using Documentania.Contracts;
+    using Documentania.Infrastructure.Interfaces;
 
     public class Item : IStorable
     {

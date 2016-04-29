@@ -7,8 +7,10 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Documentania.Contracts
+namespace Documentania.Infrastructure
 {
+    using Documentania.Infrastructure.Interfaces;
+
     using Prism.Regions;
 
     public abstract class NavigationExecutionBase : INavigationExecution

@@ -9,7 +9,7 @@
 
 namespace Documentania.Infrastructure.Models
 {
-    using Documentania.Contracts;
+    using Documentania.Infrastructure.Interfaces;
 
     public class Tag : IStorable
     {

@@ -11,7 +11,7 @@ namespace Documentania
 {
     using System.Windows;
 
-    using Documentania.Contracts;
+    using Documentania.Infrastructure;
     using Documentania.Infrastructure.Logger;
     using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;

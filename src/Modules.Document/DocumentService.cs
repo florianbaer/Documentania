@@ -12,7 +12,7 @@ namespace Modules.Document
     using System.Collections.Generic;
     using System.Linq;
 
-    using Documentania.Contracts;
+    using Documentania.Infrastructure.Interfaces;
     using Documentania.Infrastructure.Models;
 
     public class DocumentService : IDocumentService

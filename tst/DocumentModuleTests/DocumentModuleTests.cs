@@ -9,7 +9,7 @@
 
 namespace DocumentModule.Tests
 {
-    using Documentania.Contracts;
+    using Documentania.Infrastructure;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;

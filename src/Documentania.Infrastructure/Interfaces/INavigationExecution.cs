@@ -7,7 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Documentania.Contracts
+namespace Documentania.Infrastructure.Interfaces
 {
     using Prism.Regions;
 

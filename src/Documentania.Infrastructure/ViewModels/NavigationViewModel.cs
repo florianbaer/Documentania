@@ -14,8 +14,8 @@ namespace Documentania.Infrastructure.ViewModels
     using System.Linq;
     using System.Reflection;
 
-    using Documentania.Contracts;
     using Documentania.Infrastructure.Configuration;
+    using Documentania.Infrastructure.Interfaces;
     using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;
 

@@ -11,7 +11,7 @@ namespace Documentania.Infrastructure.ViewModels
 {
     using System;
 
-    using Documentania.Contracts;
+    using Documentania.Infrastructure.Interfaces;
 
     using Prism.Commands;
     using Prism.Regions;

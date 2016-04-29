@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:regions="http://prismlibrary.com/"
-        xmlns:contracts="clr-namespace:Documentania.Contracts;assembly=Documentania.Infrastructure"
+        xmlns:contracts="clr-namespace:Documentania.Infrastructure;assembly=Documentania.Infrastructure"
         mc:Ignorable="d"
         Title="Documentania" MinHeight="700" MinWidth="1400" Height="700" Width="1400">
     <Grid>

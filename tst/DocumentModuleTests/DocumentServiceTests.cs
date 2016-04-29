@@ -13,7 +13,7 @@ namespace DocumentModule.Tests
     using System.Collections.Generic;
     using System.Linq.Expressions;
 
-    using Documentania.Contracts;
+    using Documentania.Infrastructure.Interfaces;
     using Documentania.Infrastructure.Models;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,6 +21,8 @@ namespace DocumentModule.Tests
     using Modules.Document;
 
     using Moq;
+
+    using IDocumentService = Modules.Document.IDocumentService;
 
     [TestClass]
     public class DocumentServiceTests

@@ -9,7 +9,7 @@
 
 namespace Modules.Document.Navigation
 {
-    using Documentania.Contracts;
+    using Documentania.Infrastructure;
 
     using Modules.Document.Views;
 

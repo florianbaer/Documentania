@@ -81,7 +81,7 @@
     <Compile Include="Configuration\NavigationElement.cs" />
     <Compile Include="Configuration\NavigationElementCollection.cs" />
     <Compile Include="Configuration\NavigationViewConfigurationSection.cs" />
-    <Compile Include="Interfaces\IStorableService.cs" />
+    <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\INavigationExecution.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStorable.cs" />

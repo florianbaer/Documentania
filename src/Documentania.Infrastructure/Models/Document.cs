@@ -12,7 +12,7 @@ namespace Documentania.Infrastructure.Models
     using System;
     using System.Collections.Generic;
 
-    using Documentania.Contracts;
+    using Documentania.Infrastructure.Interfaces;
 
     public class Document : IStorable
     {

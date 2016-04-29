@@ -9,7 +9,6 @@
 
 namespace Documentania.Infrastructure.Navigation
 {
-    using Documentania.Contracts;
     using Documentania.Infrastructure.Views;
 
     public class WelcomeNavigation : NavigationExecutionBase
