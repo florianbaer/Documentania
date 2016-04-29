@@ -13,7 +13,6 @@ namespace Documentania
 
     using Documentania.Infrastructure;
     using Documentania.Infrastructure.Logger;
-    using Documentania.Infrastructure.Services;
     using Documentania.Infrastructure.Views;
 
     using log4net;
@@ -58,7 +57,6 @@ namespace Documentania
 
             this.Container.RegisterType<object, WelcomeView>(typeof(WelcomeView).ToString());
             this.Container.RegisterType<object, NavigationView>(typeof(NavigationView).ToString());
-            this.Container.RegisterType<NavigationConfigurationService>();
         }
 
         protected override IModuleCatalog CreateModuleCatalog()

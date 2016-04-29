@@ -84,8 +84,10 @@
     <Compile Include="Event\AddDocumentEvent.cs" />
     <Compile Include="Event\DocumentsCollectionUpdateEvent.cs" />
     <Compile Include="Extensions\WebBrowserExtension.cs" />
-    <Compile Include="IDocumentService.cs" />
-    <Compile Include="Navigation\AllDocumentsNavigation.cs" />
+    <Compile Include="Navigation\ViewModels\DocumentsNavigationViewModel.cs" />
+    <Compile Include="Navigation\Views\DocumentsNavigationView.xaml.cs">
+      <DependentUpon>DocumentsNavigationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AllDocumentsViewModel.cs" />
     <Compile Include="ViewModels\DocumentsSubMenuViewModel.cs" />
@@ -104,6 +106,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Navigation\Views\DocumentsNavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AllDocumentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

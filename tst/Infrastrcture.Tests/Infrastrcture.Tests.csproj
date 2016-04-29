@@ -65,11 +65,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="NavigationExecuteBaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NavigationConfigurationServiceTest.cs" />
-    <Compile Include="NavigationElementTests.cs" />
-    <Compile Include="NavigationElementCollectionTests.cs" />
     <Compile Include="LoggerTests.cs" />
   </ItemGroup>
   <ItemGroup>

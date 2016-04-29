@@ -10,17 +10,21 @@
 namespace Modules.Document
 {
     using Documentania.Infrastructure;
+    using Documentania.Infrastructure.Interfaces;
 
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
+    using Modules.Document.Navigation;
     using Modules.Document.ViewModels;
     using Modules.Document.Views;
 
     using Prism.Modularity;
     using Prism.Regions;
+
+    using DocumentsNavigationView = Modules.Document.Navigation.Views.DocumentsNavigationView;
 
     [Module(ModuleName = "DocumentModule")]
     public class DocumentModule : IModule
@@ -50,6 +54,7 @@ namespace Modules.Document
 
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
+            this.regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(DocumentsNavigationView));
             this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));
         }
     }

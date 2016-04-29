@@ -78,7 +78,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagTests.cs" />
     <Compile Include="DocumentServiceTests.cs" />
-    <Compile Include="AllDocumentsNavigationTests.cs" />
     <Compile Include="NewDocumentViewModelTests.cs" />
     <Compile Include="WebBrowserExtensionTests.cs" />
   </ItemGroup>

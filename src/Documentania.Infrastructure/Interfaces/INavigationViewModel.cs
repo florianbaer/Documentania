@@ -1,22 +1,19 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="INavigationExecution.cs" company="BaerDev">
+// // <copyright file="INavigationViewModel.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'INavigationExecution.cs'.
+// // The file 'INavigationViewModel.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-
 namespace Documentania.Infrastructure.Interfaces
 {
-    using Prism.Regions;
+    using Prism.Commands;
 
-    public interface INavigationExecution
+    public interface INavigationViewModel
     {
+        DelegateCommand NavigateCommand { get; }
+
         string Title { get; }
-
-        void NavigateTo();
-
-        void SetRegionManager(IRegionManager regionManager);
     }
 }

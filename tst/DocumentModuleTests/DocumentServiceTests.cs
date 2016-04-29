@@ -22,7 +22,7 @@ namespace DocumentModule.Tests
 
     using Moq;
 
-    using IDocumentService = Modules.Document.IDocumentService;
+    using IDocumentService = Documentania.Infrastructure.Interfaces.IDocumentService;
 
     [TestClass]
     public class DocumentServiceTests
