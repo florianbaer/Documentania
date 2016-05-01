@@ -55,7 +55,7 @@ namespace Documentania.SplashScreen.ViewModels
                 return;
             }
 
-            Status += string.Concat(Environment.NewLine, message, "...");
+            Status = string.Concat(message, "...");
         }
 
         #endregion

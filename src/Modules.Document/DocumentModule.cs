@@ -46,15 +46,13 @@ namespace Modules.Document
 
         public void Initialize()
         {
-            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Document module" });
+            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Initialize Document module" });
 
             Log.Info("Initialize DocumentModule");
 
             this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
 
             this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
-
-            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Registering views" });
 
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));

@@ -18,6 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -27,7 +28,7 @@
         </Grid.ColumnDefinitions>
 
         <Border Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="2"
-            Background="Gray" CornerRadius="5" Margin="5">
+            Background="RoyalBlue" CornerRadius="5" Margin="5">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.7" ShadowDepth="4"/>
             </Border.Effect>
@@ -40,10 +41,12 @@
             </TextBlock.Effect>
         </TextBlock>
 
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Status}">
-            <TextBlock.Effect>
+        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="0, 10, 0, 10" Margin="5,0,5,5" CornerRadius="0,0,5,5" BorderBrush="SkyBlue">
+            <TextBox FontSize="30" Background="White" Foreground="RoyalBlue" Text="{Binding Status}" Padding="10,10,0,0">
+            <TextBox.Effect>
                 <DropShadowEffect ShadowDepth="1" Color="#99ffffff"/>
-            </TextBlock.Effect>
-        </TextBlock>
+            </TextBox.Effect>
+            </TextBox>
+        </Border>
     </Grid>
 </Window>
