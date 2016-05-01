@@ -10,12 +10,12 @@
 namespace DataAccess.RavenDB
 {
     using Documentania.Infrastructure.Interfaces;
-
+    using Documentania.SplashScreen.Events;
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
-
+    using Prism.Events;
     using Prism.Modularity;
 
     using Raven.Client;
@@ -30,6 +30,7 @@ namespace DataAccess.RavenDB
         public void Initialize()
         {
             Log.Debug("Initialize RaveDbModule");
+            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "RavenDb module" });
             this.container.RegisterType(typeof(IDocumentStore), typeof(DocumentaniaDocumentStore));
             this.container.RegisterType(typeof(IRepository), typeof(RavenDbRepository), new TransientLifetimeManager());
         }

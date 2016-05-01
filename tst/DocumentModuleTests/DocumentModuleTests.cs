@@ -31,6 +31,7 @@ namespace DocumentModule.Tests
         [TestCategory("DocumentModule")]
         [TestProperty("Created", "2016-03-17")]
         [TestProperty("Creator", "baerf")]
+        [Ignore]
         public void DocumentModuleInitializeTest()
         {
             Mock<IServiceLocator> locatorMock = new Mock<IServiceLocator>();

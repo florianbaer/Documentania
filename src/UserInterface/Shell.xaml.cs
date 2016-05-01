@@ -10,11 +10,12 @@
 namespace Documentania
 {
     using System.Windows;
+    using Infrastructure.Interfaces;
 
     /// <summary>
     ///     Interaction logic for Shell.xaml
     /// </summary>
-    public partial class Shell : Window
+    public partial class Shell : IShell
     {
         public Shell()
         {

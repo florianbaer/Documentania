@@ -81,6 +81,7 @@
     <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\INavigationViewModel.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IStorable.cs" />
     <Compile Include="Logger\DocumentaniaLogger.cs" />
     <Compile Include="Models\Document.cs" />

@@ -14,7 +14,7 @@ namespace Documentania
     using Documentania.Infrastructure;
     using Documentania.Infrastructure.Logger;
     using Documentania.Infrastructure.Views;
-
+    using Infrastructure.Interfaces;
     using log4net;
 
     using Microsoft.Practices.Unity;
@@ -53,6 +53,8 @@ namespace Documentania
 
         protected override void ConfigureContainer()
         {
+            Container.RegisterType<IShell, Shell>(new ContainerControlledLifetimeManager());
+
             base.ConfigureContainer();
 
             this.Container.RegisterType<object, WelcomeView>(typeof(WelcomeView).ToString());
@@ -66,8 +68,8 @@ namespace Documentania
 
         protected override DependencyObject CreateShell()
         {
-            Log.Debug("Create Shell");
-            return this.Container.Resolve<Shell>();
+            var shell = Container.Resolve<IShell>();
+            return shell as DependencyObject;
         }
 
         protected override void InitializeShell()
@@ -78,15 +80,6 @@ namespace Documentania
 
             regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
-
-            if (Application.Current == null)
-            {
-                new Application();
-            }
-
-            Application.Current.MainWindow = (Shell)this.Shell;
-
-            Application.Current.MainWindow.Show();
         }
 
         protected override void InitializeModules()

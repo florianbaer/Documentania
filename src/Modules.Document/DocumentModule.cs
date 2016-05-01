@@ -11,7 +11,7 @@ namespace Modules.Document
 {
     using Documentania.Infrastructure;
     using Documentania.Infrastructure.Interfaces;
-
+    using Documentania.SplashScreen.Events;
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;
@@ -20,7 +20,7 @@ namespace Modules.Document
     using Modules.Document.Navigation;
     using Modules.Document.ViewModels;
     using Modules.Document.Views;
-
+    using Prism.Events;
     using Prism.Modularity;
     using Prism.Regions;
 
@@ -46,11 +46,15 @@ namespace Modules.Document
 
         public void Initialize()
         {
+            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Document module" });
+
             Log.Info("Initialize DocumentModule");
 
             this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
 
             this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
+
+            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Registering views" });
 
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));

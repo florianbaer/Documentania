@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{619791DE-CDD7-4B46-9D53-3C8652D84CAD}"
 	ProjectSection(SolutionItems) = preProject
@@ -56,6 +56,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Filtering", "Filtering", "{701A919A-40B8-4475-95CB-4E903B1CD82E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{5CAC7818-DB42-4294-A061-116C86EB73E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Splash", "Splash", "{C412E38C-C2F5-45DD-99DA-2F2EA7A49590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentania.SplashScreen", "src\Documentania.SplashScreen\Documentania.SplashScreen.csproj", "{495173D3-8C0A-4502-AADE-A80EB36A43A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,6 +217,22 @@ Global
 		{EAA16A11-3081-4CE6-A628-3C55DBBBC15F}.Release|x64.Build.0 = Release|Any CPU
 		{EAA16A11-3081-4CE6-A628-3C55DBBBC15F}.Release|x86.ActiveCfg = Release|Any CPU
 		{EAA16A11-3081-4CE6-A628-3C55DBBBC15F}.Release|x86.Build.0 = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|ARM.Build.0 = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|x64.Build.0 = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Debug|x86.Build.0 = Debug|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|ARM.ActiveCfg = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|ARM.Build.0 = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|x64.ActiveCfg = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|x64.Build.0 = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|x86.ActiveCfg = Release|Any CPU
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -239,5 +259,10 @@ Global
 		{EAA16A11-3081-4CE6-A628-3C55DBBBC15F} = {B3C30B40-870B-42A5-BFFC-AE59FF68716B}
 		{701A919A-40B8-4475-95CB-4E903B1CD82E} = {A14B7E9D-150E-494B-A36F-B0FD11329A72}
 		{5CAC7818-DB42-4294-A061-116C86EB73E1} = {A14B7E9D-150E-494B-A36F-B0FD11329A72}
+		{C412E38C-C2F5-45DD-99DA-2F2EA7A49590} = {A14B7E9D-150E-494B-A36F-B0FD11329A72}
+		{495173D3-8C0A-4502-AADE-A80EB36A43A5} = {C412E38C-C2F5-45DD-99DA-2F2EA7A49590}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
