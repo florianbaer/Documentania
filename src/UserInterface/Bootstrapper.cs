@@ -78,8 +78,9 @@ namespace Documentania
 
             var regionManager = this.Container.Resolve<IRegionManager>();
 
-            regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
+            regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(SubNavigationWelcomeView));
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
+            regionManager.RequestNavigate(RegionNames.SubNavigationRegion, typeof(SubNavigationWelcomeView).ToString());
         }
 
         protected override void InitializeModules()
