@@ -35,12 +35,11 @@ namespace Modules.Document.Navigation.ViewModels
             }
         }
 
-        public DelegateCommand AllDocumentsCommand
-        {
-            get
-            {
-                return new DelegateCommand(() => this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AllDocumentsView).ToString()));
-            }
-        }
+        public DelegateCommand AllDocumentsCommand => new DelegateCommand(
+            () =>
+                {
+                    this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AllDocumentsView).ToString());
+                    this.regionManager.RequestNavigate(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView).ToString());
+                });
     }
 }
