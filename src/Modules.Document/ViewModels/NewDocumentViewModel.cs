@@ -17,6 +17,16 @@ namespace Modules.Document.ViewModels
 
     public class NewDocumentViewModel : BindableBase
     {
+        public NewDocumentViewModel()
+        {
+            
+        }
+
+        public NewDocumentViewModel(Document document)
+        {
+            this.Model = document;
+        }
+
         public Document Model { get; set; }
 
         public string Id => this.Model.Id;
@@ -25,6 +35,10 @@ namespace Modules.Document.ViewModels
         {
             get
             {
+                if (this.Model == null)
+                {
+                    this.Model = new Document();
+                }
                 return this.Model.Name;
             }
             set
@@ -34,12 +48,26 @@ namespace Modules.Document.ViewModels
             }
         }
 
-        public string Path => this.Model.Path;
+        public string Path
+        {
+            get
+            {
+                if (this.Model == null)
+                {
+                    this.Model = new Document();
+                }
+                return this.Model.Path;
+            }
+        }
 
         public DateTime DateReceived
         {
             get
             {
+                if (this.Model == null)
+                {
+                    this.Model = new Document();
+                }
                 return this.Model.DateReceived;
             }
             set

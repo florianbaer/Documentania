@@ -55,6 +55,7 @@ namespace Modules.Document
             this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
 
             // Views
+            this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(NewDocumentView));
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
             this.regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(DocumentsNavigationView));
             this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));
