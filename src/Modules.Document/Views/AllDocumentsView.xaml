@@ -21,7 +21,7 @@
         <ListBox Grid.Column="0" ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding Path}" />
+                    <Label Content="{Binding Name}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -37,7 +37,7 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0">Name: </Label>
             <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
-            <ItemsControl Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
+            <ItemsControl x:Name="TagsItemsControl" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Value}" />

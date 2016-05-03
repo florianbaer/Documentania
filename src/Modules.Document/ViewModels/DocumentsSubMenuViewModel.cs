@@ -49,42 +49,9 @@ namespace Modules.Document.ViewModels
             {
                 return new DelegateCommand(
                     () =>
-                        {
-                            this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(NewDocumentView).ToString());
-                        });
-            }
-        }
-
-        public DelegateCommand NewFileDialogCommand
-        {
-            get
-            {
-                return new DelegateCommand(
-                    () =>
-                        {
-                            Document document;
-                            OpenFileDialog fileDialog = new OpenFileDialog();
-                            fileDialog.ShowDialog();
-                            using (IDocumentService documentService = this.locator.GetInstance<IDocumentService>())
-                            {
-                                document = new Document()
-                                               {
-                                                   Path = fileDialog.FileName,
-                                                   DateReceived = DateTime.Now,
-                                                   Imported = DateTime.Now,
-                                                   Tags =
-                                                       new List<Tag>()
-                                                           {
-                                                               new Tag() { Value = "Test" },
-                                                               new Tag() { Value = "Test2" }
-                                                           }
-                                               };
-                                documentService.AddDocument(document);
-
-                            }
-                            this.eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Publish(new DocumentsCollectionUpdateEvent());
-                            this.eventAggregator.GetEvent<PubSubEvent<AddDocumentEvent>>().Publish(new AddDocumentEvent(document));
-                        });
+                    {
+                        this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(NewDocumentView).ToString());
+                    });
             }
         }
     }

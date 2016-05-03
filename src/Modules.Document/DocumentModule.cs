@@ -50,9 +50,7 @@ namespace Modules.Document
 
             Log.Info("Initialize DocumentModule");
 
-            this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
-
-            this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
+            this.container.RegisterType<IDocumentService, DocumentService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));
 
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(NewDocumentView));

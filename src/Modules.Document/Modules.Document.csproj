@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="DocumentService.cs" />
     <Compile Include="DocumentModule.cs" />
+    <Compile Include="DocumentServiceFactory.cs" />
     <Compile Include="Event\AddDocumentEvent.cs" />
     <Compile Include="Event\DocumentsCollectionUpdateEvent.cs" />
     <Compile Include="Extensions\WebBrowserExtension.cs" />

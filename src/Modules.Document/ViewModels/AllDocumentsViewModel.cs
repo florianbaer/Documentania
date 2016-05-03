@@ -11,7 +11,8 @@ namespace Modules.Document.ViewModels
 {
     using System;
     using System.Collections.Generic;
-
+    using System.Collections.ObjectModel;
+    using System.Configuration;
     using Documentania.Infrastructure.Interfaces;
     using Documentania.Infrastructure.Models;
 
@@ -25,24 +26,24 @@ namespace Modules.Document.ViewModels
 
     public class AllDocumentsViewModel : BindableBase, INavigationAware
     {
-        private readonly IServiceLocator service;
+        private readonly IDocumentService service;
 
         private readonly IEventAggregator eventAggregator;
 
         private ICollection<Document> documents = new List<Document>();
 
         private Document selected;
+        
+        public ObservableCollection<Tag>Tags { get; private set; }
 
-        public AllDocumentsViewModel(IServiceLocator service, IEventAggregator eventAggregator)
+        public AllDocumentsViewModel(IDocumentService service, IEventAggregator eventAggregator)
         {
             this.service = service;
             this.eventAggregator = eventAggregator;
             eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
-            eventAggregator.GetEvent<PubSubEvent<AddDocumentEvent>>().Subscribe(localUpdate);
-            using (var documentService = this.service.GetInstance<IDocumentService>())
-            {
-                this.Documents = documentService.GetAll();
-            }
+////            eventAggregator.GetEvent<PubSubEvent<AddDocumentEvent>>().Subscribe(localUpdate);
+            this.Documents = this.service.GetAll();
+            
         }
 
         private void localUpdate(AddDocumentEvent addDocumentEvent)
@@ -52,10 +53,7 @@ namespace Modules.Document.ViewModels
 
         private void UpdateCollection(DocumentsCollectionUpdateEvent obj)
         {
-            using (var documentService = this.service.GetInstance<IDocumentService>())
-            {
-                this.Documents = documentService.GetAll();
-            }
+            this.Documents = this.service.GetAll();
         }
 
         public Document Selected
@@ -67,6 +65,7 @@ namespace Modules.Document.ViewModels
             set
             {
                 this.selected = value;
+                Tags = new ObservableCollection<Tag>(this.Selected.Tags);
                 this.OnPropertyChanged();
             }
         }
@@ -86,10 +85,7 @@ namespace Modules.Document.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            using (var documentService = this.service.GetInstance<IDocumentService>())
-            {
-                this.Documents = documentService.GetAll();
-            }
+            this.Documents = this.service.GetAll();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
