@@ -11,6 +11,7 @@ namespace Modules.Document.ViewModels
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Windows.Forms;
     using Documentania.Infrastructure.Interfaces;
     using Documentania.Infrastructure.Models;
@@ -28,6 +29,8 @@ namespace Modules.Document.ViewModels
         private DocumentMode mode;
 
         private IDocumentService service;
+
+        private string tagValue;
 
         public DocumentViewModel(IDocumentService documentService)
         {
@@ -90,13 +93,41 @@ namespace Modules.Document.ViewModels
             }
         }
 
-        public ICollection<Tag> Tags => this.Model.Tags;
+        public string TagValue
+        {
+            get
+            {
+                return this.tagValue;
+            }
+            set
+            {
+                this.tagValue = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Tag> Tags => new ObservableCollection<Tag>(this.Model.Tags);
 
         public DelegateCommand SaveDocumentCommand
         {
             get
             {
                 return new DelegateCommand(SaveDocument, CanSaveDocument);
+            }
+        }
+
+        public DelegateCommand AddTagCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                    {
+                        // todo: cleanup what is really needed 
+                        this.Model.Tags.Add(new Tag() { Value = this.TagValue });
+                        this.Tags.Add(new Tag() { Value = this.TagValue });
+                        this.OnPropertyChanged(() => this.Tags);
+                        this.TagValue = string.Empty;
+                    });
             }
         }
 

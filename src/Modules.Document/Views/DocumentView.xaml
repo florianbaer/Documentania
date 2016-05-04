@@ -38,7 +38,12 @@
         <ItemsControl Grid.Column="0" Grid.Row="3">
             <Label >Tags:</Label>
         </ItemsControl>
-        <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Tags}" Focusable="False" >
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="0" ItemsSource="{Binding Tags}" Focusable="False" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
@@ -52,7 +57,13 @@
                     </UniformGrid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </ItemsControl>
+            <TextBox Grid.Row="1" Text="{Binding TagValue, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding AddTagCommand}" Key="Return" />
+                </TextBox.InputBindings>
+            </TextBox>
+        </Grid>
         <UniformGrid Grid.Column="1" Rows="1" Grid.Row="4">
             <Button Content="Save" Command="{Binding SaveDocumentCommand}"/>
             <Button Content="Discard"/>
