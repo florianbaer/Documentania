@@ -16,7 +16,7 @@ namespace Documentania.Infrastructure.Models
 
     public class Document : IStorable
     {
-        public virtual DateTime DateReceived { get; set; }
+        public virtual DateTime DateReceived { get; set; } = DateTime.Now;
 
         public virtual DateTime Imported { get; set; }
 

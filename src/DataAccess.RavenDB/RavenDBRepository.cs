@@ -43,13 +43,10 @@ namespace DataAccess.RavenDB
 
         public void Delete<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new()
         {
-            using (IDocumentSession session = store.OpenSession())
+            var items = this.All<T>().Where(expression);
+            foreach (T item in items)
             {
-                var items = this.All<T>().Where(expression);
-                foreach (T item in items)
-                {
-                    this.Delete(item);
-                }
+                this.Delete(item);
             }
         }
 
@@ -71,7 +68,7 @@ namespace DataAccess.RavenDB
 
         public IQueryable<T> All<T>() where T : class, IStorable, new()
         {
-            using (IDocumentSession session = store.OpenSession())
+            using (IDocumentSession session = this.store.OpenSession())
             {
                 return session.Load<T>().AsQueryable();
             }

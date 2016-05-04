@@ -24,7 +24,7 @@
         <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
         
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Date received:</Label>
-        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding DateReceived}" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+        <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate="{Binding DateReceived}" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         
         <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Path:</Label>
         <Grid  Grid.Column="1" Grid.Row="2">
@@ -38,7 +38,21 @@
         <ItemsControl Grid.Column="0" Grid.Row="3">
             <Label >Tags:</Label>
         </ItemsControl>
-        <UniformGrid Grid.Column="1" Grid.Row="3"></UniformGrid>
+        <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Tags}" Focusable="False" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <UniformGrid Rows="1">
+                        <Label Content="{Binding Value}" Margin="0"></Label>
+                        <Button Width="10" Height="10" Margin="5,0,10,0">x</Button>
+                    </UniformGrid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <UniformGrid Grid.Column="1" Rows="1" Grid.Row="4">
             <Button Content="Save" Command="{Binding SaveDocumentCommand}"/>
             <Button Content="Discard"/>

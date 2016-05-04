@@ -42,7 +42,6 @@ namespace Modules.Document.ViewModels
             this.service = service;
             this.eventAggregator = eventAggregator;
             eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
-////            eventAggregator.GetEvent<PubSubEvent<AddDocumentEvent>>().Subscribe(localUpdate);
             this.Documents = this.service.GetAll();
             
         }

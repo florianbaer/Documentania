@@ -10,6 +10,7 @@
 namespace Modules.Document.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows.Forms;
     using Documentania.Infrastructure.Interfaces;
     using Documentania.Infrastructure.Models;
@@ -67,10 +68,6 @@ namespace Modules.Document.ViewModels
         {
             get
             {
-                if (this.Model == null)
-                {
-                    this.Model = new Document();
-                }
                 return this.Model.Path;
             }
             set
@@ -84,10 +81,6 @@ namespace Modules.Document.ViewModels
         {
             get
             {
-                if (this.Model == null)
-                {
-                    this.Model = new Document();
-                }
                 return this.Model.DateReceived;
             }
             set
@@ -96,6 +89,8 @@ namespace Modules.Document.ViewModels
                 this.OnPropertyChanged();
             }
         }
+
+        public ICollection<Tag> Tags => this.Model.Tags;
 
         public DelegateCommand SaveDocumentCommand
         {
