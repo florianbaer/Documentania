@@ -29,6 +29,11 @@ namespace Modules.Document
             this.repository.Add(document);
         }
 
+        public void DeleteDocument(Document document)
+        {
+            this.repository.Delete(document);
+        }
+
         public Document GetDocumentById(string id)
         {
             return this.repository.Single<Document>(document => document.Id == id);

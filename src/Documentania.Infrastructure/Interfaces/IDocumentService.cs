@@ -18,6 +18,8 @@ namespace Documentania.Infrastructure.Interfaces
     {
         void AddDocument(Document document);
 
+        void DeleteDocument(Document document);
+
         Document GetDocumentById(string id);
 
         Document GetDocumentByName(string name);

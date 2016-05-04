@@ -20,6 +20,7 @@ namespace Modules.Document.ViewModels
 
     using Modules.Document.Event;
 
+    using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Regions;
@@ -65,7 +66,10 @@ namespace Modules.Document.ViewModels
             set
             {
                 this.selected = value;
-                Tags = new ObservableCollection<Tag>(this.Selected.Tags);
+                if (this.selected != null)
+                {
+                    Tags = new ObservableCollection<Tag>(this.Selected.Tags);
+                }
                 this.OnPropertyChanged();
             }
         }
@@ -96,6 +100,20 @@ namespace Modules.Document.ViewModels
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
             //
+        }
+
+        public DelegateCommand<Document> DeleteDocumentCommand
+        {
+            get
+            {
+                return new DelegateCommand<Document>(DeleteDocument);
+            }
+        }
+
+        private void DeleteDocument(Document document)
+        {
+            this.service.DeleteDocument(document);
+            this.UpdateCollection(null);
         }
     }
 }
