@@ -50,7 +50,7 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(
                     () =>
                     {
-                        this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(NewDocumentView).ToString());
+                        this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(DocumentView).ToString());
                     });
             }
         }

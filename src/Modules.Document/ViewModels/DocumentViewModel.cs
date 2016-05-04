@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="NewDocumentViewModel.cs" company="BaerDev">
+// // <copyright file="DocumentViewModel.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'NewDocumentViewModel.cs'.
+// // The file 'DocumentViewModel.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -16,20 +16,30 @@ namespace Modules.Document.ViewModels
     using Prism.Commands;
     using Prism.Mvvm;
 
-    public class NewDocumentViewModel : BindableBase
+    public enum DocumentMode
     {
+        Create,
+        Edit
+    }
+
+    public class DocumentViewModel : BindableBase
+    {
+        private DocumentMode mode;
+
         private IDocumentService service;
 
-        public NewDocumentViewModel(IDocumentService documentService)
+        public DocumentViewModel(IDocumentService documentService)
         {
             this.Model = new Document();
             this.service = documentService;
+            this.mode = DocumentMode.Create;
         }
 
-        public NewDocumentViewModel(Document document, IDocumentService documentService)
+        public DocumentViewModel(Document document, IDocumentService documentService)
         {
             this.service = documentService;
             this.Model = document;
+            this.mode = DocumentMode.Edit;
         }
 
         public Document Model { get; set; }
@@ -124,6 +134,16 @@ namespace Modules.Document.ViewModels
         private void SaveDocument()
         {
             this.service.AddDocument(this.Model);
+            this.CleanViewModel();
+        }
+
+        private void CleanViewModel()
+        {
+            this.Model = new Document();
+            this.OnPropertyChanged(() => this.DateReceived);
+            this.OnPropertyChanged(() => this.Id);
+            this.OnPropertyChanged(() => this.Name);
+            this.OnPropertyChanged(() => this.Path);
         }
     }
 }
