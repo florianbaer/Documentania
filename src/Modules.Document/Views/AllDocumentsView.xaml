@@ -13,10 +13,10 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="4"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <ListBox Grid.Column="0" ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
             <ListBox.ItemTemplate>
@@ -36,14 +36,14 @@
 
         <Grid Grid.Column="1" Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0">Name: </Label>
+            <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold">Name: </Label>
             <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
             <ItemsControl x:Name="TagsItemsControl" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
                 <ItemsControl.ItemTemplate>
