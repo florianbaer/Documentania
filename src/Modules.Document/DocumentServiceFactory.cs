@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Modules.Document
 {
     using Documentania.Infrastructure.Interfaces;
+    using Interfaces;
     using Microsoft.Practices.Unity;
 
     public static class DocumentServiceFactory

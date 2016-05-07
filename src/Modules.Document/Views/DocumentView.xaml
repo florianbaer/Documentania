@@ -52,8 +52,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <UniformGrid Rows="1">
-                        <Label Content="{Binding Value}" Margin="0"></Label>
-                        <Button Width="10" Height="10" Margin="5,0,10,0">x</Button>
+                        <Label Content="{Binding}" Margin="0"></Label>
+                            <Button Width="10" Height="10" Margin="5,0,10,0" Command="{Binding Path=DataContext.RemoveTagCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}">x</Button>
                     </UniformGrid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

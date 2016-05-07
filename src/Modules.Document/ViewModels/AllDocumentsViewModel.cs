@@ -34,7 +34,7 @@ namespace Modules.Document.ViewModels
 
         private Document selected;
         
-        public ObservableCollection<Tag>Tags { get; private set; }
+        public ObservableCollection<string>Tags { get; private set; }
 
         public AllDocumentsViewModel(IDocumentService service, IEventAggregator eventAggregator)
         {
@@ -66,7 +66,7 @@ namespace Modules.Document.ViewModels
                 this.selected = value;
                 if (this.selected != null)
                 {
-                    Tags = new ObservableCollection<Tag>(this.Selected.Tags);
+                    Tags = new ObservableCollection<string>(this.Selected.Tags);
                 }
                 this.OnPropertyChanged();
             }

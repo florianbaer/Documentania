@@ -4,11 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DocumentModule.Tests
 {
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.Infrastructure.Models;
 
     using ExAs;
 
     using Modules.Document;
+    using Modules.Document.Interfaces;
+    using Modules.Document.Models;
     using Modules.Document.ViewModels;
     using Moq;
 

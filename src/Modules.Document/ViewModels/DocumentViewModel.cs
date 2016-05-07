@@ -14,7 +14,8 @@ namespace Modules.Document.ViewModels
     using System.Collections.ObjectModel;
     using System.Windows.Forms;
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.Infrastructure.Models;
+    using Interfaces;
+    using Models;
     using Prism.Commands;
     using Prism.Mvvm;
 
@@ -106,7 +107,7 @@ namespace Modules.Document.ViewModels
             }
         }
 
-        public ObservableCollection<Tag> Tags => new ObservableCollection<Tag>(this.Model.Tags);
+        public ObservableCollection<string> Tags => new ObservableCollection<string>(this.Model.Tags);
 
         public DelegateCommand SaveDocumentCommand
         {
@@ -123,8 +124,8 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(() =>
                     {
                         // todo: cleanup what is really needed 
-                        this.Model.Tags.Add(new Tag() { Value = this.TagValue });
-                        this.Tags.Add(new Tag() { Value = this.TagValue });
+                        this.Model.Tags.Add(this.TagValue);
+                        this.Tags.Add(this.TagValue);
                         this.OnPropertyChanged(() => this.Tags);
                         this.TagValue = string.Empty;
                     });
@@ -138,6 +139,22 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(LoadDocument, CanLoadDocument);
             }
         }
+
+        public DelegateCommand<string> RemoveTagCommand
+        {
+            get
+            {
+                return new DelegateCommand<string>(RemoveTag);
+            }
+        }
+
+        private void RemoveTag(string tagToRemove)
+        {
+            this.Tags.Remove(tagToRemove);
+            this.Model.Tags.Remove(tagToRemove);
+            this.OnPropertyChanged(() => this.Tags);
+        }
+
 
         private bool CanLoadDocument()
         {
@@ -170,6 +187,7 @@ namespace Modules.Document.ViewModels
             this.OnPropertyChanged(() => this.Id);
             this.OnPropertyChanged(() => this.Name);
             this.OnPropertyChanged(() => this.Path);
+            this.OnPropertyChanged(() => this.Tags);
         }
     }
 }

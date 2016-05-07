@@ -83,7 +83,6 @@
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IStorable.cs" />
     <Compile Include="Logger\DocumentaniaLogger.cs" />
-    <Compile Include="Models\Document.cs" />
     <Compile Include="Navigation\ViewModels\HomeNavigationViewModel.cs" />
     <Compile Include="Navigation\Views\HomeNavigationView.xaml.cs">
       <DependentUpon>HomeNavigationView.xaml</DependentUpon>
