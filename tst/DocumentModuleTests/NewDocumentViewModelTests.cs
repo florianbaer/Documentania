@@ -3,11 +3,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DocumentModule.Tests
 {
+    using Documentania.Infrastructure.Interfaces;
+    using Documentania.Infrastructure.Models;
+
     using ExAs;
 
     using Modules.Document;
-    using Modules.Document.Models;
     using Modules.Document.ViewModels;
+    using Moq;
 
     [TestClass]
     public class NewDocumentViewModelTests
@@ -33,7 +36,7 @@ namespace DocumentModule.Tests
             };
 
             // act
-            NewDocumentViewModel documentViewModel = new NewDocumentViewModel { Model = document };
+            DocumentViewModel documentViewModel = new DocumentViewModel(new Mock<IDocumentService>().Object) { Model = document };
 
             // assert
             documentViewModel.ExAssert(x => x.Member(m => m.Model).IsEqualTo(document)
@@ -61,7 +64,7 @@ namespace DocumentModule.Tests
             };
 
             // act
-            NewDocumentViewModel documentViewModel = new NewDocumentViewModel { Model = document };
+            DocumentViewModel documentViewModel = new DocumentViewModel(new Mock<IDocumentService>().Object) { Model = document };
 
             documentViewModel.Name = NewDocumentName;
 

@@ -13,6 +13,7 @@ namespace Documentania
 
     using Documentania.Infrastructure;
     using Documentania.Infrastructure.Logger;
+    using Documentania.Infrastructure.Navigation.Views;
     using Documentania.Infrastructure.Views;
     using Infrastructure.Interfaces;
     using log4net;
@@ -78,6 +79,8 @@ namespace Documentania
 
             var regionManager = this.Container.Resolve<IRegionManager>();
 
+
+            regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(HomeNavigationView));
             regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(SubNavigationWelcomeView));
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
             regionManager.RequestNavigate(RegionNames.SubNavigationRegion, typeof(SubNavigationWelcomeView).ToString());

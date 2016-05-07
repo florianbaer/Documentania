@@ -51,11 +51,10 @@ namespace Modules.Document
 
             Log.Info("Initialize DocumentModule");
 
-            this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
-
-            this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
+            this.container.RegisterType<IDocumentService, DocumentService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));
 
             // Views
+            this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(DocumentView));
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
             this.regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(DocumentsNavigationView));
             this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));

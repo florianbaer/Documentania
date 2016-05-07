@@ -7,10 +7,15 @@
              xmlns:mvvm="http://prismlibrary.com/"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <UniformGrid Rows="1">
-        <Button Command="{Binding SaveDelegateCommand}">Add Document</Button>
-        <Button Command="{Binding NewFileDialogCommand}">Search for Tag</Button>
-        <Button Command="{Binding SaveDelegateCommand}">Search for Name</Button>
-    </UniformGrid>
+             d:DesignHeight="25" d:DesignWidth="300">
+    <Grid>
+        <Menu Height="20px">
+            <MenuItem Header="_Document">
+                <MenuItem Header="_Add Document" Command="{Binding AddDocumentCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Search">
+                <MenuItem Header="_Search for a Document"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
 </UserControl>

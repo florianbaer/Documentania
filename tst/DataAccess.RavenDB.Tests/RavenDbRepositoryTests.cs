@@ -44,9 +44,6 @@ namespace DataAccess.RavenDB.Tests
             repository.Dispose();
 
             this.documentStoreMock.Mock.Verify(x => x.Initialize(), Times.Once);
-            this.documentStoreMock.Mock.Verify(x => x.OpenSession(), Times.Once);
-            this.documentStoreMock.Mock.Verify(x => x.Dispose(), Times.Once);
-            this.documentStoreMock.DocumentSession.Mock.Verify(x => x.Dispose(), Times.Once);
         }
 
         [TestMethod]

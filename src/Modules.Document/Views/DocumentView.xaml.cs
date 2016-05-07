@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="NewDocumentView.xaml.cs" company="BaerDev">
+// // <copyright file="DocumentView.xaml.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'NewDocumentView.xaml.cs'.
+// // The file 'DocumentView.xaml.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,11 +12,11 @@ namespace Modules.Document.Views
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for NewDocumentView.xaml
+    /// Interaction logic for DocumentView.xaml
     /// </summary>
-    public partial class NewDocumentView : UserControl
+    public partial class DocumentView : UserControl
     {
-        public NewDocumentView()
+        public DocumentView()
         {
             this.InitializeComponent();
         }

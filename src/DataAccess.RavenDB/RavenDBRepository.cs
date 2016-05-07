@@ -27,20 +27,16 @@ namespace DataAccess.RavenDB
     {
         private readonly ILog log = LogManager.GetLogger(typeof(RavenDbRepository));
 
-        private readonly IDocumentSession session;
-
         private readonly IDocumentStore store;
 
         public RavenDbRepository(IDocumentStore store)
         {
             this.store = store;
             store.Initialize();
-            this.session = store.OpenSession();
         }
 
         public void Dispose()
         {
-            this.session.Dispose();
             this.store.Dispose();
             this.log.Debug("Disposed Ravendb repository.");
         }
@@ -56,9 +52,13 @@ namespace DataAccess.RavenDB
 
         public void Delete<T>(T item) where T : class, IStorable, new()
         {
-            this.session.Delete(item);
-            this.session.SaveChanges();
-            this.log.Debug($"Deleted {typeof(T)} : {item}");
+            using (IDocumentSession session = store.OpenSession())
+            {
+                var itemToDel = session.Load<T>(item.Id);
+                session.Delete(itemToDel);
+                session.SaveChanges();
+                this.log.Debug($"Deleted {typeof(T)} : {item}");
+            }
         }
 
         public T Single<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new()
@@ -68,7 +68,10 @@ namespace DataAccess.RavenDB
 
         public IQueryable<T> All<T>() where T : class, IStorable, new()
         {
-            return this.session.Load<T>().AsQueryable();
+            using (IDocumentSession session = this.store.OpenSession())
+            {
+                return session.Load<T>().AsQueryable();
+            }
         }
 
         public IQueryable<T> All<T>(int page, int pageSize) where T : class, IStorable, new()
@@ -78,9 +81,12 @@ namespace DataAccess.RavenDB
 
         public void Add<T>(T item) where T : class, IStorable
         {
-            this.session.Store(item);
-            this.session.SaveChanges();
-            this.log.Debug($"Added {typeof(T)} : {item}");
+            using (IDocumentSession session = store.OpenSession())
+            {
+                session.Store(item);
+                session.SaveChanges();
+                this.log.Debug($"Added {typeof(T)} : {item}");
+            }
         }
 
         public void Add<T>(IEnumerable<T> items) where T : class, IStorable
@@ -90,20 +96,23 @@ namespace DataAccess.RavenDB
 
         public IList<T> GetAll<T>()
         {
-            int start = 0;
-            IList<T> allItems = new List<T>();
-
-            var current = this.session.Query<T>().Take(1024).Skip(start).ToList();
-
-            while (current.Count > 0)
+            using (IDocumentSession session = store.OpenSession())
             {
-                start += current.Count;
-                allItems.AddRange(current);
+                int start = 0;
+                IList<T> allItems = new List<T>();
 
-                current = this.session.Query<T>().Take(1024).Skip(start).ToList();
+                var current = session.Query<T>().Take(1024).Skip(start).ToList();
+
+                while (current.Count > 0)
+                {
+                    start += current.Count;
+                    allItems.AddRange(current);
+
+                    current = session.Query<T>().Take(1024).Skip(start).ToList();
+                }
+
+                return allItems;
             }
-
-            return allItems;
         }
     }
 }
