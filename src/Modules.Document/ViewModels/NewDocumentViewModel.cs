@@ -10,9 +10,7 @@
 namespace Modules.Document.ViewModels
 {
     using System;
-
-    using Documentania.Infrastructure.Models;
-
+    using Models;
     using Prism.Mvvm;
 
     public class NewDocumentViewModel : BindableBase

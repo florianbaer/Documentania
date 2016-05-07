@@ -7,11 +7,10 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Documentania.Infrastructure.Models
+namespace Modules.Document.Models
 {
     using System;
     using System.Collections.Generic;
-
     using Documentania.Infrastructure.Interfaces;
 
     public class Document : IStorable
@@ -24,7 +23,7 @@ namespace Documentania.Infrastructure.Models
 
         public virtual string Path { get; set; }
 
-        public List<Tag> Tags { get; set; } = new List<Tag>();
+        public List<string> Tags { get; set; } = new List<string>();
 
         public virtual string Id { get; set; }
     }

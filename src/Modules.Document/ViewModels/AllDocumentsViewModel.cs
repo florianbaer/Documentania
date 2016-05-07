@@ -13,10 +13,9 @@ namespace Modules.Document.ViewModels
     using System.Collections.Generic;
 
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.Infrastructure.Models;
-
+    using Interfaces;
     using Microsoft.Practices.ServiceLocation;
-
+    using Models;
     using Modules.Document.Event;
 
     using Prism.Events;

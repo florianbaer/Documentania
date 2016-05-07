@@ -7,12 +7,11 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Documentania.Infrastructure.Interfaces
+namespace Modules.Document.Interfaces
 {
     using System;
     using System.Collections.Generic;
-
-    using Documentania.Infrastructure.Models;
+    using Models;
 
     public interface IDocumentService : IDisposable
     {
@@ -24,7 +23,7 @@ namespace Documentania.Infrastructure.Interfaces
 
         ICollection<Document> GetAll();
 
-        ICollection<Document> SearchByTag(Tag tag);
+        ICollection<Document> SearchByTag(string tag);
 
         ICollection<Document> SearchByName(string name);
     }

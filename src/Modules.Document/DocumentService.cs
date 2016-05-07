@@ -13,7 +13,8 @@ namespace Modules.Document
     using System.Linq;
 
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.Infrastructure.Models;
+    using Interfaces;
+    using Models;
 
     public class DocumentService : IDocumentService
     {
@@ -44,9 +45,9 @@ namespace Modules.Document
             return this.repository.GetAll<Document>();
         }
 
-        public ICollection<Document> SearchByTag(Tag tag)
+        public ICollection<Document> SearchByTag(string tag)
         {
-            return this.repository.GetAll<Document>().Where(document => document.Tags.Any(x => x.Value == tag.Value)).ToList();
+            return this.repository.GetAll<Document>().Where(document => document.Tags.Contains(tag)).ToList();
         }
 
         public ICollection<Document> SearchByName(string name)

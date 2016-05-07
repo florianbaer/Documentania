@@ -12,6 +12,7 @@ namespace Modules.Document
     using Documentania.Infrastructure;
     using Documentania.Infrastructure.Interfaces;
     using Documentania.SplashScreen.Events;
+    using Interfaces;
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;

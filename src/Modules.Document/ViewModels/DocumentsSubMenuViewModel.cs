@@ -14,11 +14,10 @@ namespace Modules.Document.ViewModels
     using System.Windows;
 
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.Infrastructure.Models;
-
+    using Interfaces;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Win32;
-
+    using Models;
     using Modules.Document.Event;
     using Modules.Document.Views;
 
@@ -69,10 +68,10 @@ namespace Modules.Document.ViewModels
                                                    DateReceived = DateTime.Now,
                                                    Imported = DateTime.Now,
                                                    Tags =
-                                                       new List<Tag>()
+                                                       new List<string>()
                                                            {
-                                                               new Tag() { Value = "Test" },
-                                                               new Tag() { Value = "Test2" }
+                                                               "Test",
+                                                               "Test2"
                                                            }
                                                };
                                 documentService.AddDocument(document);

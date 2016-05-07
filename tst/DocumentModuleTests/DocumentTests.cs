@@ -11,14 +11,12 @@ namespace DocumentModule.Tests
 {
     using System;
     using System.Collections.Generic;
-
-    using Documentania.Infrastructure.Models;
-
     using ExAs;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Modules.Document;
+    using Modules.Document.Models;
 
     [TestClass]
     public class DocumentTests
@@ -31,12 +29,12 @@ namespace DocumentModule.Tests
         [TestCategory("HappyCase")]
         public void PropertyTest()
         {
-            Tag tagToAssert = new Tag { Id = "Tag", Value = "Tag" };
+            string tagToAssert = "Tag";
 
             Document document = new Document
                                     {
                                         Path = "Path",
-                                        Tags = new List<Tag> { tagToAssert },
+                                        Tags = new List<string> { tagToAssert },
                                         DateReceived = DateTime.Now,
                                         Id = "Document",
                                         Name = "MyDocument",
@@ -56,9 +54,7 @@ namespace DocumentModule.Tests
                     .Member(m => m.Path)
                     .IsEqualTo(document.Path)
                     .Member(m => m.Tags[0])
-                    .Fulfills(
-                        n =>
-                        n.Member(v => v.Id).IsEqualTo(tagToAssert.Id).Member(v => v.Value).IsEqualTo(tagToAssert.Value)));
+                    .IsEqualTo(tagToAssert));
         }
     }
 }

@@ -3,11 +3,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DocumentModule.Tests
 {
-    using Documentania.Infrastructure.Models;
-
     using ExAs;
 
     using Modules.Document;
+    using Modules.Document.Models;
     using Modules.Document.ViewModels;
 
     [TestClass]

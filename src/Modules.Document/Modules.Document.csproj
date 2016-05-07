@@ -84,6 +84,8 @@
     <Compile Include="Event\AddDocumentEvent.cs" />
     <Compile Include="Event\DocumentsCollectionUpdateEvent.cs" />
     <Compile Include="Extensions\WebBrowserExtension.cs" />
+    <Compile Include="Interfaces\IDocumentService.cs" />
+    <Compile Include="Models\Document.cs" />
     <Compile Include="Navigation\ViewModels\DocumentsNavigationViewModel.cs" />
     <Compile Include="Navigation\Views\DocumentsNavigationView.xaml.cs">
       <DependentUpon>DocumentsNavigationView.xaml</DependentUpon>
