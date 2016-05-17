@@ -17,13 +17,19 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0">Name:</Label>
         <Label Grid.Row="0" Grid.Column="1" Content="{Binding Name}"/>
-        <ItemsControl x:Name="TagsItemsControl" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Tags}">
+        <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Tags}" Focusable="False" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding}" />
+                    <UniformGrid Rows="1">
+                        <Label Content="{Binding}" Margin="0"/>
+                    </UniformGrid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
     </Grid>
 </UserControl>
