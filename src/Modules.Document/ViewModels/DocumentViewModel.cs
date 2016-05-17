@@ -22,7 +22,8 @@ namespace Modules.Document.ViewModels
     public enum DocumentMode
     {
         Create,
-        Edit
+        Edit,
+        Read
     }
 
     public class DocumentViewModel : BindableBase

@@ -34,26 +34,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid Grid.Column="1" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
-           </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="3*" />
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0">Name: </Label>
-            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
-            <ItemsControl x:Name="TagsItemsControl" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Label Content="{Binding}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            
-        </Grid>
+        <local:DocumentDetailView Grid.Column="1" DataContext="{Binding Selected}"/>
         
         <GridSplitter Grid.Column="2" ResizeBehavior="PreviousAndNext" VerticalAlignment="Stretch" Width="4" />
         
