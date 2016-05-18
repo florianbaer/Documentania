@@ -45,14 +45,24 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0">Name: </Label>
             <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
-            <ItemsControl x:Name="TagsItemsControl" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Selected.Tags}">
+            <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Selected.Tags}" Focusable="False" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding}" />
+                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3" Margin="0,0,5,5">
+                            <DockPanel>
+                                <Label Content="{Binding}" Margin="0"/>
+                                <Button HorizontalAlignment="Right" Width="10" Height="10" Margin="2,0,4,0" Command="{Binding Path=DataContext.RemoveTagCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}">x</Button>
+                            </DockPanel>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            
+
         </Grid>
         
         <GridSplitter Grid.Column="2" ResizeBehavior="PreviousAndNext" VerticalAlignment="Stretch" Width="4" />
