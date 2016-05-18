@@ -98,6 +98,9 @@
     <Compile Include="Views\AllDocumentsView.xaml.cs">
       <DependentUpon>AllDocumentsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DocumentDetailView.xaml.cs">
+      <DependentUpon>DocumentDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DocumentsSubMenuView.xaml.cs">
       <DependentUpon>DocumentsSubMenuView.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AllDocumentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DocumentDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
