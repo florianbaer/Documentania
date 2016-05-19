@@ -28,6 +28,7 @@ namespace Modules.Document
         public void AddDocument(Document document)
         {
             this.repository.Add(document);
+            Archiver.DocumentArchiver.Save(document);
         }
 
         public void DeleteDocument(Document document)

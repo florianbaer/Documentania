@@ -41,6 +41,8 @@ namespace Modules.Document.ViewModels
 
         private bool isBusy;
 
+        private string busyContent;
+
         public bool IsBusy
         {
             get
@@ -50,6 +52,19 @@ namespace Modules.Document.ViewModels
             set
             {
                 this.isBusy = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        public string BusyContent
+        {
+            get
+            {
+                return this.busyContent;
+            }
+            set
+            {
+                this.busyContent = value;
                 this.OnPropertyChanged();
             }
         }
@@ -201,16 +216,28 @@ namespace Modules.Document.ViewModels
             Task.Factory.StartNew(
                 () =>
                     {
-                        Dispatcher.CurrentDispatcher.Invoke(() => this.IsBusy = true);
-
+                        this.ShowBusyIndicator("Add document to database...");
                         this.service.AddDocument(this.Model);
                         this.CleanViewModel();
-                        Thread.Sleep(3000);
-
-                        Dispatcher.CurrentDispatcher.Invoke(() => this.IsBusy = false);
+                        this.HideBusyIndicator();
                     });
         }
-        
+
+        private void HideBusyIndicator()
+        {
+            Dispatcher.CurrentDispatcher.Invoke(() => this.IsBusy = false);
+        }
+
+        private void ShowBusyIndicator(string content)
+        {
+            Dispatcher.CurrentDispatcher.Invoke(
+                () =>
+                    {
+                        this.IsBusy = true;
+                        this.BusyContent = content;
+                    });
+        }
+
         private void CleanViewModel()
         {
             this.Model = new Document();
