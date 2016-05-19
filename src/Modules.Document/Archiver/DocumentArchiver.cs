@@ -12,11 +12,12 @@ namespace Modules.Document.Archiver
 
     using ICSharpCode.SharpZipLib.Zip;
 
+    using Modules.Document.Interfaces;
     using Modules.Document.Models;
 
-    public class DocumentArchiver
+    public class DocumentArchiver : IDocumentStorage
     {
-        public static void Save(Document document)
+        public void Save(Document document)
         {
             string commonAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Documentania");
             if (!Directory.Exists(commonAppData))
@@ -33,11 +34,11 @@ namespace Modules.Document.Archiver
             writer.Serialize(file, document);
             file.Close();
 
-            using (ZipFile zip = ZipFile.Create(Path.Combine(commonAppData, document.Id.Split('/')[1] + ".document")))
+            using (ZipFile zip = ZipFile.Create(Path.Combine(commonAppData, document.Id + ".document")))
             {
                 zip.BeginUpdate();
-                zip.Add(document.Path);
-                zip.Add(infoFile);
+                zip.Add(document.Path, Path.GetFileName(document.Path));
+                zip.Add(infoFile, Path.GetFileName(infoFile));
                 zip.CommitUpdate();
             }
 

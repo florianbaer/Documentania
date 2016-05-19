@@ -18,7 +18,8 @@ namespace Modules.Document
             if (service == null)
             {
                 IRepository repo = container.Resolve<IRepository>();
-                service = new DocumentService(repo);
+                var storage = container.Resolve<IDocumentStorage>();
+                service = new DocumentService(repo, storage);
             }
             return service;
         }

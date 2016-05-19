@@ -20,15 +20,18 @@ namespace Modules.Document
     {
         private readonly IRepository repository;
 
-        public DocumentService(IRepository repo)
+        private IDocumentStorage storage;
+
+        public DocumentService(IRepository repo, IDocumentStorage storage)
         {
+            this.storage = storage;
             this.repository = repo;
         }
 
         public void AddDocument(Document document)
         {
             this.repository.Add(document);
-            Archiver.DocumentArchiver.Save(document);
+            this.storage.Save(document);
         }
 
         public void DeleteDocument(Document document)

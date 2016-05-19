@@ -17,6 +17,7 @@ namespace DocumentModule.Tests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Modules.Document;
+    using Modules.Document.Interfaces;
     using Modules.Document.Models;
     using Moq;
 
@@ -34,6 +35,7 @@ namespace DocumentModule.Tests
         public void AddDocumentTest()
         {
             Mock<IRepository> repositoryMock = new Mock<IRepository>();
+            Mock<IDocumentStorage> storageMock = new Mock<IDocumentStorage>();
 
             string tagToAdd = "Tag";
 
@@ -46,7 +48,7 @@ namespace DocumentModule.Tests
                                              Tags = new List<string>() { tagToAdd }
                                          };
 
-            IDocumentService documentService = new DocumentService(repositoryMock.Object);
+            IDocumentService documentService = new DocumentService(repositoryMock.Object, storageMock.Object);
             documentService.AddDocument(documentToAdd);
 
             repositoryMock.Verify(x => x.Add(documentToAdd));
@@ -61,6 +63,7 @@ namespace DocumentModule.Tests
         public void GetDocumentByIdTest()
         {
             Mock<IRepository> repositoryMock = new Mock<IRepository>();
+            Mock<IDocumentStorage> storageMock = new Mock<IDocumentStorage>();
 
             string tagToAdd = "Tag";
 
@@ -76,7 +79,7 @@ namespace DocumentModule.Tests
 
             repositoryMock.Setup(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
 
-            IDocumentService documentService = new DocumentService(repositoryMock.Object);
+            IDocumentService documentService = new DocumentService(repositoryMock.Object, storageMock.Object);
             documentService.GetDocumentById(documentToFind.Id);
 
             repositoryMock.Verify(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
@@ -91,6 +94,7 @@ namespace DocumentModule.Tests
         public void GetDocumentByNameTest()
         {
             Mock<IRepository> repositoryMock = new Mock<IRepository>();
+            Mock<IDocumentStorage> storageMock = new Mock<IDocumentStorage>();
 
             string tagToAdd = "Tag";
 
@@ -106,7 +110,7 @@ namespace DocumentModule.Tests
 
             repositoryMock.Setup(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
 
-            IDocumentService documentService = new DocumentService(repositoryMock.Object);
+            IDocumentService documentService = new DocumentService(repositoryMock.Object, storageMock.Object);
             documentService.GetDocumentByName(documentToFind.Name);
 
             repositoryMock.Verify(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
