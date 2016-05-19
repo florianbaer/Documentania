@@ -16,8 +16,8 @@
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0">Name:</Label>
-        <Label Grid.Row="0" Grid.Column="1" Content="{Binding Selected.Name}"/>
-        <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Selected.Tags}" Focusable="False" >
+        <Label Grid.Row="0" Grid.Column="1" Content="{Binding Name}"/>
+        <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Tags}" Focusable="False" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />

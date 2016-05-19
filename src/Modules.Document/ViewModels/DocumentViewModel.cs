@@ -12,7 +12,12 @@ namespace Modules.Document.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Runtime.InteropServices;
+    using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
+    using System.Windows.Threading;
+
     using Documentania.Infrastructure.Interfaces;
     using Interfaces;
     using Models;
@@ -34,11 +39,27 @@ namespace Modules.Document.ViewModels
 
         private string tagValue;
 
+        private bool isBusy;
+
+        public bool IsBusy
+        {
+            get
+            {
+                return this.isBusy;
+            }
+            set
+            {
+                this.isBusy = value;
+                this.OnPropertyChanged();
+            }
+        }
+
         public DocumentViewModel(IDocumentService documentService)
         {
             this.Model = new Document();
             this.service = documentService;
             this.mode = DocumentMode.Create;
+            this.IsBusy = false;
         }
 
         public DocumentViewModel(Document document, IDocumentService documentService)
@@ -46,6 +67,7 @@ namespace Modules.Document.ViewModels
             this.service = documentService;
             this.Model = document;
             this.mode = DocumentMode.Edit;
+            this.IsBusy = false;
         }
 
         public Document Model { get; set; }
@@ -167,7 +189,6 @@ namespace Modules.Document.ViewModels
             OpenFileDialog fileDialog = new OpenFileDialog() {Multiselect = false};
             fileDialog.ShowDialog();
             this.Path = fileDialog.FileName;
-
         }
 
         private bool CanSaveDocument()
@@ -177,10 +198,19 @@ namespace Modules.Document.ViewModels
 
         private void SaveDocument()
         {
-            this.service.AddDocument(this.Model);
-            this.CleanViewModel();
-        }
+            Task.Factory.StartNew(
+                () =>
+                    {
+                        Dispatcher.CurrentDispatcher.Invoke(() => this.IsBusy = true);
 
+                        this.service.AddDocument(this.Model);
+                        this.CleanViewModel();
+                        Thread.Sleep(3000);
+
+                        Dispatcher.CurrentDispatcher.Invoke(() => this.IsBusy = false);
+                    });
+        }
+        
         private void CleanViewModel()
         {
             this.Model = new Document();
