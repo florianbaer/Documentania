@@ -41,6 +41,17 @@
             </TextBlock.Effect>
         </TextBlock>
 
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="20" Content="Version">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.5" ShadowDepth="4"/>
+            </Label.Effect>
+        </Label>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="20" Content="{Binding Version}">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.5" ShadowDepth="4"/>
+            </Label.Effect>
+        </Label>
+
         <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="0, 10, 0, 10" Margin="5,0,5,5" CornerRadius="0,0,5,5" BorderBrush="SkyBlue">
             <TextBox FontSize="30" Background="White" Foreground="RoyalBlue" Text="{Binding Status}" Padding="10,10,0,0">
             <TextBox.Effect>
