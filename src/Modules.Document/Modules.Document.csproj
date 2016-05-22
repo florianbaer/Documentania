@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archiver\DocumentArchiver.cs" />
+    <Compile Include="Archiver\DocumentMetadataSerializer.cs" />
     <Compile Include="Interfaces\IDocumentStorage.cs" />
     <Compile Include="DocumentService.cs" />
     <Compile Include="DocumentModule.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Event\DocumentsCollectionUpdateEvent.cs" />
     <Compile Include="Extensions\WebBrowserExtension.cs" />
     <Compile Include="Interfaces\IDocumentService.cs" />
+    <Compile Include="Interfaces\IMetadataSerializer.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Navigation\ViewModels\DocumentsNavigationViewModel.cs" />
     <Compile Include="Navigation\Views\DocumentsNavigationView.xaml.cs">
@@ -181,7 +183,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)src\UserInterface\bin\Debug\" /R /Y
-xcopy  "$(TargetDir)Xceed.Wpf.Toolkit.dll" "$(SolutionDir)src\UserInterface\bin\Debug\" /R /Y</PostBuildEvent>
+xcopy  "$(TargetDir)Xceed.Wpf.Toolkit.dll" "$(SolutionDir)src\UserInterface\bin\Debug\" /R /Y
+xcopy  "$(TargetDir)ICSharpCode.SharpZipLib.dll" "$(SolutionDir)src\UserInterface\bin\Debug\" /R /Y
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
