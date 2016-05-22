@@ -27,32 +27,23 @@ namespace Modules.Document.Archiver
                 Directory.CreateDirectory(commonAppData);
             }
 
-            var infoFile = Path.Combine(commonAppData, document.Name + ".xml");
-
-            XmlSerializer writer = new XmlSerializer(typeof(Document));
-            
-            System.IO.FileStream file = System.IO.File.Create(infoFile);
-
-            writer.Serialize(file, document);
-            file.Close();
-
+            var infoFilePath = Path.Combine(commonAppData, document.Name + ".xml");
             string metaData = Path.Combine(commonAppData, "Metadata" + ".xml");
 
-            XDocument doc = new XDocument(new XElement("Documentania",
-                new XElement("Version", new XAttribute("Version", Assembly.GetExecutingAssembly().GetName().Version))));
+            new FileInfoSerializer().CreateInfoFile(document, infoFilePath);
+            
+            new MetadataFileGenerator(metaData).GenerateFile();
 
-            doc.Save(metaData);
-
-            using (ZipFile zip = ZipFile.Create(Path.Combine(commonAppData, document.Id + ".document")))
+            var documents = new List<string>()
             {
-                zip.BeginUpdate();
-                zip.Add(document.Path, Path.GetFileName(document.Path));
-                zip.Add(infoFile, Path.GetFileName(infoFile));
-                zip.Add(metaData, Path.GetFileName(metaData));
-                zip.CommitUpdate();
-            }
+                metaData,
+                infoFilePath,
+                document.Path
+            };
 
-            File.Delete(infoFile);
+            new DocumentArchiveZipper(commonAppData).CreateArchive(document.Id, documents);
+
+            File.Delete(infoFilePath);
             File.Delete(metaData);
         }
     }
