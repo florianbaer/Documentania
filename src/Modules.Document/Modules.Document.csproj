@@ -111,7 +111,8 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Archiver\DocumentArchiver.cs" />
+    <Compile Include="Archiver\DocumentParser.cs" />
+    <Compile Include="Archiver\DocumentStorageService.cs" />
     <Compile Include="Archiver\DocumentArchiveZipper.cs" />
     <Compile Include="Archiver\FileInfoSerializer.cs" />
     <Compile Include="Archiver\MetadataFileGenerator.cs" />

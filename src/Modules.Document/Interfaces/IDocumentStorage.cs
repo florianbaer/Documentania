@@ -4,6 +4,6 @@ namespace Modules.Document.Interfaces
 
     public interface IDocumentStorage
     {
-        void Save(Document document);
+        void SerializeDocument(Document document);
     }
 }

@@ -12,14 +12,16 @@ namespace Modules.Document.Archiver
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
+    using Documentania.Infrastructure.File;
+
     using ICSharpCode.SharpZipLib.Zip;
 
     using Modules.Document.Interfaces;
     using Modules.Document.Models;
 
-    public class DocumentArchiver : IDocumentStorage
+    public class DocumentStorageService : IDocumentStorage
     {
-        public void Save(Document document)
+        public void SerializeDocument(Document document)
         {
             string commonAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Documentania");
             if (!Directory.Exists(commonAppData))
@@ -27,10 +29,10 @@ namespace Modules.Document.Archiver
                 Directory.CreateDirectory(commonAppData);
             }
 
-            var infoFilePath = Path.Combine(commonAppData, document.Name + ".xml");
+            var infoFilePath = Path.Combine(commonAppData, "DocumentInfo" + ".xml");
             string metaData = Path.Combine(commonAppData, "Metadata" + ".xml");
 
-            new FileInfoSerializer().CreateInfoFile(document, infoFilePath);
+            new FileInfoSerializer().Serialize(document, infoFilePath);
             
             new MetadataFileGenerator(metaData).GenerateFile();
 
@@ -45,6 +47,11 @@ namespace Modules.Document.Archiver
 
             File.Delete(infoFilePath);
             File.Delete(metaData);
+        }
+
+        public Document DeserializeDocument(string path)
+        {
+            return new DocumentParser().ParseDocument(path);
         }
     }
 }

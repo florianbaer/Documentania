@@ -52,7 +52,7 @@ namespace Modules.Document
 
             Log.Info("Initialize DocumentModule");
 
-            this.container.RegisterType<IDocumentStorage, DocumentArchiver>(new ContainerControlledLifetimeManager());
+            this.container.RegisterType<IDocumentStorage, DocumentStorageService>(new ContainerControlledLifetimeManager());
             this.container.RegisterType<IDocumentService, DocumentService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));
             
             // Views

@@ -8,12 +8,14 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Modules.Document.Archiver
 {
+    using System.Linq;
+    using System.Xml.Linq;
     using System.Xml.Serialization;
     using Models;
 
     public class FileInfoSerializer
     {
-        public void CreateInfoFile(Document document, string infoFile)
+        public void Serialize(Document document, string infoFile)
         {
             XmlSerializer writer = new XmlSerializer(typeof(Document));
 
@@ -21,6 +23,13 @@ namespace Modules.Document.Archiver
 
             writer.Serialize(file, document);
             file.Close();
-        } 
+        }
+
+        public Document Deserialize(string infoFile)
+        {
+            Document document = new Document();
+            document.Name = XDocument.Load(infoFile).Root.Elements().Single(x => x.Name == "Name").Value;
+            return document;
+        }
     }
 }
