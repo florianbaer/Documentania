@@ -12,20 +12,31 @@ namespace Modules.Document
     using System.Collections.Generic;
     using System.Linq;
 
-    using Documentania.Contracts;
+    using Documentania.Infrastructure.Interfaces;
+    using Interfaces;
+    using Models;
 
     public class DocumentService : IDocumentService
     {
         private readonly IRepository repository;
 
-        public DocumentService(IRepository repo)
+        private IDocumentStorage storage;
+
+        public DocumentService(IRepository repo, IDocumentStorage storage)
         {
+            this.storage = storage;
             this.repository = repo;
         }
 
         public void AddDocument(Document document)
         {
             this.repository.Add(document);
+            this.storage.SerializeDocument(document);
+        }
+
+        public void DeleteDocument(Document document)
+        {
+            this.repository.Delete(document);
         }
 
         public Document GetDocumentById(string id)
@@ -43,9 +54,9 @@ namespace Modules.Document
             return this.repository.GetAll<Document>();
         }
 
-        public ICollection<Document> SearchByTag(Tag tag)
+        public ICollection<Document> SearchByTag(string tag)
         {
-            return this.repository.GetAll<Document>().Where(document => document.Tags.Any(x => x.Value == tag.Value)).ToList();
+            return this.repository.GetAll<Document>().Where(document => document.Tags.Contains(tag)).ToList();
         }
 
         public ICollection<Document> SearchByName(string name)

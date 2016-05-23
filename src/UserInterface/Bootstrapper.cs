@@ -11,11 +11,11 @@ namespace Documentania
 {
     using System.Windows;
 
-    using Documentania.Contracts;
+    using Documentania.Infrastructure;
     using Documentania.Infrastructure.Logger;
-    using Documentania.Infrastructure.Services;
+    using Documentania.Infrastructure.Navigation.Views;
     using Documentania.Infrastructure.Views;
-
+    using Infrastructure.Interfaces;
     using log4net;
 
     using Microsoft.Practices.Unity;
@@ -54,11 +54,12 @@ namespace Documentania
 
         protected override void ConfigureContainer()
         {
+            Container.RegisterType<IShell, Shell>(new ContainerControlledLifetimeManager());
+
             base.ConfigureContainer();
 
             this.Container.RegisterType<object, WelcomeView>(typeof(WelcomeView).ToString());
             this.Container.RegisterType<object, NavigationView>(typeof(NavigationView).ToString());
-            this.Container.RegisterType<NavigationConfigurationService>();
         }
 
         protected override IModuleCatalog CreateModuleCatalog()
@@ -68,8 +69,8 @@ namespace Documentania
 
         protected override DependencyObject CreateShell()
         {
-            Log.Debug("Create Shell");
-            return this.Container.Resolve<Shell>();
+            var shell = Container.Resolve<IShell>();
+            return shell as DependencyObject;
         }
 
         protected override void InitializeShell()
@@ -78,17 +79,11 @@ namespace Documentania
 
             var regionManager = this.Container.Resolve<IRegionManager>();
 
-            regionManager.RequestNavigate(RegionNames.NavigationRegion, typeof(NavigationView).ToString());
+
+            regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(HomeNavigationView));
+            regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(SubNavigationWelcomeView));
             regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(WelcomeView).ToString());
-
-            if (Application.Current == null)
-            {
-                new Application();
-            }
-
-            Application.Current.MainWindow = (Shell)this.Shell;
-
-            Application.Current.MainWindow.Show();
+            regionManager.RequestNavigate(RegionNames.SubNavigationRegion, typeof(SubNavigationWelcomeView).ToString());
         }
 
         protected override void InitializeModules()

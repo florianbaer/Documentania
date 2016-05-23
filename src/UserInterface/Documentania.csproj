@@ -39,6 +39,10 @@
       <HintPath>..\..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -93,6 +97,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -136,9 +143,9 @@
       <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
       <Name>Documentania.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Documentania.Interfaces\Documentania.Contracts.csproj">
-      <Project>{5061AFCF-C667-4530-A992-37DFD2BA05AF}</Project>
-      <Name>Documentania.Contracts</Name>
+    <ProjectReference Include="..\Documentania.SplashScreen\Documentania.SplashScreen.csproj">
+      <Project>{495173D3-8C0A-4502-AADE-A80EB36A43A5}</Project>
+      <Name>Documentania.SplashScreen</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

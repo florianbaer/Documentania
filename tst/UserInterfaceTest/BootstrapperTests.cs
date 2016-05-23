@@ -42,6 +42,7 @@ namespace UserInterface.Tests
         [TestProperty("Created", "2016-03-18")]
         [TestProperty("Creator", "Florian Bär")]
         [TestCategory("Bootstrapper")]
+        [Ignore]
         public void RunBootstrapperTest()
         {
             // act

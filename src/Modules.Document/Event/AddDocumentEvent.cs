@@ -8,6 +8,7 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Modules.Document.Event
 {
+    using Models;
     using Prism.Events;
     public class AddDocumentEvent : PubSubEvent<Document>
     {
