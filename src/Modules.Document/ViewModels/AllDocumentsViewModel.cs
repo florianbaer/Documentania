@@ -9,31 +9,50 @@
 
 namespace Modules.Document.ViewModels
 {
+    using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Configuration;
+    using Documentania.Infrastructure.Interfaces;
+    using Interfaces;
 
+    using Microsoft.Practices.ObjectBuilder2;
     using Microsoft.Practices.ServiceLocation;
+    using Models;
+    using Modules.Document.Event;
 
+    using Prism.Commands;
+    using Prism.Events;
     using Prism.Mvvm;
     using Prism.Regions;
 
     public class AllDocumentsViewModel : BindableBase, INavigationAware
     {
-        private readonly IServiceLocator service;
+        private readonly IDocumentService service;
 
-        private ICollection<Document> documents = new List<Document>();
+        private readonly IEventAggregator eventAggregator;
 
-        private Document selected;
+        private ICollection<DocumentViewModel> documents = new ObservableCollection<DocumentViewModel>();
 
-        public AllDocumentsViewModel(IServiceLocator service)
+        private DocumentViewModel selected;
+        
+        public ObservableCollection<string>Tags { get; private set; }
+
+        public AllDocumentsViewModel(IDocumentService service, IEventAggregator eventAggregator)
         {
             this.service = service;
-            using (var store = this.service.GetInstance<IDocumentService>())
-            {
-                this.Documents = store.GetAll();
-            }
+            this.eventAggregator = eventAggregator;
+            eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
+            this.service.GetAll().ForEach(x => this.Documents.Add(new DocumentViewModel(x, this.service)));
+        }
+        
+        private void UpdateCollection(DocumentsCollectionUpdateEvent obj)
+        {
+            this.Documents.Clear();
+            this.service.GetAll().ForEach(x => this.Documents.Add(new DocumentViewModel(x, this.service)));
         }
 
-        public Document Selected
+        public DocumentViewModel Selected
         {
             get
             {
@@ -41,11 +60,16 @@ namespace Modules.Document.ViewModels
             }
             set
             {
-                this.SetProperty(ref this.selected, value);
+                this.selected = value;
+                if (this.selected != null)
+                {
+                    this.Tags = new ObservableCollection<string>(this.Selected.Tags);
+                }
+                this.OnPropertyChanged();
             }
         }
 
-        public ICollection<Document> Documents
+        public ICollection<DocumentViewModel> Documents
         {
             get
             {
@@ -53,16 +77,15 @@ namespace Modules.Document.ViewModels
             }
             set
             {
-                this.SetProperty(ref this.documents, value);
+                this.documents = value;
+                this.OnPropertyChanged();
             }
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            using (var store = this.service.GetInstance<IDocumentService>())
-            {
-                this.Documents = store.GetAll();
-            }
+            this.Documents.Clear();
+            this.service.GetAll().ForEach(x => this.Documents.Add(new DocumentViewModel(x, this.service)));
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -73,6 +96,20 @@ namespace Modules.Document.ViewModels
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
             //
+        }
+
+        public DelegateCommand<DocumentViewModel> DeleteDocumentCommand
+        {
+            get
+            {
+                return new DelegateCommand<DocumentViewModel>(DeleteDocument);
+            }
+        }
+
+        private void DeleteDocument(DocumentViewModel document)
+        {
+            this.service.DeleteDocument(document.Model);
+            this.UpdateCollection(null);
         }
     }
 }

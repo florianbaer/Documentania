@@ -11,8 +11,6 @@ namespace Documentania.Infrastructure.Logger
 {
     using System;
 
-    using Documentania.Contracts;
-
     using log4net;
 
     using Prism.Logging;

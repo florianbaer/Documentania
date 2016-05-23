@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:regions="http://prismlibrary.com/"
-        xmlns:interfaces="clr-namespace:Documentania.Contracts;assembly=Documentania.Contracts"
+        xmlns:contracts="clr-namespace:Documentania.Infrastructure;assembly=Documentania.Infrastructure"
+        xmlns:views="clr-namespace:Documentania.Infrastructure.Views;assembly=Documentania.Infrastructure"
         mc:Ignorable="d"
         Title="Documentania" MinHeight="700" MinWidth="1400" Height="700" Width="1400">
     <Grid>
@@ -16,8 +17,15 @@
             <RowDefinition Height="50px"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ContentControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" regions:RegionManager.RegionName="{x:Static interfaces:RegionNames.NavigationRegion}"/>
-        <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="1" regions:RegionManager.RegionName="{x:Static interfaces:RegionNames.SubNavigationRegion}"/>
-        <ContentControl Grid.Column="1" Grid.Row="1" regions:RegionManager.RegionName="{x:Static interfaces:RegionNames.ContentRegion}"/>
+
+        <Label Grid.Row="0" FontSize="20" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Documentania">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.7" ShadowDepth="4"/>
+            </Label.Effect>
+        </Label>
+        
+        <views:NavigationView Grid.Row="1" Grid.Column="0"/>
+        <ContentControl Grid.Column="1" Grid.Row="0" regions:RegionManager.RegionName="{x:Static contracts:RegionNames.SubNavigationRegion}"/>
+        <ContentControl Grid.Column="1" Grid.Row="1" regions:RegionManager.RegionName="{x:Static contracts:RegionNames.ContentRegion}"/>
     </Grid>
 </Window>

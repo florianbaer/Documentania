@@ -9,18 +9,24 @@
 
 namespace Modules.Document
 {
-    using Documentania.Contracts;
-
+    using Documentania.Infrastructure;
+    using Documentania.Infrastructure.Interfaces;
+    using Documentania.SplashScreen.Events;
+    using Interfaces;
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
+    using Modules.Document.Archiver;
+    using Modules.Document.Navigation;
     using Modules.Document.ViewModels;
     using Modules.Document.Views;
-
+    using Prism.Events;
     using Prism.Modularity;
     using Prism.Regions;
+
+    using DocumentsNavigationView = Modules.Document.Navigation.Views.DocumentsNavigationView;
 
     [Module(ModuleName = "DocumentModule")]
     public class DocumentModule : IModule
@@ -42,14 +48,17 @@ namespace Modules.Document
 
         public void Initialize()
         {
+            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Initialize Document module" });
+
             Log.Info("Initialize DocumentModule");
 
-            this.container.RegisterType<IDocumentService, DocumentService>(new TransientLifetimeManager());
-
-            this.container.RegisterType<AllDocumentsViewModel, AllDocumentsViewModel>();
-
+            this.container.RegisterType<IDocumentStorage, DocumentStorageService>(new ContainerControlledLifetimeManager());
+            this.container.RegisterType<IDocumentService, DocumentService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));
+            
             // Views
+            this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(DocumentView));
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));
+            this.regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(DocumentsNavigationView));
             this.regionManager.RegisterViewWithRegion(RegionNames.SubNavigationRegion, typeof(DocumentsSubMenuView));
         }
     }
