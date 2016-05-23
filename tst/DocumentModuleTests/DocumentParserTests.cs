@@ -14,6 +14,7 @@ namespace DocumentModule.Tests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Modules.Document.Archiver;
+    using Modules.Document.Models;
 
     [TestClass]
     public class DocumentParserTests
@@ -27,7 +28,9 @@ namespace DocumentModule.Tests
         [DeploymentItem("Resources")]
         public void ParseDocumenZip()
         {
-            new DocumentParser().ParseDocument(Path.Combine(Environment.CurrentDirectory, "d7bfe8af-ca61-4969-9f13-30a2db63d1d5.document"));
+            string documentId = "d7bfe8af-ca61-4969-9f13-30a2db63d1d5";
+            Document document = new DocumentParser().ParseDocument(Path.Combine(Environment.CurrentDirectory, documentId + ".document"));
+            Assert.AreEqual(documentId, document.Id);
         }
     }
 }

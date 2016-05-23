@@ -16,6 +16,8 @@ namespace Modules.Document.Archiver
 
     public class DocumentParser
     {
+        private const string FILE_NAME = "DocumentInfo.xml";
+
         public Document ParseDocument(string path)
         {
             using (TempDirectory directory = new TempDirectory())
@@ -23,7 +25,7 @@ namespace Modules.Document.Archiver
                 FastZip zip = new FastZip();
                 zip.ExtractZip(path, directory.ToString(), null);
 
-                Document document = new FileInfoSerializer().Deserialize(Path.Combine(directory.FilePath, "DocumentInfo.xml"));
+                Document document = new FileInfoSerializer().Deserialize(Path.Combine(directory.FilePath, FILE_NAME));
 
                 return document;
             }
