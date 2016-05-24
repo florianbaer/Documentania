@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Modules.Document.Archiver
+﻿namespace Modules.Document.DocumentStorage.Archiver
 {
-    using System.IO;
     using System.Reflection;
     using System.Xml.Linq;
 

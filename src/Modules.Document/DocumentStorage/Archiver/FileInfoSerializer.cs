@@ -6,7 +6,7 @@
 // // The file 'FileInfoSerializer.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Modules.Document.Archiver
+namespace Modules.Document.DocumentStorage.Archiver
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Modules.Document.Archiver
 
     using Microsoft.Practices.ObjectBuilder2;
 
-    using Models;
+    using Modules.Document.Models;
 
     public class FileInfoSerializer
     {

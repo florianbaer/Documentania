@@ -111,11 +111,11 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Archiver\DocumentParser.cs" />
-    <Compile Include="Archiver\DocumentStorageService.cs" />
-    <Compile Include="Archiver\DocumentArchiveZipper.cs" />
-    <Compile Include="Archiver\FileInfoSerializer.cs" />
-    <Compile Include="Archiver\MetadataFileGenerator.cs" />
+    <Compile Include="DocumentStorage\Archiver\DocumentParser.cs" />
+    <Compile Include="DocumentStorage\Archiver\DocumentArchiveService.cs" />
+    <Compile Include="DocumentStorage\Archiver\DocumentArchiveZipper.cs" />
+    <Compile Include="DocumentStorage\Archiver\FileInfoSerializer.cs" />
+    <Compile Include="DocumentStorage\Archiver\MetadataFileGenerator.cs" />
     <Compile Include="Filtering\DocumentFilterBase.cs" />
     <Compile Include="Filtering\NameContainsFilter.cs" />
     <Compile Include="Interfaces\IDocumentStorage.cs" />
@@ -190,6 +190,9 @@
       <Project>{495173D3-8C0A-4502-AADE-A80EB36A43A5}</Project>
       <Name>Documentania.SplashScreen</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DocumentStorage\Storage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -33,6 +33,19 @@ namespace Modules.Document.ViewModels
 
     public class DocumentViewModel : BindableBase
     {
+        public bool Selected
+        {
+            get
+            {
+                return this.selected;
+            }
+            set
+            {
+                this.selected = value;
+                this.OnPropertyChanged();
+            }
+        }
+
         private DocumentMode mode;
 
         private IDocumentService service;
@@ -42,6 +55,8 @@ namespace Modules.Document.ViewModels
         private bool isBusy;
 
         private string busyContent;
+
+        private bool selected;
 
         public bool IsBusy
         {

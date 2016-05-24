@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Modules.Document.Archiver
+﻿namespace Modules.Document.DocumentStorage.Archiver
 {
+    using System;
+    using System.Collections.Generic;
     using System.IO;
-    using System.Reflection;
-    using System.Xml;
-    using System.Xml.Linq;
-    using System.Xml.Serialization;
-
-    using Documentania.Infrastructure.File;
-
-    using ICSharpCode.SharpZipLib.Zip;
 
     using Modules.Document.Interfaces;
     using Modules.Document.Models;
 
-    public class DocumentStorageService : IDocumentStorage
+    public class DocumentArchiveService : IDocumentStorage
     {
-        public void SerializeDocument(Document document)
+        public void SaveDocument(Document document)
         {
             string commonAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Documentania");
             if (!Directory.Exists(commonAppData))
@@ -49,7 +37,7 @@ namespace Modules.Document.Archiver
             File.Delete(metaData);
         }
 
-        public Document DeserializeDocument(string path)
+        public Document LoadDocument(string path)
         {
             return new DocumentParser().ParseDocument(path);
         }

@@ -13,7 +13,7 @@ namespace DocumentModule.Tests
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Modules.Document.Archiver;
+    using Modules.Document.DocumentStorage.Archiver;
     using Modules.Document.Models;
 
     [TestClass]

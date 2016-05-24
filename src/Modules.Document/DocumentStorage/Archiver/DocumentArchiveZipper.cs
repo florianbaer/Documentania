@@ -6,12 +6,12 @@
 // // The file 'DocumentArchiveZipper.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Modules.Document.Archiver
+namespace Modules.Document.DocumentStorage.Archiver
 {
     using System.Collections.Generic;
     using System.IO;
+
     using ICSharpCode.SharpZipLib.Zip;
-    using Models;
 
     public class DocumentArchiveZipper
     {
@@ -24,7 +24,7 @@ namespace Modules.Document.Archiver
 
         public void CreateArchive(string documentName, ICollection<string> archiveFiles)
         {
-            using (ZipFile zip = ZipFile.Create(Path.Combine(baseDirectory, documentName + ".document")))
+            using (ZipFile zip = ZipFile.Create(Path.Combine(this.baseDirectory, documentName + ".document")))
             {
                 zip.BeginUpdate();
                 foreach (var archiveFile in archiveFiles)

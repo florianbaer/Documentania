@@ -25,10 +25,11 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        
-                        <Label Grid.Column="0" Content="{Binding Name}" />
-                        <Button Grid.Column="1" Height="10px" Width="10px" Command="{Binding Path=DataContext.DeleteDocumentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}">x</Button>
+                        <CheckBox Grid.Column="0" IsChecked="{Binding Selected}"/>
+                        <Label Grid.Column="1" Content="{Binding Name}" />
+                        <Button Grid.Column="2" Height="10px" Width="10px" Command="{Binding Path=DataContext.DeleteDocumentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}">x</Button>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -31,7 +31,7 @@ namespace Modules.Document
         public void AddDocument(Document document)
         {
             this.repository.Add(document);
-            this.storage.SerializeDocument(document);
+            this.storage.SaveDocument(document);
         }
 
         public void DeleteDocument(Document document)
