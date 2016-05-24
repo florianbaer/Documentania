@@ -120,6 +120,8 @@
     <Compile Include="Filtering\Filter.cs" />
     <Compile Include="Filtering\Decorator.cs" />
     <Compile Include="Filtering\NameContainsFilterDecorator.cs" />
+    <Compile Include="Filtering\ViewModels\FilterViewModelBase.cs" />
+    <Compile Include="Filtering\ViewModels\NameContainsFilterViewModel.cs" />
     <Compile Include="Interfaces\IDocumentStorage.cs" />
     <Compile Include="DocumentService.cs" />
     <Compile Include="DocumentModule.cs" />
