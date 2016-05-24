@@ -8,8 +8,7 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Modules.Document.Event
 {
-    using Documentania.Infrastructure.Models;
-
+    using Models;
     using Prism.Events;
     public class AddDocumentEvent : PubSubEvent<Document>
     {

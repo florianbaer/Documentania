@@ -7,10 +7,12 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Documentania.Infrastructure.Models
+namespace Modules.Document.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     using Documentania.Infrastructure.Interfaces;
 
@@ -22,10 +24,11 @@ namespace Documentania.Infrastructure.Models
 
         public virtual string Name { get; set; }
 
+        [XmlIgnore]
         public virtual string Path { get; set; }
 
-        public List<Tag> Tags { get; set; } = new List<Tag>();
+        public List<string> Tags { get; set; } = new List<string>();
 
-        public virtual string Id { get; set; }
+        public virtual string Id { get; set; } = string.Empty;
     }
 }

@@ -12,31 +12,84 @@ namespace Modules.Document.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Runtime.InteropServices;
+    using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
+    using System.Windows.Threading;
+
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.Infrastructure.Models;
+    using Interfaces;
+    using Models;
     using Prism.Commands;
     using Prism.Mvvm;
 
     public enum DocumentMode
     {
         Create,
-        Edit
+        Edit,
+        Read
     }
 
     public class DocumentViewModel : BindableBase
     {
+        public bool Selected
+        {
+            get
+            {
+                return this.selected;
+            }
+            set
+            {
+                this.selected = value;
+                this.OnPropertyChanged();
+            }
+        }
+
         private DocumentMode mode;
 
         private IDocumentService service;
 
         private string tagValue;
 
+        private bool isBusy;
+
+        private string busyContent;
+
+        private bool selected;
+
+        public bool IsBusy
+        {
+            get
+            {
+                return this.isBusy;
+            }
+            set
+            {
+                this.isBusy = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        public string BusyContent
+        {
+            get
+            {
+                return this.busyContent;
+            }
+            set
+            {
+                this.busyContent = value;
+                this.OnPropertyChanged();
+            }
+        }
+
         public DocumentViewModel(IDocumentService documentService)
         {
             this.Model = new Document();
             this.service = documentService;
             this.mode = DocumentMode.Create;
+            this.IsBusy = false;
         }
 
         public DocumentViewModel(Document document, IDocumentService documentService)
@@ -44,6 +97,7 @@ namespace Modules.Document.ViewModels
             this.service = documentService;
             this.Model = document;
             this.mode = DocumentMode.Edit;
+            this.IsBusy = false;
         }
 
         public Document Model { get; set; }
@@ -106,7 +160,7 @@ namespace Modules.Document.ViewModels
             }
         }
 
-        public ObservableCollection<Tag> Tags => new ObservableCollection<Tag>(this.Model.Tags);
+        public ObservableCollection<string> Tags => new ObservableCollection<string>(this.Model.Tags);
 
         public DelegateCommand SaveDocumentCommand
         {
@@ -123,8 +177,8 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(() =>
                     {
                         // todo: cleanup what is really needed 
-                        this.Model.Tags.Add(new Tag() { Value = this.TagValue });
-                        this.Tags.Add(new Tag() { Value = this.TagValue });
+                        this.Model.Tags.Add(this.TagValue);
+                        this.Tags.Add(this.TagValue);
                         this.OnPropertyChanged(() => this.Tags);
                         this.TagValue = string.Empty;
                     });
@@ -139,6 +193,22 @@ namespace Modules.Document.ViewModels
             }
         }
 
+        public DelegateCommand<string> RemoveTagCommand
+        {
+            get
+            {
+                return new DelegateCommand<string>(RemoveTag);
+            }
+        }
+
+        private void RemoveTag(string tagToRemove)
+        {
+            this.Tags.Remove(tagToRemove);
+            this.Model.Tags.Remove(tagToRemove);
+            this.OnPropertyChanged(() => this.Tags);
+        }
+
+
         private bool CanLoadDocument()
         {
             return true;
@@ -149,7 +219,6 @@ namespace Modules.Document.ViewModels
             OpenFileDialog fileDialog = new OpenFileDialog() {Multiselect = false};
             fileDialog.ShowDialog();
             this.Path = fileDialog.FileName;
-
         }
 
         private bool CanSaveDocument()
@@ -159,8 +228,29 @@ namespace Modules.Document.ViewModels
 
         private void SaveDocument()
         {
-            this.service.AddDocument(this.Model);
-            this.CleanViewModel();
+            Task.Factory.StartNew(
+                () =>
+                    {
+                        this.ShowBusyIndicator("Add document to database...");
+                        this.service.AddDocument(this.Model);
+                        this.CleanViewModel();
+                        this.HideBusyIndicator();
+                    });
+        }
+
+        private void HideBusyIndicator()
+        {
+            Dispatcher.CurrentDispatcher.Invoke(() => this.IsBusy = false);
+        }
+
+        private void ShowBusyIndicator(string content)
+        {
+            Dispatcher.CurrentDispatcher.Invoke(
+                () =>
+                    {
+                        this.IsBusy = true;
+                        this.BusyContent = content;
+                    });
         }
 
         private void CleanViewModel()
@@ -170,6 +260,7 @@ namespace Modules.Document.ViewModels
             this.OnPropertyChanged(() => this.Id);
             this.OnPropertyChanged(() => this.Name);
             this.OnPropertyChanged(() => this.Path);
+            this.OnPropertyChanged(() => this.Tags);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Documentania.SplashScreen.ViewModels
 {
     using System;
     using System.ComponentModel;
+    using System.Reflection;
     using Events;
     using Prism.Events;
     using Prism.Mvvm;
@@ -43,6 +44,8 @@ namespace Documentania.SplashScreen.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public string Version => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         #endregion
 

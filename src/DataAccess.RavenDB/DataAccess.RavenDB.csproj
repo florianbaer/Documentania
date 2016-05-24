@@ -96,6 +96,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Extension\Extensions.cs" />
     <Compile Include="RavenDbModule.cs" />
     <Compile Include="DocumentaniaDocumentStore.cs" />
@@ -113,6 +116,10 @@
     <ProjectReference Include="..\Documentania.SplashScreen\Documentania.SplashScreen.csproj">
       <Project>{495173D3-8C0A-4502-AADE-A80EB36A43A5}</Project>
       <Name>Documentania.SplashScreen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Document\Modules.Document.csproj">
+      <Project>{DCB9B047-1F17-469D-80D8-F0FCB229DE26}</Project>
+      <Name>Modules.Document</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

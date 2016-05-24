@@ -14,11 +14,13 @@ namespace Modules.Document.ViewModels
     using System.Collections.ObjectModel;
     using System.Configuration;
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.Infrastructure.Models;
+    using Interfaces;
 
+    using Microsoft.Practices.ObjectBuilder2;
     using Microsoft.Practices.ServiceLocation;
-
+    using Models;
     using Modules.Document.Event;
+    using Modules.Document.Filtering;
 
     using Prism.Commands;
     using Prism.Events;
@@ -31,32 +33,42 @@ namespace Modules.Document.ViewModels
 
         private readonly IEventAggregator eventAggregator;
 
-        private ICollection<Document> documents = new List<Document>();
+        private Filter DocumentsFilter
+        {
+            get
+            {
+                return this.documentsFilter;
+            }
+            set
+            {
+                this.documentsFilter = value;
+                this.OnPropertyChanged(() => this.Documents);
+            }
+        }
 
-        private Document selected;
-        
-        public ObservableCollection<Tag>Tags { get; private set; }
+        private ICollection<DocumentViewModel> documents = new ObservableCollection<DocumentViewModel>();
+
+        private DocumentViewModel selected;
+
+        private Filter documentsFilter;
+
+        public ObservableCollection<string>Tags { get; private set; }
 
         public AllDocumentsViewModel(IDocumentService service, IEventAggregator eventAggregator)
         {
             this.service = service;
             this.eventAggregator = eventAggregator;
             eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
-            this.Documents = this.service.GetAll();
-            
+            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
         }
-
-        private void localUpdate(AddDocumentEvent addDocumentEvent)
-        {
-            this.Documents.Add(addDocumentEvent.Document);
-        }
-
+        
         private void UpdateCollection(DocumentsCollectionUpdateEvent obj)
         {
-            this.Documents = this.service.GetAll();
+            this.documents.Clear();
+            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
         }
 
-        public Document Selected
+        public DocumentViewModel Selected
         {
             get
             {
@@ -67,28 +79,28 @@ namespace Modules.Document.ViewModels
                 this.selected = value;
                 if (this.selected != null)
                 {
-                    Tags = new ObservableCollection<Tag>(this.Selected.Tags);
+                    this.Tags = new ObservableCollection<string>(this.Selected.Tags);
                 }
                 this.OnPropertyChanged();
             }
         }
 
-        public ICollection<Document> Documents
+        public ICollection<DocumentViewModel> Documents
         {
             get
             {
+                if (this.DocumentsFilter != null)
+                {
+                    return this.DocumentsFilter.Execute(this.documents);
+                }
                 return this.documents;
-            }
-            set
-            {
-                this.documents = value;
-                this.OnPropertyChanged();
             }
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            this.Documents = this.service.GetAll();
+            this.documents.Clear();
+            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -101,17 +113,17 @@ namespace Modules.Document.ViewModels
             //
         }
 
-        public DelegateCommand<Document> DeleteDocumentCommand
+        public DelegateCommand<DocumentViewModel> DeleteDocumentCommand
         {
             get
             {
-                return new DelegateCommand<Document>(DeleteDocument);
+                return new DelegateCommand<DocumentViewModel>(DeleteDocument);
             }
         }
 
-        private void DeleteDocument(Document document)
+        private void DeleteDocument(DocumentViewModel document)
         {
-            this.service.DeleteDocument(document);
+            this.service.DeleteDocument(document.Model);
             this.UpdateCollection(null);
         }
     }

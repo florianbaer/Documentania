@@ -12,11 +12,13 @@ namespace Modules.Document
     using Documentania.Infrastructure;
     using Documentania.Infrastructure.Interfaces;
     using Documentania.SplashScreen.Events;
+    using Interfaces;
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
 
+    using Modules.Document.DocumentStorage.Archiver;
     using Modules.Document.Navigation;
     using Modules.Document.ViewModels;
     using Modules.Document.Views;
@@ -50,8 +52,9 @@ namespace Modules.Document
 
             Log.Info("Initialize DocumentModule");
 
+            this.container.RegisterType<IDocumentStorage, DocumentArchiveService>(new ContainerControlledLifetimeManager());
             this.container.RegisterType<IDocumentService, DocumentService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));
-
+            
             // Views
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(DocumentView));
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(AllDocumentsView));

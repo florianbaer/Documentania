@@ -78,14 +78,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IDocumentService.cs" />
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="File\TempDirectory.cs" />
     <Compile Include="Interfaces\INavigationViewModel.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IStorable.cs" />
     <Compile Include="Logger\DocumentaniaLogger.cs" />
-    <Compile Include="Models\Document.cs" />
-    <Compile Include="Models\Tag.cs" />
     <Compile Include="Navigation\ViewModels\HomeNavigationViewModel.cs" />
     <Compile Include="Navigation\Views\HomeNavigationView.xaml.cs">
       <DependentUpon>HomeNavigationView.xaml</DependentUpon>

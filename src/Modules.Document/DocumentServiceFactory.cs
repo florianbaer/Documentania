@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Modules.Document
 {
     using Documentania.Infrastructure.Interfaces;
+    using Interfaces;
     using Microsoft.Practices.Unity;
 
     public static class DocumentServiceFactory
@@ -17,7 +18,8 @@ namespace Modules.Document
             if (service == null)
             {
                 IRepository repo = container.Resolve<IRepository>();
-                service = new DocumentService(repo);
+                var storage = container.Resolve<IDocumentStorage>();
+                service = new DocumentService(repo, storage);
             }
             return service;
         }
