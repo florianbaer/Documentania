@@ -20,6 +20,7 @@ namespace Modules.Document.ViewModels
     using Microsoft.Practices.ServiceLocation;
     using Models;
     using Modules.Document.Event;
+    using Modules.Document.Filtering;
 
     using Prism.Commands;
     using Prism.Events;
@@ -32,10 +33,25 @@ namespace Modules.Document.ViewModels
 
         private readonly IEventAggregator eventAggregator;
 
+        private Filter DocumentsFilter
+        {
+            get
+            {
+                return this.documentsFilter;
+            }
+            set
+            {
+                this.documentsFilter = value;
+                this.OnPropertyChanged(() => this.Documents);
+            }
+        }
+
         private ICollection<DocumentViewModel> documents = new ObservableCollection<DocumentViewModel>();
 
         private DocumentViewModel selected;
-        
+
+        private Filter documentsFilter;
+
         public ObservableCollection<string>Tags { get; private set; }
 
         public AllDocumentsViewModel(IDocumentService service, IEventAggregator eventAggregator)
@@ -43,13 +59,13 @@ namespace Modules.Document.ViewModels
             this.service = service;
             this.eventAggregator = eventAggregator;
             eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
-            this.service.GetAll().ForEach(x => this.Documents.Add(new DocumentViewModel(x, this.service)));
+            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
         }
         
         private void UpdateCollection(DocumentsCollectionUpdateEvent obj)
         {
-            this.Documents.Clear();
-            this.service.GetAll().ForEach(x => this.Documents.Add(new DocumentViewModel(x, this.service)));
+            this.documents.Clear();
+            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
         }
 
         public DocumentViewModel Selected
@@ -73,19 +89,18 @@ namespace Modules.Document.ViewModels
         {
             get
             {
+                if (this.DocumentsFilter != null)
+                {
+                    return this.DocumentsFilter.Execute(this.documents);
+                }
                 return this.documents;
-            }
-            set
-            {
-                this.documents = value;
-                this.OnPropertyChanged();
             }
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            this.Documents.Clear();
-            this.service.GetAll().ForEach(x => this.Documents.Add(new DocumentViewModel(x, this.service)));
+            this.documents.Clear();
+            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

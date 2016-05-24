@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace Modules.Document.Filtering
 {
     using Modules.Document.Models;
+    using Modules.Document.ViewModels;
 
-    public abstract class DocumentFilterBase
+    public abstract class Filter
     {
-        public abstract IEnumerable<Document> Filter(ICollection<Document> documents);
+        public abstract ICollection<DocumentViewModel> Execute(ICollection<DocumentViewModel> documents);
     }
 }

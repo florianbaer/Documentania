@@ -20,6 +20,8 @@ namespace Modules.Document.ViewModels
     using Microsoft.Win32;
     using Models;
     using Modules.Document.Event;
+    using Modules.Document.Filtering.ViewModels;
+    using Modules.Document.Filtering.Views;
     using Modules.Document.Views;
 
     using Prism.Commands;
@@ -31,15 +33,12 @@ namespace Modules.Document.ViewModels
     {
         private readonly IServiceLocator locator;
 
-        private readonly IEventAggregator eventAggregator;
-
         private IRegionManager regionManager;
 
-        public DocumentsSubMenuViewModel(IServiceLocator locator, IEventAggregator eventAggregator)
+        public DocumentsSubMenuViewModel(IServiceLocator locator)
         {
             this.locator = locator;
             this.regionManager = locator.GetInstance<IRegionManager>();
-            this.eventAggregator = eventAggregator;
         }
 
         public DelegateCommand AddDocumentCommand
@@ -51,6 +50,19 @@ namespace Modules.Document.ViewModels
                     {
                         this.regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(DocumentView).ToString());
                     });
+            }
+        }
+
+        public DelegateCommand ShowFilterWindowCommand
+        {
+            get
+            {
+                return new DelegateCommand(
+                    () =>
+                        {
+                            Window window = new Window() { Content = new DocumentFilterView() };
+                            window.Show();
+                        });
             }
         }
     }

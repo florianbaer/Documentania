@@ -116,8 +116,10 @@
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveZipper.cs" />
     <Compile Include="DocumentStorage\Archiver\FileInfoSerializer.cs" />
     <Compile Include="DocumentStorage\Archiver\MetadataFileGenerator.cs" />
-    <Compile Include="Filtering\DocumentFilterBase.cs" />
-    <Compile Include="Filtering\NameContainsFilter.cs" />
+    <Compile Include="Filtering\AllDocumentsFilter.cs" />
+    <Compile Include="Filtering\Filter.cs" />
+    <Compile Include="Filtering\Decorator.cs" />
+    <Compile Include="Filtering\NameContainsFilterDecorator.cs" />
     <Compile Include="Interfaces\IDocumentStorage.cs" />
     <Compile Include="DocumentService.cs" />
     <Compile Include="DocumentModule.cs" />
@@ -133,7 +135,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AllDocumentsViewModel.cs" />
-    <Compile Include="ViewModels\DocumentFilterViewModel.cs" />
+    <Compile Include="Filtering\ViewModels\DocumentFilterViewModel.cs" />
     <Compile Include="ViewModels\DocumentsSubMenuViewModel.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="Views\AllDocumentsView.xaml.cs">
@@ -142,7 +144,7 @@
     <Compile Include="Views\DocumentDetailView.xaml.cs">
       <DependentUpon>DocumentDetailView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DocumentFilterView.xaml.cs">
+    <Compile Include="Filtering\Views\DocumentFilterView.xaml.cs">
       <DependentUpon>DocumentFilterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DocumentsSubMenuView.xaml.cs">
@@ -168,7 +170,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DocumentFilterView.xaml">
+    <Page Include="Filtering\Views\DocumentFilterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,8 +13,8 @@
             <MenuItem Header="_Document">
                 <MenuItem Header="_Add Document" Command="{Binding AddDocumentCommand}"/>
             </MenuItem>
-            <MenuItem Header="_Search">
-                <MenuItem Header="_Search for a Document"/>
+            <MenuItem Header="_Filter">
+                <MenuItem Header="_Filter documents" Command="{Binding ShowFilterWindowCommand}"/>
             </MenuItem>
         </Menu>
     </Grid>
