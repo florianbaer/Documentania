@@ -8,28 +8,52 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Modules.Document.Filtering.ViewModels
 {
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Security.RightsManagement;
 
+    using log4net.Filter;
+
+    using Microsoft.Practices.Unity;
+
     using Modules.Document.Filtering.Events;
+    using Modules.Document.Filtering.Views;
+    using Modules.Document.Interfaces;
 
     using Prism.Commands;
     using Prism.Events;
+    using Prism.Mvvm;
 
-    public class DocumentFilterViewModel
+    public class DocumentFilterViewModel : BindableBase
     {
         private readonly IEventAggregator eventAggregator;
 
         private Filter documentFilters;
 
-        private bool filterApplied = false;
 
-        public DocumentFilterViewModel(IEventAggregator eventAggregator)
+        private IUnityContainer container;
+
+        private ObservableCollection<FilterViewBase> filters;
+
+        public DocumentFilterViewModel(IUnityContainer container, IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
-            this.documentFilters = new AllDocumentsFilter();
+            this.container = container;
+            this.Filters = new ObservableCollection<FilterViewBase>(this.container.ResolveAll<FilterViewBase>());
         }
 
-        public string Title => "hallo";
+        public ObservableCollection<FilterViewBase> Filters
+        {
+            get
+            {
+                return this.filters;
+            }
+            set
+            {
+                this.filters = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         public DelegateCommand ApplyFilterCommand
         {
@@ -38,16 +62,17 @@ namespace Modules.Document.Filtering.ViewModels
                 return new DelegateCommand(
                     () =>
                         {
-                            if (this.filterApplied)
+                            this.documentFilters = new AllDocumentsFilter();
+
+                            foreach (FilterViewBase filterView in this.Filters)
                             {
-                                this.documentFilters = new NameContainsFilterDecorator(new AllDocumentsFilter(), "ei");
-                            }
-                            else
-                            {
-                                this.documentFilters = new AllDocumentsFilter();
+                                var viewModel = ((FilterViewModelBase)filterView.DataContext);
+                                if (viewModel.Enabled)
+                                {
+                                    this.documentFilters = viewModel.CreateFilter(this.documentFilters);
+                                }
                             }
                             this.eventAggregator.GetEvent<FilterEvent>().Publish(this.documentFilters);
-                            this.filterApplied = !this.filterApplied;
                         });
 
             }

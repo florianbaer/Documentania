@@ -22,6 +22,6 @@ namespace Modules.Document.Filtering.ViewModels
             }
         }
 
-        public abstract Filter CreateFilter(Decorator filter);
+        public abstract Filter CreateFilter(Filter filter);
     }
 }

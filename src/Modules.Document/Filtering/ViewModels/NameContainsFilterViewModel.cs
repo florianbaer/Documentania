@@ -33,7 +33,7 @@ namespace Modules.Document.Filtering.ViewModels
             }
         }
 
-        public override Filter CreateFilter(Decorator filter)
+        public override Filter CreateFilter(Filter filter)
         {
             this.Decorator = new NameContainsFilterDecorator(filter, this.filterText);
             return this.Decorator;

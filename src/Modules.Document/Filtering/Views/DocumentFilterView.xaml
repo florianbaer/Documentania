@@ -5,12 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Modules.Document.Views"
              xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:contracts="clr-namespace:Documentania.Infrastructure;assembly=Documentania.Infrastructure"
              mc:Ignorable="d" 
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            <Label FontSize="23" Content="{Binding Title}"></Label>
-        <Button x:Name="ApplyFilterButton" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Command="{Binding ApplyFilterCommand}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" FontSize="23" Content="Filters" Height="Auto"/>
+        <Button Grid.Row="1" x:Name="ApplyFilterButton" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Command="{Binding ApplyFilterCommand}"/>
+        <ItemsControl Grid.Row="1" Margin="0,0,0,37" mvvm:RegionManager.RegionName="{x:Static contracts:RegionNames.FilterRegion}" ItemsSource="{Binding Filters}">
+            
+        </ItemsControl>
 
     </Grid>
 </UserControl>

@@ -19,6 +19,7 @@ namespace Modules.Document
     using Microsoft.Practices.Unity;
 
     using Modules.Document.DocumentStorage.Archiver;
+    using Modules.Document.Filtering.Views;
     using Modules.Document.Navigation;
     using Modules.Document.ViewModels;
     using Modules.Document.Views;
@@ -51,6 +52,8 @@ namespace Modules.Document
             this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Initialize Document module" });
 
             Log.Info("Initialize DocumentModule");
+            this.container.RegisterType<FilterViewBase, NameContainsFilterView>("NameFilter");
+
 
             this.container.RegisterType<IDocumentStorage, DocumentArchiveService>(new ContainerControlledLifetimeManager());
             this.container.RegisterType<IDocumentService, DocumentService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));

@@ -60,7 +60,7 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(
                     () =>
                         {
-                            Window window = new Window() { Content = new DocumentFilterView() };
+                            Window window = new Window() { Content = new DocumentFilterView(), Height = 500, Width = 500 };
                             window.Show();
                         });
             }
