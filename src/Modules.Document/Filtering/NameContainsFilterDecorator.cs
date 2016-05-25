@@ -26,9 +26,9 @@ namespace Modules.Document.Filtering
 
         public override ICollection<DocumentViewModel> Execute(ICollection<DocumentViewModel> documents)
         {
-            IEnumerable<DocumentViewModel> filteredDocuments = from document in documents
-                                                      where document.Name.Contains(this.filterText)
-                                                      select document;
+            IEnumerable<DocumentViewModel> filteredDocuments = from selection in documents
+                                                      where selection.Name.Contains(this.filterText)
+                                                      select selection;
 
             return base.Execute(filteredDocuments.ToList());
         }

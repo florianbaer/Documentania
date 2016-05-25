@@ -13,7 +13,6 @@ namespace Modules.Document.Filtering.ViewModels
     using System.Security.RightsManagement;
 
     using log4net.Filter;
-
     using Microsoft.Practices.Unity;
 
     using Modules.Document.Filtering.Events;

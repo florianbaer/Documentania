@@ -5,7 +5,7 @@ namespace Modules.Document.Filtering.ViewModels
 
     public abstract class FilterViewModelBase : BindableBase
     {
-        protected NameContainsFilterDecorator Decorator;
+        protected Decorator Decorator;
 
         private bool enabled;
         

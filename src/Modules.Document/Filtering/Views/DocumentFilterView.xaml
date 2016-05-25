@@ -16,9 +16,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontSize="23" Content="Filters" Height="Auto"/>
         <Button Grid.Row="1" x:Name="ApplyFilterButton" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Command="{Binding ApplyFilterCommand}"/>
-        <ItemsControl Grid.Row="1" Margin="0,0,0,37" mvvm:RegionManager.RegionName="{x:Static contracts:RegionNames.FilterRegion}" ItemsSource="{Binding Filters}">
-            
-        </ItemsControl>
+        <ItemsControl Grid.Row="1" Margin="0,0,0,37" mvvm:RegionManager.RegionName="{x:Static contracts:RegionNames.FilterRegion}" ItemsSource="{Binding Filters}"/>
 
     </Grid>
 </UserControl>
