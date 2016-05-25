@@ -53,6 +53,7 @@ namespace Modules.Document
 
             Log.Info("Initialize DocumentModule");
             this.container.RegisterType<FilterViewBase, NameContainsFilterView>("NameFilter");
+            this.container.RegisterType<FilterViewBase, TagNameContainsFilterView>("TagNameFilter");
 
 
             this.container.RegisterType<IDocumentStorage, DocumentArchiveService>(new ContainerControlledLifetimeManager());

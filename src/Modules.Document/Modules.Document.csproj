@@ -121,12 +121,16 @@
     <Compile Include="Filtering\Filter.cs" />
     <Compile Include="Filtering\Decorator.cs" />
     <Compile Include="Filtering\NameContainsFilterDecorator.cs" />
+    <Compile Include="Filtering\TagNameContainsFilter.cs" />
     <Compile Include="Filtering\ViewModels\FilterViewModelBase.cs" />
     <Compile Include="Filtering\ViewModels\NameContainsFilterViewModel.cs" />
-    <Compile Include="Filtering\ViewModels\TagContainsFilterViewModel.cs" />
+    <Compile Include="Filtering\ViewModels\TagNameContainsFilterViewModel.cs" />
     <Compile Include="Filtering\Views\FilterViewBase.cs" />
     <Compile Include="Filtering\Views\NameContainsFilterView.xaml.cs">
       <DependentUpon>NameContainsFilterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Filtering\Views\TagNameContainsFilterView.xaml.cs">
+      <DependentUpon>TagNameContainsFilterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IDocumentStorage.cs" />
     <Compile Include="DocumentService.cs" />
@@ -168,6 +172,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Filtering\Views\NameContainsFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Filtering\Views\TagNameContainsFilterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
