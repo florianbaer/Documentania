@@ -17,16 +17,16 @@ namespace Modules.Document.Filtering.ViewModels
 
     public class DocumentFilterViewModel
     {
-        private IEventAggregator eventAggregator;
+        private readonly IEventAggregator eventAggregator;
 
-        private Filter DocumentFilters;
+        private Filter documentFilters;
 
         private bool filterApplied = false;
 
         public DocumentFilterViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
-            this.DocumentFilters = new AllDocumentsFilter();
+            this.documentFilters = new AllDocumentsFilter();
         }
 
         public string Title => "hallo";
@@ -40,13 +40,13 @@ namespace Modules.Document.Filtering.ViewModels
                         {
                             if (this.filterApplied)
                             {
-                                this.DocumentFilters = new NameContainsFilterDecorator(new AllDocumentsFilter(), "ei");
+                                this.documentFilters = new NameContainsFilterDecorator(new AllDocumentsFilter(), "ei");
                             }
                             else
                             {
-                                this.DocumentFilters = new AllDocumentsFilter();
+                                this.documentFilters = new AllDocumentsFilter();
                             }
-                            this.eventAggregator.GetEvent<FilterEvent>().Publish(this.DocumentFilters);
+                            this.eventAggregator.GetEvent<FilterEvent>().Publish(this.documentFilters);
                             this.filterApplied = !this.filterApplied;
                         });
 
