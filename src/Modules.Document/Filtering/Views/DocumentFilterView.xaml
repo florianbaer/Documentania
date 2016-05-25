@@ -10,5 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
             <Label FontSize="23" Content="{Binding Title}"></Label>
+        <Button x:Name="ApplyFilterButton" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Command="{Binding ApplyFilterCommand}"/>
+
     </Grid>
 </UserControl>

@@ -117,6 +117,7 @@
     <Compile Include="DocumentStorage\Archiver\FileInfoSerializer.cs" />
     <Compile Include="DocumentStorage\Archiver\MetadataFileGenerator.cs" />
     <Compile Include="Filtering\AllDocumentsFilter.cs" />
+    <Compile Include="Filtering\Events\FilterEvent.cs" />
     <Compile Include="Filtering\Filter.cs" />
     <Compile Include="Filtering\Decorator.cs" />
     <Compile Include="Filtering\NameContainsFilterDecorator.cs" />

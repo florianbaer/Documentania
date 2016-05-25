@@ -21,13 +21,14 @@ namespace Modules.Document.ViewModels
     using Models;
     using Modules.Document.Event;
     using Modules.Document.Filtering;
+    using Modules.Document.Filtering.Events;
 
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Regions;
 
-    public class AllDocumentsViewModel : BindableBase, INavigationAware
+    public class AllDocumentsViewModel : BindableBase, INavigationAware, IDisposable
     {
         private readonly IDocumentService service;
 
@@ -52,6 +53,8 @@ namespace Modules.Document.ViewModels
 
         private Filter documentsFilter;
 
+        private readonly SubscriptionToken filterEventSubscriptionToken;
+
         public ObservableCollection<string>Tags { get; private set; }
 
         public AllDocumentsViewModel(IDocumentService service, IEventAggregator eventAggregator)
@@ -60,6 +63,12 @@ namespace Modules.Document.ViewModels
             this.eventAggregator = eventAggregator;
             eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
             this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
+            
+            this.filterEventSubscriptionToken = this.eventAggregator.GetEvent<FilterEvent>().Subscribe(
+                x =>
+                    {
+                        this.DocumentsFilter = x;
+                    });
         }
         
         private void UpdateCollection(DocumentsCollectionUpdateEvent obj)
@@ -125,6 +134,11 @@ namespace Modules.Document.ViewModels
         {
             this.service.DeleteDocument(document.Model);
             this.UpdateCollection(null);
+        }
+
+        public void Dispose()
+        {
+            this.eventAggregator.GetEvent<FilterEvent>().Unsubscribe(this.filterEventSubscriptionToken);
         }
     }
 }
