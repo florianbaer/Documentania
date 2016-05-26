@@ -5,25 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Modules.Document.Filtering.Views"
              xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="100" d:DesignWidth="500">
-    <Grid>
+    <Border Background="GhostWhite" BorderBrush="Silver" Margin="10,10,10,0" BorderThickness="1" CornerRadius="8,8,8,8">
+        <Grid>
 
-        <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="filterNameLabel" Content="Tag name contains value filter" HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="0" VerticalAlignment="Top"/>
+        <Label x:Name="filterNameLabel" Grid.Row="0" Grid.ColumnSpan="2" Content="Tag name contains value filter" HorizontalAlignment="Left" Margin="10,10,0,10" VerticalAlignment="Top"/>
 
-        <CheckBox Grid.Column="0" Grid.Row="1" x:Name="enabledCheckBox" Content="Enabled" HorizontalAlignment="Left"  HorizontalContentAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Center" IsChecked="{Binding Enabled}"/>
-        <TextBox x:Name="filterTextTextBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding FilterText}" VerticalAlignment="Center" Width="280"/>
+        <CheckBox Grid.Column="0" Grid.Row="1" x:Name="enabledCheckBox" Content="Enabled" HorizontalAlignment="Left"  HorizontalContentAlignment="Left" Margin="10" VerticalAlignment="Center" IsChecked="{Binding Enabled}"/>
+            <xctk:WatermarkTextBox x:Name="filterTextTextBox" Grid.Column="1" Grid.Row="1" Height="23" Margin="10" TextWrapping="Wrap" Text="{Binding FilterText}" VerticalAlignment="Center">
+                <xctk:WatermarkTextBox.Watermark>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Name of Tag should contain" Margin="4,0,0,0" />
+                    </StackPanel>
+                </xctk:WatermarkTextBox.Watermark>
+            </xctk:WatermarkTextBox>
 
-
-    </Grid>
+        </Grid>
+    </Border>
 </local:FilterViewBase>

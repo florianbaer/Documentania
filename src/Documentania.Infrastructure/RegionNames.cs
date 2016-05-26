@@ -16,7 +16,5 @@ namespace Documentania.Infrastructure
         public static string NavigationRegion = "NavigationRegion";
 
         public static string SubNavigationRegion = "SubNavigationRegion";
-
-        public static string FilterRegion = "FilterRegion";
     }
 }
