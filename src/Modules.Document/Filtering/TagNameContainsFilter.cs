@@ -30,7 +30,7 @@ namespace Modules.Document.Filtering
         public override ICollection<DocumentViewModel> Execute(ICollection<DocumentViewModel> documents)
         {
             var filteredDocuments = from selection in documents
-                where selection.Tags.Any(x => x.Contains(this.tagName))
+                where selection.Tags.Any(x => x.Value.Contains(this.tagName))
                 select selection;
             return base.Execute(filteredDocuments.ToList());
         }

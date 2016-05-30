@@ -142,6 +142,7 @@
     <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\IFilterView.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Navigation\ViewModels\DocumentsNavigationViewModel.cs" />
     <Compile Include="Navigation\Views\DocumentsNavigationView.xaml.cs">
       <DependentUpon>DocumentsNavigationView.xaml</DependentUpon>

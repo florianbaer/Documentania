@@ -12,6 +12,7 @@ namespace Modules.Document.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Runtime.InteropServices;
     using System.Threading;
     using System.Threading.Tasks;
@@ -160,7 +161,7 @@ namespace Modules.Document.ViewModels
             }
         }
 
-        public ObservableCollection<string> Tags => new ObservableCollection<string>(this.Model.Tags);
+        public ObservableCollection<Tag> Tags => new ObservableCollection<Tag>(this.Model.Tags);
 
         public DelegateCommand SaveDocumentCommand
         {
@@ -177,8 +178,8 @@ namespace Modules.Document.ViewModels
                 return new DelegateCommand(() =>
                     {
                         // todo: cleanup what is really needed 
-                        this.Model.Tags.Add(this.TagValue);
-                        this.Tags.Add(this.TagValue);
+                        this.Model.Tags.Add(new Tag() {Value = this.TagValue});
+                        this.Tags.Add(new Tag() {Value = this.TagValue});
                         this.OnPropertyChanged(() => this.Tags);
                         this.TagValue = string.Empty;
                     });
@@ -193,18 +194,18 @@ namespace Modules.Document.ViewModels
             }
         }
 
-        public DelegateCommand<string> RemoveTagCommand
+        public DelegateCommand<Tag> RemoveTagCommand
         {
             get
             {
-                return new DelegateCommand<string>(RemoveTag);
+                return new DelegateCommand<Tag>(RemoveTag);
             }
         }
 
-        private void RemoveTag(string tagToRemove)
+        private void RemoveTag(Tag tagToRemove)
         {
-            this.Tags.Remove(tagToRemove);
-            this.Model.Tags.Remove(tagToRemove);
+            this.Tags.Remove(this.Tags.Where(x => x.Value == tagToRemove.Value).Single());
+            this.Model.Tags.Remove(this.Model.Tags.Where(x => x.Value == tagToRemove.Value).Single());
             this.OnPropertyChanged(() => this.Tags);
         }
 

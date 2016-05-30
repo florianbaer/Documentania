@@ -37,7 +37,7 @@
                 <DataTemplate>
                     <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3" Margin="0,0,5,5">
                         <DockPanel>
-                            <Label Content="{Binding}" Margin="0"/>
+                            <Label Content="{Binding Value}" Margin="0"/>
                         </DockPanel>
                     </Border>
                 </DataTemplate>

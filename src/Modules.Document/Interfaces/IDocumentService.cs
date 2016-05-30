@@ -25,7 +25,7 @@ namespace Modules.Document.Interfaces
 
         ICollection<Document> GetAll();
 
-        ICollection<Document> SearchByTag(string tag);
+        ICollection<Document> SearchByTag(Tag tag);
 
         ICollection<Document> SearchByName(string name);
     }

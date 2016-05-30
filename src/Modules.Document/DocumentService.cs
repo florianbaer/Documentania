@@ -54,7 +54,7 @@ namespace Modules.Document
             return this.repository.GetAll<Document>();
         }
 
-        public ICollection<Document> SearchByTag(string tag)
+        public ICollection<Document> SearchByTag(Tag tag)
         {
             return this.repository.GetAll<Document>().Where(document => document.Tags.Contains(tag)).ToList();
         }

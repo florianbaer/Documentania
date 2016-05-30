@@ -29,12 +29,12 @@ namespace DocumentModule.Tests
         [TestCategory("HappyCase")]
         public void PropertyTest()
         {
-            string tagToAssert = "Tag";
+            Tag tagToAssert = new Tag() { Value = "Tag" };
 
             Document document = new Document
                                     {
                                         Path = "Path",
-                                        Tags = new List<string> { tagToAssert },
+                                        Tags = new List<Tag> { tagToAssert },
                                         DateReceived = DateTime.Now,
                                         Id = "Document",
                                         Name = "MyDocument",

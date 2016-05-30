@@ -12,6 +12,7 @@ namespace Modules.Document.Models
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using System.Security.RightsManagement;
     using System.Xml.Serialization;
 
     using Documentania.Infrastructure.Interfaces;
@@ -27,7 +28,7 @@ namespace Modules.Document.Models
         [XmlIgnore]
         public virtual string Path { get; set; }
 
-        public List<string> Tags { get; set; } = new List<string>();
+        public List<Tag> Tags { get; set; } = new List<Tag>();
 
         public virtual string Id { get; set; } = string.Empty;
     }

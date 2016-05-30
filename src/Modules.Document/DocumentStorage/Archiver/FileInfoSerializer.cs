@@ -24,7 +24,7 @@ namespace Modules.Document.DocumentStorage.Archiver
 
         public void Serialize(Document document, string infoFile)
         {
-            XmlSerializer writer = new XmlSerializer(typeof(Document));
+            XmlSerializer writer = new XmlSerializer(typeof(Document), new Type[] { typeof(Tag) });
 
             System.IO.FileStream file = System.IO.File.Create(infoFile);
 
@@ -49,10 +49,10 @@ namespace Modules.Document.DocumentStorage.Archiver
             return this.xDocument.Root.Elements().Single(x => x.Name == "Id").Value;
         }
 
-        private List<string> GetTags()
+        private List<Tag> GetTags()
         {
-            var list = new List<string>();
-            this.xDocument.Root.Elements().Single(x => x.Name == "Tags").Elements().ForEach(x => list.Add(x.Value));
+            var list = new List<Tag>();
+            this.xDocument.Root.Elements().Single(x => x.Name == "Tags").Elements().ForEach(x => list.Add(new Tag() {Value = x.Value}));
             return list;
         }
 
