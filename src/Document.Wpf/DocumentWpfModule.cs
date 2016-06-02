@@ -13,7 +13,6 @@ namespace Document.Wpf
 
     using Document.Model;
     using Document.Model.DocumentStorage.Archiver;
-    using Document.Model.Services;
     using Document.Wpf.Filtering.Views;
     using Document.Wpf.Navigation.Views;
     using Document.Wpf.Views;

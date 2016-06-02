@@ -92,6 +92,10 @@
       <Project>{EFE6519B-AEFF-4A16-9752-2AA7009BCA69}</Project>
       <Name>Document.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Document.RavenRepository\Document.RavenRepository.csproj">
+      <Project>{1F7533CF-43FC-44BF-BE88-90EF5A0B66AF}</Project>
+      <Name>Document.RavenRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Document.Wpf\Document.Wpf.csproj">
       <Project>{0006B188-5FBE-4AEE-8F6E-E4A4531A03DC}</Project>
       <Name>Document.Wpf</Name>

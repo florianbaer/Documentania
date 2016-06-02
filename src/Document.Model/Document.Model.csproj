@@ -89,7 +89,6 @@
     <Compile Include="AllDocumentsFilter.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="DocumentModelModule.cs" />
-    <Compile Include="DocumentServiceFactory.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveService.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveZipper.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentParser.cs" />
@@ -106,8 +105,6 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="NameContainsFilterDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DocumentService.cs" />
-    <Compile Include="Services\TagService.cs" />
     <Compile Include="TagNameContainsFilter.cs" />
   </ItemGroup>
   <ItemGroup>

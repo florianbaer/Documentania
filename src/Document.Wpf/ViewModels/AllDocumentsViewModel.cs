@@ -24,6 +24,9 @@ namespace Document.Wpf.ViewModels
     using Prism.Mvvm;
     using Prism.Regions;
 
+    using Document = Document.Model.Models.Document;
+    using Tag = Document.Model.Models.Tag;
+
     public class AllDocumentsViewModel : BindableBase, INavigationAware, IDisposable
     {
         private readonly IDocumentService service;

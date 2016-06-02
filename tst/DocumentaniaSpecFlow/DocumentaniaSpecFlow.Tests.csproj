@@ -101,7 +101,7 @@
       <Name>DataAccess.RavenDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Document.Model\Document.Model.csproj">
-      <Project>{efe6519b-aeff-4a16-9752-2aa7009bca69}</Project>
+      <Project>{EFE6519B-AEFF-4A16-9752-2AA7009BCA69}</Project>
       <Name>Document.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Documentania.Infrastructure\Documentania.Infrastructure.csproj">

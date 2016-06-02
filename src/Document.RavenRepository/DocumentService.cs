@@ -7,14 +7,13 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Document.Model.Services
+namespace Document.RavenRepository
 {
     using System.Collections.Generic;
     using System.Linq;
-
-    using Document.Model.Models;
-
     using Documentania.Infrastructure.Interfaces;
+    using Model;
+    using Model.Models;
 
     public class DocumentService : IDocumentService
     {

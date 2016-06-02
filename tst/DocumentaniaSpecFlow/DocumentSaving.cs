@@ -12,10 +12,8 @@ namespace DocumentaniaSpecFlow.Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    using Document.Model.Models;
     using Documentania.Infrastructure.Interfaces;
-    using Document = Document.Model.Models.Document;
-    using Tag = Document.Model.Models.Tag;
     using Moq;
 
     using NUnit.Framework;

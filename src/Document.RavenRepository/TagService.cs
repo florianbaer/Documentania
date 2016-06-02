@@ -6,11 +6,11 @@
 // // The file 'TagService.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Document.Model.Services
+namespace Document.RavenRepository
 {
-    using Document.Model.Models;
-
     using Documentania.Infrastructure.Interfaces;
+    using Model;
+    using Model.Models;
 
     public class TagService : ITagService
     {

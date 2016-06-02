@@ -1,10 +1,8 @@
-﻿namespace Document.Model
+﻿namespace Document.RavenRepository
 {
     using Documentania.Infrastructure.Interfaces;
-
-    using global::Document.Model.Services;
-
     using Microsoft.Practices.Unity;
+    using Model;
 
     public static class DocumentServiceFactory
     {
