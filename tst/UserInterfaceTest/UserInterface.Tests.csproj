@@ -88,10 +88,6 @@
       <Project>{9a04af41-a588-4fd4-bf90-0c2af4d7c279}</Project>
       <Name>DataAccess.RavenDB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Modules.Document\Modules.Document.csproj">
-      <Project>{dcb9b047-1f17-469d-80d8-f0fcb229de26}</Project>
-      <Name>Modules.Document</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\UserInterface\Documentania.csproj">
       <Project>{8f216f98-1855-497d-aaba-59859538cfef}</Project>
       <Name>Documentania</Name>

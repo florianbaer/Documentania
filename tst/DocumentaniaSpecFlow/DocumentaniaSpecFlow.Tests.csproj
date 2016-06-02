@@ -100,13 +100,13 @@
       <Project>{9A04AF41-A588-4FD4-BF90-0C2AF4D7C279}</Project>
       <Name>DataAccess.RavenDB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Document.Model\Document.Model.csproj">
+      <Project>{efe6519b-aeff-4a16-9752-2aa7009bca69}</Project>
+      <Name>Document.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
       <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
       <Name>Documentania.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Modules.Document\Modules.Document.csproj">
-      <Project>{DCB9B047-1F17-469D-80D8-F0FCB229DE26}</Project>
-      <Name>Modules.Document</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

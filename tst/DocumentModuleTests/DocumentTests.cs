@@ -14,9 +14,8 @@ namespace DocumentModule.Tests
     using ExAs;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using Modules.Document;
-    using Modules.Document.Models;
+    using Document = Document.Model.Models.Document;
+    using Tag = Document.Model.Models.Tag;
 
     [TestClass]
     public class DocumentTests

@@ -11,11 +11,11 @@ namespace DocumentModule.Tests
     using System;
     using System.IO;
 
+    using Document.Model.DocumentStorage.Archiver;
+    using Document.Model.Models;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using Modules.Document.DocumentStorage.Archiver;
-    using Modules.Document.Models;
-
+    
     [TestClass]
     public class DocumentParserTests
     {

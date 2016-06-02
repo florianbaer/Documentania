@@ -19,7 +19,6 @@ namespace DataAccess.RavenDB
     using Documentania.Infrastructure.Interfaces;
 
     using log4net;
-    using Modules.Document.Models;
     using Raven.Abstractions.Extensions;
     using Raven.Client;
 

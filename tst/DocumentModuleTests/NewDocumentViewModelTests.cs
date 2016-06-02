@@ -3,14 +3,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DocumentModule.Tests
 {
+    using Document.Model;
+    using Document.Wpf.ViewModels;
+
     using Documentania.Infrastructure.Interfaces;
 
     using ExAs;
-
-    using Modules.Document;
-    using Modules.Document.Interfaces;
-    using Modules.Document.Models;
-    using Modules.Document.ViewModels;
+    using Document = Document.Model.Models.Document;
+    using Tag = Document.Model.Models.Tag;
     using Moq;
 
     [TestClass]

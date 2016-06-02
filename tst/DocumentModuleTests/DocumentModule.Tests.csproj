@@ -88,13 +88,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Document.Model\Document.Model.csproj">
+      <Project>{EFE6519B-AEFF-4A16-9752-2AA7009BCA69}</Project>
+      <Name>Document.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Document.Wpf\Document.Wpf.csproj">
+      <Project>{0006B188-5FBE-4AEE-8F6E-E4A4531A03DC}</Project>
+      <Name>Document.Wpf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
       <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
       <Name>Documentania.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Modules.Document\Modules.Document.csproj">
-      <Project>{DCB9B047-1F17-469D-80D8-F0FCB229DE26}</Project>
-      <Name>Modules.Document</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

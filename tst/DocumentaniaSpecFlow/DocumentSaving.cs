@@ -14,8 +14,8 @@ namespace DocumentaniaSpecFlow.Tests
     using System.Linq;
 
     using Documentania.Infrastructure.Interfaces;
-    using Modules.Document;
-    using Modules.Document.Models;
+    using Document = Document.Model.Models.Document;
+    using Tag = Document.Model.Models.Tag;
     using Moq;
 
     using NUnit.Framework;
@@ -36,7 +36,7 @@ namespace DocumentaniaSpecFlow.Tests
         [When(@"I add a Document to the Repository")]
         public void WhenIAddADocumentToTheRepository()
         {
-            this.repoMock.Setup(x => x.All<Document>().ToList())
+            this.repoMock.Setup(x => x.GetAll<Document>())
                 .Returns(
                     new List<Document> { new Document { Id = "1", DateReceived = DateTime.MaxValue, Path = "Path" } });
         }
@@ -44,7 +44,7 @@ namespace DocumentaniaSpecFlow.Tests
         [Then(@"I get (.*) Document when i get all Documents")]
         public void ThenIGetDocumentWhenIGetAllDocuments(int p0)
         {
-            IList<Document> count = this.repoMock.Object.All<Document>().ToList();
+            IList<Document> count = this.repoMock.Object.GetAll<Document>().ToList();
             Assert.AreEqual(count.Count, p0);
         }
     }

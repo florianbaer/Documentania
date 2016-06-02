@@ -9,14 +9,16 @@
 
 namespace DocumentModule.Tests
 {
+    using Document.Model;
+    using Document.Wpf.Views;
+
     using Documentania.Infrastructure;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using Modules.Document;
-    using Modules.Document.Views;
+    using Document = Document.Model.Models.Document;
+    using Tag = Document.Model.Models.Tag;
 
     using Moq;
 
@@ -41,7 +43,7 @@ namespace DocumentModule.Tests
             locatorMock.Setup(x => x.GetInstance<IUnityContainer>()).Returns(unityMock.Object);
             locatorMock.Setup(x => x.GetInstance<IRegionManager>()).Returns(regionManagerMock.Object);
 
-            DocumentModule module = new DocumentModule(locatorMock.Object);
+            DocumentModelModule module = new DocumentModelModule(locatorMock.Object);
             module.Initialize();
 
             // Views

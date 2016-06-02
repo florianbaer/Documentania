@@ -6,8 +6,8 @@ namespace DocumentModule.Tests
     using System.Windows;
     using System.Windows.Controls;
 
-    using Modules.Document.Extensions;
-
+    using Document.Wpf.Extensions;
+    
     [TestClass]
     public class WebBrowserExtensionTests
     {
