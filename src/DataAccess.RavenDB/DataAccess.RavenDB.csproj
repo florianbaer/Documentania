@@ -99,7 +99,6 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Entities\DocumentTagsEntity.cs" />
     <Compile Include="Extension\Extensions.cs" />
     <Compile Include="RavenDbModule.cs" />
     <Compile Include="DocumentaniaDocumentStore.cs" />

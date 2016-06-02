@@ -1,19 +1,17 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="INavigationViewModel.cs" company="BaerDev">
+// // <copyright file="FilterEvent.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'INavigationViewModel.cs'.
+// // The file 'FilterEvent.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Documentania.Infrastructure.Interfaces
+namespace Document.Model.Events
 {
-    using Prism.Commands;
+    using Prism.Events;
 
-    public interface INavigationViewModel
+    public class FilterEvent : PubSubEvent<Filter>
     {
-        DelegateCommand NavigateCommand { get; }
-
-        string Title { get; }
+         
     }
 }

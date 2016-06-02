@@ -82,7 +82,6 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="File\TempDirectory.cs" />
-    <Compile Include="Interfaces\INavigationViewModel.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IStorable.cs" />

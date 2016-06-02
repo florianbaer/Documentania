@@ -10,6 +10,8 @@ namespace Modules.Document
     using Interfaces;
     using Microsoft.Practices.Unity;
 
+    using Modules.Document.Services;
+
     public static class DocumentServiceFactory
     {
         private static IDocumentService service;

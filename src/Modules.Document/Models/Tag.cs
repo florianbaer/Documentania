@@ -1,6 +1,7 @@
 namespace Modules.Document.Models
 {
-    public class Tag
+    using Documentania.Infrastructure.Interfaces;
+    public class Tag : IStorable
     {
         public virtual string Id { get; set; } = string.Empty;
 

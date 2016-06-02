@@ -11,6 +11,8 @@ namespace Modules.Document.Interfaces
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+
     using Models;
 
     public interface IDocumentService : IDisposable
@@ -23,7 +25,7 @@ namespace Modules.Document.Interfaces
 
         Document GetDocumentByName(string name);
 
-        ICollection<Document> GetAll();
+        IQueryable<Document> GetAll();
 
         ICollection<Document> SearchByTag(Tag tag);
 

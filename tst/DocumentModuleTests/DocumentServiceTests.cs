@@ -19,6 +19,8 @@ namespace DocumentModule.Tests
     using Modules.Document;
     using Modules.Document.Interfaces;
     using Modules.Document.Models;
+    using Modules.Document.Services;
+
     using Moq;
 
     using IDocumentService = Modules.Document.Interfaces.IDocumentService;

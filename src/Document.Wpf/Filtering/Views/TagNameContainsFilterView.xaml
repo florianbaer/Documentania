@@ -1,0 +1,37 @@
+﻿<views:FilterViewBase x:Class="Document.Wpf.Filtering.Views.TagNameContainsFilterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:views="clr-namespace:Document.Wpf.Filtering.Views"
+             mc:Ignorable="d" 
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="100" d:DesignWidth="500">
+    <Border Background="GhostWhite" BorderBrush="Silver" Margin="10,10,10,0" BorderThickness="1" CornerRadius="8,8,8,8">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="filterNameLabel" Grid.Row="0" Grid.ColumnSpan="2" Content="Tag name contains value filter" HorizontalAlignment="Left" Margin="10,10,0,10" VerticalAlignment="Top"/>
+
+        <CheckBox Grid.Column="0" Grid.Row="1" x:Name="enabledCheckBox" Content="Enabled" HorizontalAlignment="Left"  HorizontalContentAlignment="Left" Margin="10" VerticalAlignment="Center" IsChecked="{Binding Enabled}"/>
+            <xctk:WatermarkTextBox x:Name="filterTextTextBox" Grid.Column="1" Grid.Row="1" Height="23" Margin="10" TextWrapping="Wrap" Text="{Binding FilterText}" VerticalAlignment="Center">
+                <xctk:WatermarkTextBox.Watermark>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Name of Tag should contain" Margin="4,0,0,0" />
+                    </StackPanel>
+                </xctk:WatermarkTextBox.Watermark>
+            </xctk:WatermarkTextBox>
+
+        </Grid>
+    </Border>
+</views:FilterViewBase>

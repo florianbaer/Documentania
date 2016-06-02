@@ -7,14 +7,14 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Modules.Document
+namespace Document.Model.Services
 {
     using System.Collections.Generic;
     using System.Linq;
 
+    using Document.Model.Models;
+
     using Documentania.Infrastructure.Interfaces;
-    using Interfaces;
-    using Models;
 
     public class DocumentService : IDocumentService
     {
@@ -49,19 +49,19 @@ namespace Modules.Document
             return this.repository.Single<Document>(document => document.Name == name);
         }
 
-        public ICollection<Document> GetAll()
+        public IList<Document> GetAll()
         {
-            return this.repository.GetAll<Document>();
+            return this.repository.GetAll<Document>().ToList();
         }
 
         public ICollection<Document> SearchByTag(Tag tag)
         {
-            return this.repository.GetAll<Document>().Where(document => document.Tags.Contains(tag)).ToList();
+            return this.repository.All<Document>().Where(document => document.Tags.Contains(tag)).ToList();
         }
 
         public ICollection<Document> SearchByName(string name)
         {
-            return this.repository.GetAll<Document>().Where(x => x.Name == name).ToList();
+            return this.repository.All<Document>().Where(x => x.Name == name).ToList();
         }
 
         public void Dispose()

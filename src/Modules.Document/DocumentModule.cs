@@ -21,6 +21,7 @@ namespace Modules.Document
     using Modules.Document.DocumentStorage.Archiver;
     using Modules.Document.Filtering.Views;
     using Modules.Document.Navigation;
+    using Modules.Document.Services;
     using Modules.Document.ViewModels;
     using Modules.Document.Views;
     using Prism.Events;
