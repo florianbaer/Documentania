@@ -18,7 +18,7 @@ namespace Document.Wpf.ViewModels
     using Document.Model;
 
     using Microsoft.Win32;
-
+    using Model.Interface;
     using Prism.Commands;
     using Prism.Mvvm;
     using Document = Document.Model.Models.Document;

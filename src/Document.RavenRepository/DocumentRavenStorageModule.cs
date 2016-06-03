@@ -15,6 +15,7 @@ namespace Document.RavenRepository
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Model;
+    using Model.Interface;
     using Prism.Events;
     using Prism.Modularity;
     using Prism.Regions;

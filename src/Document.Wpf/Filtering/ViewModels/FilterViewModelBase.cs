@@ -1,7 +1,7 @@
 namespace Document.Wpf.Filtering.ViewModels
 {
     using Document.Model;
-
+    using Model.Filter;
     using Prism.Mvvm;
 
     public abstract class FilterViewModelBase : BindableBase

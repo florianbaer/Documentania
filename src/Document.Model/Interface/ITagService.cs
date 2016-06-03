@@ -6,11 +6,10 @@
 // // The file 'ITagService.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Document.Model
+namespace Document.Model.Interface
 {
     using System;
-    using Document = Document.Model.Models.Document;
-    using Tag = Document.Model.Models.Tag;
+    using Tag = Models.Tag;
 
     public interface ITagService : IDisposable
     {

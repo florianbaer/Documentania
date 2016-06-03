@@ -8,6 +8,7 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Document.Model.Events
 {
+    using Filter;
     using Prism.Events;
 
     public class FilterEvent : PubSubEvent<Filter>

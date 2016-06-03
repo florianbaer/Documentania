@@ -9,6 +9,7 @@
 namespace Document.Wpf.Filtering.ViewModels
 {
     using Document.Model;
+    using Model.Filter;
 
     public class TagNameContainsFilterViewModel : FilterViewModelBase
     {

@@ -7,13 +7,12 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Document.Model
+namespace Document.Model.Interface
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using Document = Document.Model.Models.Document;
-    using Tag = Document.Model.Models.Tag;
+    using Document = Models.Document;
+    using Tag = Models.Tag;
 
     public interface IDocumentService : IDisposable
     {

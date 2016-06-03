@@ -15,7 +15,7 @@ namespace Document.Wpf.Filtering.ViewModels
     using Document.Wpf.Filtering.Views;
 
     using Microsoft.Practices.Unity;
-
+    using Model.Filter;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;

@@ -10,6 +10,7 @@
 namespace DocumentModule.Tests
 {
     using Document.Model;
+    using Document.Model.Filter;
     using Document.Wpf.Views;
 
     using Documentania.Infrastructure;

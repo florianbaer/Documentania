@@ -18,7 +18,8 @@ namespace Document.Wpf.ViewModels
     using Document.Model.Models;
 
     using Microsoft.Practices.ObjectBuilder2;
-
+    using Model.Filter;
+    using Model.Interface;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;

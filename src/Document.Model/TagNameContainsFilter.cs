@@ -10,6 +10,7 @@ namespace Document.Model
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Filter;
     using Document = Document.Model.Models.Document;
     using Tag = Document.Model.Models.Tag;
 
@@ -23,7 +24,7 @@ namespace Document.Model
             set { this.tagName = value; }
         }
         
-        public TagNameContainsFilter(Filter filter, string tagName) : base(filter)
+        public TagNameContainsFilter(Filter.Filter filter, string tagName) : base(filter)
         {
             this.tagName = tagName;
         }

@@ -13,6 +13,7 @@ namespace Document.RavenRepository
     using System.Linq;
     using Documentania.Infrastructure.Interfaces;
     using Model;
+    using Model.Interface;
     using Model.Models;
 
     public class DocumentService : IDocumentService

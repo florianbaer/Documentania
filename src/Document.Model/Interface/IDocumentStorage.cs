@@ -1,7 +1,6 @@
-namespace Document.Model
+namespace Document.Model.Interface
 {
-    using Document = Document.Model.Models.Document;
-    using Tag = Document.Model.Models.Tag;
+    using Document = Models.Document;
 
     public interface IDocumentStorage
     {

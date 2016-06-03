@@ -7,17 +7,14 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Document.Model
+namespace Document.Model.Filter
 {
     using Documentania.SplashScreen.Events;
-
-    using global::Document.Model.DocumentStorage.Archiver;
-
+    using DocumentStorage.Archiver;
+    using Interface;
     using log4net;
-
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
-
     using Prism.Events;
     using Prism.Modularity;
     using Prism.Regions;

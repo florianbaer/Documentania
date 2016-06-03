@@ -10,6 +10,7 @@ namespace Document.RavenRepository
 {
     using Documentania.Infrastructure.Interfaces;
     using Model;
+    using Model.Interface;
     using Model.Models;
 
     public class TagService : ITagService

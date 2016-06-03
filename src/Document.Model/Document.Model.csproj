@@ -86,9 +86,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllDocumentsFilter.cs" />
-    <Compile Include="Decorator.cs" />
-    <Compile Include="DocumentModelModule.cs" />
+    <Compile Include="Filter\AllDocumentsFilter.cs" />
+    <Compile Include="Filter\Decorator.cs" />
+    <Compile Include="Filter\DocumentModelModule.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveService.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveZipper.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentParser.cs" />
@@ -97,13 +97,13 @@
     <Compile Include="Events\FilterEvent.cs" />
     <Compile Include="Events\AddDocumentEvent.cs" />
     <Compile Include="Events\DocumentsCollectionUpdateEvent.cs" />
-    <Compile Include="Filter.cs" />
-    <Compile Include="IDocumentService.cs" />
-    <Compile Include="IDocumentStorage.cs" />
-    <Compile Include="ITagService.cs" />
+    <Compile Include="Filter\Filter.cs" />
+    <Compile Include="Interface\IDocumentService.cs" />
+    <Compile Include="Interface\IDocumentStorage.cs" />
+    <Compile Include="Interface\ITagService.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Tag.cs" />
-    <Compile Include="NameContainsFilterDecorator.cs" />
+    <Compile Include="Filter\NameContainsFilterDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagNameContainsFilter.cs" />
   </ItemGroup>

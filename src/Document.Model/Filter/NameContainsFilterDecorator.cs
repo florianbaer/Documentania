@@ -6,13 +6,11 @@
 // // The file 'NameContainsFilterDecorator.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Document.Model
+namespace Document.Model.Filter
 {
     using System.Collections.Generic;
     using System.Linq;
-
-    using Document = Document.Model.Models.Document;
-    using Tag = Document.Model.Models.Tag;
+    using Document = Models.Document;
 
     public class NameContainsFilterDecorator : Decorator
     {

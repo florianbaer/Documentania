@@ -14,6 +14,7 @@ namespace DocumentModule.Tests
     using System.Linq.Expressions;
 
     using Document.Model;
+    using Document.Model.Interface;
     using Document.RavenRepository;
     using Documentania.Infrastructure.Interfaces;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

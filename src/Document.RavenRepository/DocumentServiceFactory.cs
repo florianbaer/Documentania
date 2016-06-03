@@ -3,6 +3,7 @@
     using Documentania.Infrastructure.Interfaces;
     using Microsoft.Practices.Unity;
     using Model;
+    using Model.Interface;
 
     public static class DocumentServiceFactory
     {

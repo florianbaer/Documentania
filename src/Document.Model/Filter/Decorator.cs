@@ -6,11 +6,10 @@
 // // The file 'Decorator.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Document.Model
+namespace Document.Model.Filter
 {
     using System.Collections.Generic;
-    using Document = Document.Model.Models.Document;
-    using Tag = Document.Model.Models.Tag;
+    using Document = Models.Document;
 
     public abstract class Decorator : Filter
     {

@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DocumentModule.Tests
 {
     using Document.Model;
+    using Document.Model.Interface;
     using Document.Wpf.ViewModels;
 
     using Documentania.Infrastructure.Interfaces;

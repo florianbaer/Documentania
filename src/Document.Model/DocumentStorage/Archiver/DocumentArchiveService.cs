@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Interface;
     using Document = Document.Model.Models.Document;
     using Tag = Document.Model.Models.Tag;
 
