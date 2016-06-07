@@ -7,16 +7,16 @@
 
     public static class DocumentServiceFactory
     {
-        private static IDocumentService service;
-        public static IDocumentService GetDocumentService(IUnityContainer container)
+        private static IDocumentMetaDataService metaDataService;
+        public static IDocumentMetaDataService GetDocumentService(IUnityContainer container)
         {
-            if (service == null)
+            if (metaDataService == null)
             {
                 IRepository repo = container.Resolve<IRepository>();
                 var storage = container.Resolve<IDocumentStorage>();
-                service = new DocumentService(repo, storage);
+                metaDataService = new DocumentMetaDataService(repo, storage);
             }
-            return service;
+            return metaDataService;
         }
     }
 }

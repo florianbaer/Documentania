@@ -48,7 +48,7 @@ namespace Document.Wpf.ViewModels
 
         private DocumentMode mode;
 
-        private IDocumentService service;
+        private IDocumentMetaDataService metaDataService;
 
         private string tagValue;
 
@@ -84,17 +84,17 @@ namespace Document.Wpf.ViewModels
             }
         }
 
-        public DocumentViewModel(IDocumentService documentService)
+        public DocumentViewModel(IDocumentMetaDataService documentMetaDataService)
         {
             this.Model = new Document();
-            this.service = documentService;
+            this.metaDataService = documentMetaDataService;
             this.mode = DocumentMode.Create;
             this.IsBusy = false;
         }
 
-        public DocumentViewModel(Document document, IDocumentService documentService)
+        public DocumentViewModel(Document document, IDocumentMetaDataService documentMetaDataService)
         {
-            this.service = documentService;
+            this.metaDataService = documentMetaDataService;
             this.Model = document;
             this.mode = DocumentMode.Edit;
             this.IsBusy = false;
@@ -232,7 +232,7 @@ namespace Document.Wpf.ViewModels
                 () =>
                     {
                         this.ShowBusyIndicator("Add document to database...");
-                        this.service.AddDocument(this.Model);
+                        this.metaDataService.AddDocument(this.Model);
                         this.CleanViewModel();
                         this.HideBusyIndicator();
                     });

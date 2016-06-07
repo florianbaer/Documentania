@@ -28,7 +28,7 @@ namespace DocumentModule.Tests
     public class DocumentServiceTests
     {
         [TestMethod]
-        [TestCategory("DocumentService")]
+        [TestCategory("documentMetaDataService")]
         [TestCategory("DocumentModule")]
         [TestProperty("Created", "2016-03-17")]
         [TestProperty("Creator", "baerf")]
@@ -49,14 +49,14 @@ namespace DocumentModule.Tests
                                              Tags = new List<Tag>() { tagToAdd }
                                          };
 
-            IDocumentService documentService = new DocumentService(repositoryMock.Object, storageMock.Object);
-            documentService.AddDocument(documentToAdd);
+            IDocumentMetaDataService documentMetaDataService = new DocumentMetaDataService(repositoryMock.Object, storageMock.Object);
+            documentMetaDataService.AddDocument(documentToAdd);
 
             repositoryMock.Verify(x => x.Add(documentToAdd));
         }
 
         [TestMethod]
-        [TestCategory("DocumentService")]
+        [TestCategory("documentMetaDataService")]
         [TestCategory("DocumentModule")]
         [TestProperty("Created", "2016-03-17")]
         [TestProperty("Creator", "baerf")]
@@ -80,14 +80,14 @@ namespace DocumentModule.Tests
 
             repositoryMock.Setup(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
 
-            IDocumentService documentService = new DocumentService(repositoryMock.Object, storageMock.Object);
-            documentService.GetDocumentById(documentToFind.Id);
+            IDocumentMetaDataService documentMetaDataService = new DocumentMetaDataService(repositoryMock.Object, storageMock.Object);
+            documentMetaDataService.GetDocumentById(documentToFind.Id);
 
             repositoryMock.Verify(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
         }
 
         [TestMethod]
-        [TestCategory("DocumentService")]
+        [TestCategory("documentMetaDataService")]
         [TestCategory("DocumentModule")]
         [TestProperty("Created", "2016-03-17")]
         [TestProperty("Creator", "baerf")]
@@ -111,8 +111,8 @@ namespace DocumentModule.Tests
 
             repositoryMock.Setup(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
 
-            IDocumentService documentService = new DocumentService(repositoryMock.Object, storageMock.Object);
-            documentService.GetDocumentByName(documentToFind.Name);
+            IDocumentMetaDataService documentMetaDataService = new DocumentMetaDataService(repositoryMock.Object, storageMock.Object);
+            documentMetaDataService.GetDocumentByName(documentToFind.Name);
 
             repositoryMock.Verify(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
         }

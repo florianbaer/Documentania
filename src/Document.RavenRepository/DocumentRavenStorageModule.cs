@@ -42,7 +42,7 @@ namespace Document.RavenRepository
 
             Log.Info("Initialize Document raven storage Module");
 
-            this.container.RegisterType<IDocumentService, DocumentService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));
+            this.container.RegisterType<IDocumentMetaDataService, DocumentMetaDataService>(new InjectionFactory(x => DocumentServiceFactory.GetDocumentService(this.container)));
         }
     }
 }

@@ -98,9 +98,8 @@
     <Compile Include="Events\AddDocumentEvent.cs" />
     <Compile Include="Events\DocumentsCollectionUpdateEvent.cs" />
     <Compile Include="Filter\Filter.cs" />
-    <Compile Include="Interface\IDocumentService.cs" />
+    <Compile Include="Interface\IDocumentMetaDataService.cs" />
     <Compile Include="Interface\IDocumentStorage.cs" />
-    <Compile Include="Interface\ITagService.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Filter\NameContainsFilterDecorator.cs" />

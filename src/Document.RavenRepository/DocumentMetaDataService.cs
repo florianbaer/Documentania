@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="DocumentService.cs" company="BaerDev">
+// // <copyright file="documentMetaDataService.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'DocumentService.cs'.
+// // The file 'documentMetaDataService.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Document.RavenRepository
     using Model.Interface;
     using Model.Models;
 
-    public class DocumentService : IDocumentService
+    public class DocumentMetaDataService : IDocumentMetaDataService
     {
         private readonly IRepository repository;
 
         private IDocumentStorage storage;
 
-        public DocumentService(IRepository repo, IDocumentStorage storage)
+        public DocumentMetaDataService(IRepository repo, IDocumentStorage storage)
         {
             this.storage = storage;
             this.repository = repo;
@@ -51,7 +51,7 @@ namespace Document.RavenRepository
 
         public IList<Document> GetAll()
         {
-            return this.repository.GetAll<Document>().ToList();
+            return this.repository.All<Document>().ToList();
         }
 
         public ICollection<Document> SearchByTag(Tag tag)

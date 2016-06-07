@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="IDocumentService.cs" company="BaerDev">
+// // <copyright file="IDocumentMetaDataService.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'IDocumentService.cs'.
+// // The file 'IDocumentMetaDataService.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace Document.Model.Interface
     using Document = Models.Document;
     using Tag = Models.Tag;
 
-    public interface IDocumentService : IDisposable
+    public interface IDocumentMetaDataService : IDisposable
     {
         void AddDocument(Document document);
 

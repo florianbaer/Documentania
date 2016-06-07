@@ -62,15 +62,13 @@ namespace Documentania.Infrastructure.Interfaces
         /// </summary>
         /// <typeparam name="T">The given type.</typeparam>
         /// <param name="item">The item.</param>
-        void Add<T>(T item) where T : class, IStorable;
+        void Add<T>(T item) where T : class, IStorable, new();
 
         /// <summary>
         /// Adds the specified items.
         /// </summary>
         /// <typeparam name="T">The given type.</typeparam>
         /// <param name="items">The items.</param>
-        void Add<T>(IEnumerable<T> items) where T : class, IStorable;
-
-        IList<T> GetAll<T>();
+        void Add<T>(IEnumerable<T> items) where T : class, IStorable, new();
     }
 }

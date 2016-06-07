@@ -38,7 +38,7 @@ namespace DocumentModule.Tests
             };
 
             // act
-            DocumentViewModel documentViewModel = new DocumentViewModel(new Mock<IDocumentService>().Object) { Model = document };
+            DocumentViewModel documentViewModel = new DocumentViewModel(new Mock<IDocumentMetaDataService>().Object) { Model = document };
 
             // assert
             documentViewModel.ExAssert(x => x.Member(m => m.Model).IsEqualTo(document)
@@ -66,7 +66,7 @@ namespace DocumentModule.Tests
             };
 
             // act
-            DocumentViewModel documentViewModel = new DocumentViewModel(new Mock<IDocumentService>().Object) { Model = document };
+            DocumentViewModel documentViewModel = new DocumentViewModel(new Mock<IDocumentMetaDataService>().Object) { Model = document };
 
             documentViewModel.Name = NewDocumentName;
 

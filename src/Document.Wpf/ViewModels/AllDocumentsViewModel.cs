@@ -30,7 +30,7 @@ namespace Document.Wpf.ViewModels
 
     public class AllDocumentsViewModel : BindableBase, INavigationAware, IDisposable
     {
-        private readonly IDocumentService service;
+        private readonly IDocumentMetaDataService metaDataService;
 
         private readonly IEventAggregator eventAggregator;
 
@@ -57,12 +57,12 @@ namespace Document.Wpf.ViewModels
 
         public ObservableCollection<Tag>Tags { get; private set; }
 
-        public AllDocumentsViewModel(IDocumentService service, IEventAggregator eventAggregator)
+        public AllDocumentsViewModel(IDocumentMetaDataService metaDataService, IEventAggregator eventAggregator)
         {
-            this.service = service;
+            this.metaDataService = metaDataService;
             this.eventAggregator = eventAggregator;
             eventAggregator.GetEvent<PubSubEvent<DocumentsCollectionUpdateEvent>>().Subscribe(this.UpdateCollection);
-            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
+            this.metaDataService.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.metaDataService)));
             
             this.filterEventSubscriptionToken = this.eventAggregator.GetEvent<FilterEvent>().Subscribe(
                 x =>
@@ -74,7 +74,7 @@ namespace Document.Wpf.ViewModels
         private void UpdateCollection(DocumentsCollectionUpdateEvent obj)
         {
             this.documents.Clear();
-            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
+            this.metaDataService.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.metaDataService)));
         }
 
         public DocumentViewModel Selected
@@ -104,7 +104,7 @@ namespace Document.Wpf.ViewModels
                     this.documents.ForEach(x => list.Add(x.Model));
 
                     ICollection<DocumentViewModel> viewModels = new ObservableCollection<DocumentViewModel>();
-                    this.DocumentsFilter.Execute(list).ForEach(x => viewModels.Add(new DocumentViewModel(x, this.service)));
+                    this.DocumentsFilter.Execute(list).ForEach(x => viewModels.Add(new DocumentViewModel(x, this.metaDataService)));
                     return viewModels;
                 }
                 return this.documents;
@@ -114,7 +114,7 @@ namespace Document.Wpf.ViewModels
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             this.documents.Clear();
-            this.service.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.service)));
+            this.metaDataService.GetAll().ForEach(x => this.documents.Add(new DocumentViewModel(x, this.metaDataService)));
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -137,7 +137,7 @@ namespace Document.Wpf.ViewModels
 
         private void DeleteDocument(DocumentViewModel document)
         {
-            this.service.DeleteDocument(document.Model);
+            this.metaDataService.DeleteDocument(document.Model);
             this.UpdateCollection(null);
         }
 

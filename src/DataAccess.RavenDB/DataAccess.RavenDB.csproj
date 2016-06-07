@@ -109,6 +109,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Document.Model\Document.Model.csproj">
+      <Project>{EFE6519B-AEFF-4A16-9752-2AA7009BCA69}</Project>
+      <Name>Document.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Documentania.Infrastructure\Documentania.Infrastructure.csproj">
       <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
       <Name>Documentania.Infrastructure</Name>
