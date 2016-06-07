@@ -45,9 +45,7 @@ namespace Document.Wpf.ViewModels
                 this.OnPropertyChanged();
             }
         }
-
-        private DocumentMode mode;
-
+        
         private IDocumentMetaDataService metaDataService;
 
         private string tagValue;
@@ -88,7 +86,6 @@ namespace Document.Wpf.ViewModels
         {
             this.Model = new Document();
             this.metaDataService = documentMetaDataService;
-            this.mode = DocumentMode.Create;
             this.IsBusy = false;
         }
 
@@ -96,7 +93,6 @@ namespace Document.Wpf.ViewModels
         {
             this.metaDataService = documentMetaDataService;
             this.Model = document;
-            this.mode = DocumentMode.Edit;
             this.IsBusy = false;
         }
 

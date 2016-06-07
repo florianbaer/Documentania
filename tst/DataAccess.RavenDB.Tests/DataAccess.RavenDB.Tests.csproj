@@ -99,6 +99,10 @@
       <Project>{6029CF48-AD40-4944-BD95-3675613B2B37}</Project>
       <Name>Documentania.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Documentania.TestUtils\Documentania.TestUtils.csproj">
+      <Project>{BC4AC7E4-BC29-462C-84FA-060C2F61C94D}</Project>
+      <Name>Documentania.TestUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,7 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Document.Model.Filter
+namespace Document.Model
 {
     using Documentania.SplashScreen.Events;
     using DocumentStorage.Archiver;

@@ -88,7 +88,7 @@
   <ItemGroup>
     <Compile Include="Filter\AllDocumentsFilter.cs" />
     <Compile Include="Filter\Decorator.cs" />
-    <Compile Include="Filter\DocumentModelModule.cs" />
+    <Compile Include="DocumentModelModule.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveService.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveZipper.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentParser.cs" />

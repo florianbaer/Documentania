@@ -34,9 +34,9 @@ namespace DocumentaniaSpecFlow.Tests
         [When(@"I add a Document to the Repository")]
         public void WhenIAddADocumentToTheRepository()
         {
-            this.repoMock.Setup(x => x.All<Document>().ToList())
+            this.repoMock.Setup(x => x.All<Document>())
                 .Returns(
-                    new List<Document> { new Document { Id = "1", DateReceived = DateTime.MaxValue, Path = "Path" } });
+                    new List<Document>() { new Document { Id = "1", DateReceived = DateTime.MaxValue, Path = "Path" } }.AsQueryable());
         }
 
         [Then(@"I get (.*) Document when i get all Documents")]

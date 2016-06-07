@@ -21,5 +21,7 @@ namespace Documentania.Infrastructure.Interfaces
         /// The identifier.
         /// </value>
         string Id { get; set; }
+
+        string Name { get; set; }
     }
 }

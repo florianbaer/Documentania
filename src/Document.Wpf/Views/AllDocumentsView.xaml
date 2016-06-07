@@ -17,23 +17,9 @@
             <ColumnDefinition Width="4"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0" IsChecked="{Binding Selected}"/>
-                        <Label Grid.Column="1" Content="{Binding Name}" />
-                        <Button Grid.Column="2" Height="10px" Width="10px" Command="{Binding Path=DataContext.DeleteDocumentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}">x</Button>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
 
+        <views:DocumentsListView Grid.Column="0" Documents="{Binding Documents}"  Selected="{Binding Selected}"/>
+        
         <views:DocumentDetailView Grid.Column="1" DataContext="{Binding Selected}"/>
         
         <GridSplitter Grid.Column="2" ResizeBehavior="PreviousAndNext" VerticalAlignment="Stretch" Width="4" />
