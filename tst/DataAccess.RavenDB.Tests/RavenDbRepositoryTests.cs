@@ -61,23 +61,5 @@ namespace DataAccess.RavenDB.Tests
 
             this.documentStoreMock.DocumentSession.Mock.Verify(x => x.Store(item), Times.Once);
         }
-
-        [TestMethod]
-        [Ignore]
-        public void GetAllItems()
-        {
-            this.documentStoreMock.DocumentSession.Mock.Setup(x => x.Query<Item>()).Returns(new List<Item>() { new Item("1", "Path"), new Item("2", "Path2") }.AsQueryable());
-
-            List<Item> items;
-            using (RavenDbRepository repository = new RavenDbRepository(this.documentStoreMock.Mock.Object))
-            {
-                items = repository.All<Item>().ToList();
-            }
-
-            items[0].ExAssert(x => x.Member(m => m.Id).IsEqualTo("1").Member(m => m.Name).IsEqualTo("Path"));
-            items[1].ExAssert(x => x.Member(m => m.Id).IsEqualTo("2").Member(m => m.Name).IsEqualTo("Path2"));
-
-            this.documentStoreMock.DocumentSession.Mock.Verify(x => x.Load<Item>());
-        }
     }
 }
