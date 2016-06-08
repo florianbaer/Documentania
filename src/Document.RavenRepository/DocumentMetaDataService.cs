@@ -34,11 +34,11 @@ namespace Document.RavenRepository
             this.storage.SaveDocument(document);
         }
 
-        public void DeleteDocument(Document document)
+        public void DeleteDocument(string id)
         {
-            this.repository.Delete(document);
+            this.repository.Delete<Document>(document => document.Id == id);
         }
-
+        
         public Document GetDocumentById(string id)
         {
             return this.repository.Single<Document>(document => document.Id == id);

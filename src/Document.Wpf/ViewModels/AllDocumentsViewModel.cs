@@ -137,7 +137,7 @@ namespace Document.Wpf.ViewModels
 
         private void DeleteDocument(DocumentViewModel document)
         {
-            this.metaDataService.DeleteDocument(document.Model);
+            this.metaDataService.DeleteDocument(document.Model.Id);
             this.UpdateCollection(null);
         }
 

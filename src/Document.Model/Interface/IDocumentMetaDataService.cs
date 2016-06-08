@@ -18,7 +18,7 @@ namespace Document.Model.Interface
     {
         void AddDocument(Document document);
 
-        void DeleteDocument(Document document);
+        void DeleteDocument(string id);
 
         Document GetDocumentById(string id);
 
