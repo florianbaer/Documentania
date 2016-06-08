@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExAs, Version=0.1.1.125, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ExtendedAssertions.0.1.1.125\lib\ExAs.dll</HintPath>
+    <Reference Include="ExAs, Version=0.4.0.184, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExtendedAssertions.0.4.0.184\lib\ExAs.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
