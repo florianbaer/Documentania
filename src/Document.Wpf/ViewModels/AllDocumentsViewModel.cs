@@ -127,13 +127,7 @@ namespace Document.Wpf.ViewModels
             //
         }
 
-        public DelegateCommand<DocumentViewModel> DeleteDocumentCommand
-        {
-            get
-            {
-                return new DelegateCommand<DocumentViewModel>(DeleteDocument);
-            }
-        }
+        public DelegateCommand<DocumentViewModel> DeleteDocumentCommand => new DelegateCommand<DocumentViewModel>(this.DeleteDocument);
 
         private void DeleteDocument(DocumentViewModel document)
         {
