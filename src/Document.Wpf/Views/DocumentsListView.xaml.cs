@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 namespace Document.Wpf.Views
 {
     using System.Collections.ObjectModel;
+
+    using Document.Wpf.ViewModels;
+
     using Model.Models;
 
     /// <summary>
@@ -23,23 +26,23 @@ namespace Document.Wpf.Views
     /// </summary>
     public partial class DocumentsListView : UserControl
     {
-        public static readonly DependencyProperty DocumentsProperty = DependencyProperty.Register("Documents", typeof(ObservableCollection<Document>), typeof(DocumentsListView), new PropertyMetadata(default(ObservableCollection<Document>)));
-        public static readonly DependencyProperty SelectedProperty = DependencyProperty.Register("Selected", typeof(Document), typeof(DocumentsListView), new PropertyMetadata(default(Document)));
+        public static readonly DependencyProperty DocumentsProperty = DependencyProperty.Register("Documents", typeof(ObservableCollection<DocumentViewModel>), typeof(DocumentsListView), new PropertyMetadata(default(ObservableCollection<DocumentViewModel>)));
+        public static readonly DependencyProperty SelectedProperty = DependencyProperty.Register("Selected", typeof(DocumentViewModel), typeof(DocumentsListView), new PropertyMetadata(default(DocumentViewModel)));
 
         public DocumentsListView()
         {
             InitializeComponent();
         }
 
-        public ObservableCollection<Document> Documents
+        public ObservableCollection<DocumentViewModel> Documents
         {
-            get { return (ObservableCollection<Document>) GetValue(DocumentsProperty); }
+            get { return (ObservableCollection<DocumentViewModel>) GetValue(DocumentsProperty); }
             set { SetValue(DocumentsProperty, value); }
         }
 
-        public Document Selected
+        public DocumentViewModel Selected
         {
-            get { return (Document) GetValue(SelectedProperty); }
+            get { return (DocumentViewModel) GetValue(SelectedProperty); }
             set { SetValue(SelectedProperty, value); }
         }
     }

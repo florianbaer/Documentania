@@ -19,8 +19,8 @@
         </Grid.ColumnDefinitions>
 
         <views:DocumentsListView Grid.Column="0" Documents="{Binding Documents}"  Selected="{Binding Selected}"/>
-        
-        <views:DocumentDetailView Grid.Column="1" DataContext="{Binding Selected}"/>
+
+        <views:DocumentDetailView Grid.Column="1" DocumentSource="{Binding Selected}"/>
         
         <GridSplitter Grid.Column="2" ResizeBehavior="PreviousAndNext" VerticalAlignment="Stretch" Width="4" />
         

@@ -56,7 +56,8 @@ namespace DataAccess.RavenDB
         {
             using (IDocumentSession session = this.store.OpenSession())
             {
-                session.Delete(item);
+                session.Delete(session.Load<T>(item.Id));
+                session.SaveChanges();
             }
         }
 
@@ -89,6 +90,7 @@ namespace DataAccess.RavenDB
             using (IDocumentSession session = this.store.OpenSession())
             {
                 session.Store(item);
+                session.SaveChanges();
             }
         }
 

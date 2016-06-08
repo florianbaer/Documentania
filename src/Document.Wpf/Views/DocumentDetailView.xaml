@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" x:Name="documentDetailView"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -17,16 +17,16 @@
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0">Id:</Label>
-        <Label Grid.Row="0" Grid.Column="1" Content="{Binding Id}"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=DocumentSource.Id, ElementName=documentDetailView}"/>
 
         <Label Grid.Row="1" Grid.Column="0">Name:</Label>
-        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Name}"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=DocumentSource.Name, ElementName=documentDetailView}"/>
         
         <Label Grid.Row="2" Grid.Column="0">Date received:</Label>
-        <Label Grid.Row="2" Grid.Column="1" Content="{Binding DateReceived}"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=DocumentSource.DateReceived, ElementName=documentDetailView}"/>
 
 
-        <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Tags}" Focusable="False" >
+        <ItemsControl ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Path=DocumentSource.Tags, ElementName=documentDetailView}" Focusable="False" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
