@@ -10,6 +10,7 @@
 namespace Document.RavenRepository
 {
     using Documentania.Infrastructure;
+    using Documentania.Infrastructure.Interfaces;
     using Documentania.SplashScreen.Events;
     using log4net;
     using Microsoft.Practices.ServiceLocation;
@@ -19,6 +20,8 @@ namespace Document.RavenRepository
     using Prism.Events;
     using Prism.Modularity;
     using Prism.Regions;
+
+    using Raven.Client;
 
     [Module(ModuleName = "DocumentRavenStorageModule")]
     public class DocumentRavenStorageModule : IModule
@@ -34,6 +37,15 @@ namespace Document.RavenRepository
         {
             this.locator = locator;
             this.container = this.locator.GetInstance<IUnityContainer>();
+
+            this.RunIndexes();
+        }
+
+        private void RunIndexes()
+        {
+            IDocumentStore storage = this.locator.GetInstance<IDocumentStore>();
+
+            new Documents_ByTags().Execute(storage);
         }
 
         public void Initialize()

@@ -75,7 +75,6 @@ namespace DataAccess.RavenDB
 
         public IQueryable<T> All<T>() where T : class, IStorable, new()
         {
-            this.Test();
             using (IDocumentSession session = this.store.OpenSession())
             {
                 return session.Query<T>();
@@ -111,92 +110,5 @@ namespace DataAccess.RavenDB
         {
             items.ForEach(x => this.Add(x));
         }
-
-        public void Test()
-        {
-            new TestItem_ByName().Execute(this.store);
-
-            TestItem item1 = new TestItem("id1", 1, "testitem 1");
-            this.Add(item1);
-            TestItem item2 = new TestItem("id3", 2, "testitem 2");
-            this.Add(item2);
-
-            ItemBase baseItm = new ItemBase("id2", "baseitem 1");
-            this.Add(baseItm);
-            ItemBase baseItm2 = new ItemBase("id4", "baseitem 2");
-            this.Add(baseItm2);
-
-
-            IQueryable<ItemBase> result = this.All<ItemBase>(1, 20);
-
-            var enumRe = result.ToList();
-            Console.Write(enumRe);
-
-
-            IQueryable<TestItem> results = this.All<TestItem>(1, 20);
-
-            var enumRes = results.ToList();
-            Console.Write(enumRes);
-        }
-    }
-
-    public class TestItem_ByName : AbstractIndexCreationTask<TestItem>
-    {
-        public TestItem_ByName()
-        {
-            Map = items => from item in items
-                           select new
-                           {
-                               FirstName = item.Name
-                           };
-        }
-    }
-
-    public class ItemBase_ByName : AbstractIndexCreationTask<ItemBase>
-    {
-        public ItemBase_ByName()
-        {
-            Map = items => from item in items
-                           select new
-                           {
-                               FirstName = item.Name
-                           };
-        }
-    }
-
-    public class TestItem : ItemBase
-    {
-        public int Size { get; set; }
-
-        public TestItem(string id, int size, string name)
-            : base(id, name)
-        {
-            this.Size = size;
-        }
-
-        public TestItem()
-        {
-            
-        }
-    }
-
-    public class ItemBase : IStorable
-    {
-        public ItemBase(string id, string name)
-        {
-            this.Id = id;
-            this.Name = name;
-        }
-
-        public ItemBase()
-        {
-            
-        }
-
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-
     }
 }
