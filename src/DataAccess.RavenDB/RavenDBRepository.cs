@@ -39,7 +39,6 @@ namespace DataAccess.RavenDB
         public RavenDbRepository(IDocumentStore store)
         {
             this.store = store;
-            store.Initialize();
         }
 
         public void Dispose()

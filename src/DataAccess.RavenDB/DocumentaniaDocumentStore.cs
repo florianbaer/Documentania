@@ -20,6 +20,7 @@ namespace DataAccess.RavenDB
         public DocumentaniaDocumentStore()
         {
             this.DataDirectory = @"C:\Documentania\Data\";
+            this.Initialize();
             Log.Debug($"Create instance of logger for data directory {this.DataDirectory}");
         }
     }
