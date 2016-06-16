@@ -25,10 +25,9 @@ namespace DataAccess.RavenDBTests
         [TestCategory("RavenDb")]
         public void ConstructorPassingParameterTest()
         {
-            const string dataDirectory = @"C:\Documentania\";
+            const string dataDirectory = @"C:\Test\";
 
-            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
-            store.DataDirectory = dataDirectory;
+            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore(dataDirectory);
             store.ExAssert(x => x.Member(m => m.DataDirectory).IsEqualTo(dataDirectory));
         }
 
@@ -38,7 +37,7 @@ namespace DataAccess.RavenDBTests
         {
             const string defaultDataDirectory = @"C:\Documentania\Data\";
 
-            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore();
+            DocumentaniaDocumentStore store = new DocumentaniaDocumentStore() {RunInMemory = true};
             store.ExAssert(x => x.Member(m => m.DataDirectory).IsEqualTo(defaultDataDirectory));
         }
     }

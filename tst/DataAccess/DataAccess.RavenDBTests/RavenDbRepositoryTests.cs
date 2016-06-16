@@ -38,7 +38,7 @@ namespace DataAccess.RavenDBTests
             RavenDbRepository repository = new RavenDbRepository(this.documentStoreMock.Mock.Object);
             repository.Dispose();
 
-            this.documentStoreMock.Mock.Verify(x => x.Initialize(), Times.Once);
+            this.documentStoreMock.Mock.Verify(x => x.Initialize(), Times.Never);
         }
 
         [TestMethod]

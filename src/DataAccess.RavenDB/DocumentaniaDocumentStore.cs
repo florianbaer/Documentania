@@ -9,6 +9,8 @@
 
 namespace DataAccess.RavenDB
 {
+    using System.Runtime.CompilerServices;
+
     using log4net;
 
     using Raven.Client.Embedded;
@@ -17,9 +19,9 @@ namespace DataAccess.RavenDB
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentaniaDocumentStore));
 
-        public DocumentaniaDocumentStore()
+        public DocumentaniaDocumentStore(string dataDirectory = @"C:\Documentania\Data\")
         {
-            this.DataDirectory = @"C:\Documentania\Data\";
+            this.DataDirectory = dataDirectory;
             this.Initialize();
             Log.Debug($"Create instance of logger for data directory {this.DataDirectory}");
         }
