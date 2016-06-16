@@ -188,10 +188,6 @@
       <Project>{6029cf48-ad40-4944-bd95-3675613b2b37}</Project>
       <Name>Documentania.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Documentania.SplashScreen\Documentania.SplashScreen.csproj">
-      <Project>{495173D3-8C0A-4502-AADE-A80EB36A43A5}</Project>
-      <Name>Documentania.SplashScreen</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

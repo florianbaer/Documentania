@@ -78,8 +78,6 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Behavior\SplashBehaviour.cs" />
-    <Compile Include="Events\CloseSplashEvent.cs" />
-    <Compile Include="Events\MessageUpdateEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashModule.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />

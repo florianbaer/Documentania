@@ -11,7 +11,8 @@ namespace Document.Model
 {
     using System.Runtime.CompilerServices;
 
-    using Documentania.SplashScreen.Events;
+    using Documentania.Infrastructure.Events.SplashScreen;
+
     using DocumentStorage.Archiver;
     using Interface;
     using log4net;

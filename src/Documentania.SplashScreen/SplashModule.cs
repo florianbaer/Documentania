@@ -11,7 +11,9 @@ namespace Documentania.SplashScreen
     using System;
     using System.Threading;
     using System.Windows.Threading;
-    using Events;
+
+    using Documentania.Infrastructure.Events.SplashScreen;
+
     using Infrastructure.Interfaces;
     using Microsoft.Practices.Unity;
     using Prism.Events;

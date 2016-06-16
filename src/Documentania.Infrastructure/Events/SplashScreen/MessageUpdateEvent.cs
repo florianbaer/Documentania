@@ -6,7 +6,7 @@
 // // The file 'MessageUpdateEvent.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Documentania.SplashScreen.Events
+namespace Documentania.Infrastructure.Events.SplashScreen
 {
     using Prism.Events;
 

@@ -81,6 +81,8 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Events\SplashScreen\CloseSplashEvent.cs" />
+    <Compile Include="Events\SplashScreen\MessageUpdateEvent.cs" />
     <Compile Include="File\TempDirectory.cs" />
     <Compile Include="Interfaces\IDocumentExporter.cs" />
     <Compile Include="Interfaces\IDocumentStore.cs" />

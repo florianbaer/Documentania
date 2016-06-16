@@ -13,7 +13,7 @@ namespace Document.Model.UnitTests
     using Document.Model.DocumentStorage.Archiver;
     using Document.Model.Interface;
 
-    using Documentania.SplashScreen.Events;
+    using Documentania.Infrastructure.Events.SplashScreen;
 
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;

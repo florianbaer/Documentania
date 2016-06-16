@@ -17,7 +17,7 @@ namespace Document.Wpf
     using Document.Wpf.Navigation.Views;
     using Document.Wpf.Views;
 
-    using Documentania.SplashScreen.Events;
+    using Documentania.Infrastructure.Events.SplashScreen;
 
     using log4net;
 
@@ -28,6 +28,7 @@ namespace Document.Wpf
     using Prism.Modularity;
     using Prism.Regions;
 
+    [ModuleDependency("DocumentModelModule")]
     [Module(ModuleName = "DocumentWpfModule")]
     public class DocumentWpfModule : IModule
     {

@@ -11,7 +11,9 @@ namespace Documentania.SplashScreen.ViewModels
     using System;
     using System.ComponentModel;
     using System.Reflection;
-    using Events;
+
+    using Documentania.Infrastructure.Events.SplashScreen;
+
     using Prism.Events;
     using Prism.Mvvm;
 

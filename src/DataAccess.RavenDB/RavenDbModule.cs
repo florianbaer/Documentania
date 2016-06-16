@@ -9,8 +9,9 @@
 
 namespace DataAccess.RavenDB
 {
+    using Documentania.Infrastructure.Events.SplashScreen;
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.SplashScreen.Events;
+
     using log4net;
 
     using Microsoft.Practices.ServiceLocation;

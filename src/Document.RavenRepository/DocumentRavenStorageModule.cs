@@ -10,8 +10,9 @@
 namespace Document.RavenRepository
 {
     using Documentania.Infrastructure;
+    using Documentania.Infrastructure.Events.SplashScreen;
     using Documentania.Infrastructure.Interfaces;
-    using Documentania.SplashScreen.Events;
+
     using log4net;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
@@ -23,6 +24,7 @@ namespace Document.RavenRepository
 
     using Raven.Client;
 
+    [ModuleDependency("DocumentModelModule")]
     [Module(ModuleName = "DocumentRavenStorageModule")]
     public class DocumentRavenStorageModule : IModule
     {
