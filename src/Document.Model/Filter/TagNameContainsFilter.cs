@@ -6,13 +6,12 @@
 // // The file 'TagNameContainsFilter.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-namespace Document.Model
+namespace Document.Model.Filter
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Filter;
+
     using Document = Document.Model.Models.Document;
-    using Tag = Document.Model.Models.Tag;
 
     public class TagNameContainsFilter : Decorator
     {
@@ -24,7 +23,7 @@ namespace Document.Model
             set { this.tagName = value; }
         }
         
-        public TagNameContainsFilter(Filter.Filter filter, string tagName) : base(filter)
+        public TagNameContainsFilter(Model.Filter.Filter filter, string tagName) : base(filter)
         {
             this.tagName = tagName;
         }

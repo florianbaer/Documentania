@@ -34,7 +34,6 @@ namespace Document.RavenDB.UnitTests
         [TestProperty("Created", "2016-03-17")]
         [TestProperty("Creator", "baerf")]
         [TestCategory("HappyCase")]
-        [Ignore]
         public void AddDocumentTest()
         {
             Mock<IRepository> repositoryMock = new Mock<IRepository>();

@@ -46,8 +46,7 @@ namespace Document.Model
             messageUpdate.Publish(new MessageUpdateEvent { Message = "Initialize Document Model module" });
 
             Log.Info("Initialize DocumentModelModule");
-
-
+            
             this.container.RegisterType<IDocumentStorage, DocumentArchiveService>(new ContainerControlledLifetimeManager());
         }
     }
