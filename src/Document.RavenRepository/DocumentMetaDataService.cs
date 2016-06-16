@@ -12,9 +12,14 @@ namespace Document.RavenRepository
     using System.Collections.Generic;
     using System.Linq;
     using Documentania.Infrastructure.Interfaces;
+
+    using Microsoft.Practices.ObjectBuilder2;
+
     using Model;
     using Model.Interface;
     using Model.Models;
+
+    using Raven.Client;
 
     public class DocumentMetaDataService : IDocumentMetaDataService
     {
@@ -54,9 +59,13 @@ namespace Document.RavenRepository
             return this.repository.All<Document>().ToList();
         }
 
-        public ICollection<Document> SearchByTag(Tag tag)
+        public ICollection<Document> SearchByTag(ICollection<Tag> tags)
         {
-            return this.repository.All<Document>().Where(document => document.Tags.Contains(tag)).ToList();
+            var query = this.repository.All<Document>();
+
+            tags.ForEach(t => query = query.Search(x => x.Tags, t.Value));
+
+            return query.ToList();
         }
 
         public ICollection<Document> SearchByName(string name)

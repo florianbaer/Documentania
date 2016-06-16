@@ -9,6 +9,8 @@
 
 namespace Document.Model
 {
+    using System.Runtime.CompilerServices;
+
     using Documentania.SplashScreen.Events;
     using DocumentStorage.Archiver;
     using Interface;
@@ -28,18 +30,19 @@ namespace Document.Model
 
         private IUnityContainer container;
 
-        private IRegionManager regionManager;
-
         public DocumentModelModule(IServiceLocator locator)
         {
             this.locator = locator;
             this.container = this.locator.GetInstance<IUnityContainer>();
-            this.regionManager = this.locator.GetInstance<IRegionManager>();
         }
 
         public void Initialize()
         {
-            this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "Initialize Document Model module" });
+            IEventAggregator eventAggregator = this.locator.GetInstance<IEventAggregator>();
+            
+            MessageUpdateEvent messageUpdate = eventAggregator.GetEvent<MessageUpdateEvent>();
+
+            messageUpdate.Publish(new MessageUpdateEvent { Message = "Initialize Document Model module" });
 
             Log.Info("Initialize DocumentModelModule");
 

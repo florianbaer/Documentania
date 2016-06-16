@@ -26,7 +26,7 @@ namespace Document.Model.Interface
 
         IList<Document> GetAll();
 
-        ICollection<Document> SearchByTag(Tag tag);
+        ICollection<Document> SearchByTag(ICollection<Tag> tags);
 
         ICollection<Document> SearchByName(string name);
     }
