@@ -19,11 +19,18 @@ namespace DataAccess.RavenDB
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(DocumentaniaDocumentStore));
 
-        public DocumentaniaDocumentStore(string dataDirectory = @"C:\Documentania\Data\")
+        public DocumentaniaDocumentStore() : this(@"C:\Documentania\Data\")
         {
-            this.DataDirectory = dataDirectory;
             this.Initialize();
             Log.Debug($"Create instance of logger for data directory {this.DataDirectory}");
+        }
+
+        public DocumentaniaDocumentStore(string dataDirectory)
+        {
+            if (string.IsNullOrEmpty(dataDirectory))
+            {
+                this.DataDirectory = dataDirectory;
+            }
         }
     }
 }

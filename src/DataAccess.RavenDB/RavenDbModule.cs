@@ -32,7 +32,7 @@ namespace DataAccess.RavenDB
         {
             Log.Debug("Initialize RaveDbModule");
             this.container.Resolve<EventAggregator>().GetEvent<MessageUpdateEvent>().Publish(new MessageUpdateEvent { Message = "RavenDb module" });
-            this.container.RegisterType(typeof(IDocumentStore), typeof(DocumentaniaDocumentStore), new ContainerControlledLifetimeManager());
+            this.container.RegisterInstance(typeof(IDocumentStore), new DocumentaniaDocumentStore(), new ContainerControlledLifetimeManager());
             this.container.RegisterType(typeof(IRepository), typeof(RavenDbRepository), new TransientLifetimeManager());
         }
     }

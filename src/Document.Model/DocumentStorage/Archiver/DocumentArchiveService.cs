@@ -20,7 +20,7 @@
             var infoFilePath = Path.Combine(commonAppData, "DocumentInfo" + ".xml");
             string metaData = Path.Combine(commonAppData, "Metadata" + ".xml");
 
-            new FileInfoSerializer().Serialize(document, infoFilePath);
+            new XmlFileInfoSerializeService().Serialize(document, infoFilePath);
             
             new MetadataFileGenerator(metaData).GenerateFile();
 

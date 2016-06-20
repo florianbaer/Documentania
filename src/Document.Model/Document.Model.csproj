@@ -86,13 +86,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocumentStorage\Archiver\FastZipProvider.cs" />
+    <Compile Include="Interface\IFileInfoSerializeService.cs" />
     <Compile Include="Filter\AllDocumentsFilter.cs" />
     <Compile Include="Filter\Decorator.cs" />
     <Compile Include="DocumentModelModule.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveService.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveZipper.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentParser.cs" />
-    <Compile Include="DocumentStorage\Archiver\FileInfoSerializer.cs" />
+    <Compile Include="DocumentStorage\Archiver\XmlFileInfoSerializeService.cs" />
     <Compile Include="DocumentStorage\Archiver\MetadataFileGenerator.cs" />
     <Compile Include="Events\FilterEvent.cs" />
     <Compile Include="Events\AddDocumentEvent.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Filter\Filter.cs" />
     <Compile Include="Interface\IDocumentMetaDataService.cs" />
     <Compile Include="Interface\IDocumentStorage.cs" />
+    <Compile Include="Interface\IZipProvider.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Filter\NameContainsFilterDecorator.cs" />

@@ -1,25 +1,28 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="FileInfoSerializer.cs" company="BaerDev">
+// // <copyright file="XmlFileInfoSerializeService.cs" company="BaerDev">
 // // Copyright (c) BaerDev. All rights reserved.
 // // </copyright>
 // // <summary>
-// // The file 'FileInfoSerializer.cs'.
+// // The file 'XmlFileInfoSerializeService.cs'.
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 namespace Document.Model.DocumentStorage.Archiver
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Xml.Linq;
     using System.Xml.Serialization;
+
+    using Document.Model.Interface;
 
     using Raven.Abstractions.Extensions;
 
     using Document = Document.Model.Models.Document;
     using Tag = Document.Model.Models.Tag;
 
-    public class FileInfoSerializer
+    public class XmlFileInfoSerializeService : IFileInfoSerializeService
     {
         private XDocument xDocument;
 
@@ -35,6 +38,11 @@ namespace Document.Model.DocumentStorage.Archiver
 
         public Document Deserialize(string infoFile)
         {
+            if (!File.Exists(infoFile))
+            {
+                throw new FileNotFoundException($"File '{Path.GetFileName(infoFile)}' does not exist at '{Path.GetDirectoryName(infoFile)}'");
+            }
+
             Document document = new Document();
             this.xDocument = XDocument.Load(infoFile);
             document.Id = this.GetDocumentId();

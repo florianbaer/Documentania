@@ -12,9 +12,13 @@ namespace Document.Model.UnitTests
     using System.IO;
 
     using Document.Model.DocumentStorage.Archiver;
+    using Document.Model.Interface;
     using Document.Model.Models;
 
+    using Microsoft.Practices.ServiceLocation;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Moq;
 
     [TestClass]
     public class DocumentParserTests
@@ -25,12 +29,50 @@ namespace Document.Model.UnitTests
         [TestProperty("Created", "2016-05-23")]
         [TestProperty("Creator", "baerf")]
         [TestCategory("HappyCase")]
-        [DeploymentItem("Resources")]
         public void ParseDocumenZip()
         {
-            string documentId = "d7bfe8af-ca61-4969-9f13-30a2db63d1d5";
-            Document document = new DocumentParser().ParseDocument(Path.Combine(Environment.CurrentDirectory, documentId + ".document"));
-            Assert.AreEqual(documentId, document.Id);
+            Document expectedDocument = new Document() { Id = "d7bfe8af-ca61-4969-9f13-30a2db63d1d5" };
+
+            Mock<IServiceLocator> locatorMock = new Mock<IServiceLocator>();
+            Mock<IFileInfoSerializeService> fileInfoSerializerMock = new Mock<IFileInfoSerializeService>();
+            Mock<IZipProvider> zipProviderMock = new Mock<IZipProvider>();
+
+            zipProviderMock.Setup(
+                x =>
+                x.Extract(
+                    Path.Combine(Environment.CurrentDirectory, expectedDocument.Id + ".document"),
+                    It.IsAny<string>(),
+                    null));
+
+            fileInfoSerializerMock.Setup(x => x.Deserialize(It.IsAny<string>())).Returns(expectedDocument);
+
+            locatorMock.Setup(x => x.GetInstance<IFileInfoSerializeService>()).Returns(fileInfoSerializerMock.Object);
+
+            Document document = new DocumentParser(locatorMock.Object).ParseDocument(Path.Combine(Environment.CurrentDirectory, expectedDocument.Id + ".document"), zipProviderMock.Object);
+            Assert.AreEqual(expectedDocument.Id, document.Id);
+        }
+
+        [TestMethod]
+        [TestCategory("DocumentParser")]
+        [TestCategory("DocumentModule")]
+        [TestProperty("Created", "2016-05-23")]
+        [TestProperty("Creator", "baerf")]
+        [TestCategory("SadCase")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ParseDocumenZipFileNotFound()
+        {
+            Document expectedDocument = new Document() { Id = "d7bfe8af-ca61-4969-9f13-30a2db63d1d5" };
+
+            Mock<IServiceLocator> locatorMock = new Mock<IServiceLocator>();
+            Mock<IFileInfoSerializeService> fileInfoSerializerMock = new Mock<IFileInfoSerializeService>();
+            Mock<IZipProvider> zipProviderMock = new Mock<IZipProvider>();
+
+            fileInfoSerializerMock.Setup(x => x.Deserialize(It.IsAny<string>())).Returns(expectedDocument);
+
+            locatorMock.Setup(x => x.GetInstance<IFileInfoSerializeService>()).Returns(fileInfoSerializerMock.Object);
+
+            Document document = new DocumentParser(locatorMock.Object).ParseDocument(string.Empty, zipProviderMock.Object);
+            Assert.AreEqual(expectedDocument.Id, document.Id);
         }
     }
 }
