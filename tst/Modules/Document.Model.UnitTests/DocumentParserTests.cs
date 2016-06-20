@@ -15,6 +15,8 @@ namespace Document.Model.UnitTests
     using Document.Model.Interface;
     using Document.Model.Models;
 
+    using ExAs;
+
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -49,7 +51,11 @@ namespace Document.Model.UnitTests
             locatorMock.Setup(x => x.GetInstance<IFileInfoSerializeService>()).Returns(fileInfoSerializerMock.Object);
 
             Document document = new DocumentParser(locatorMock.Object).ParseDocument(Path.Combine(Environment.CurrentDirectory, expectedDocument.Id + ".document"), zipProviderMock.Object);
-            Assert.AreEqual(expectedDocument.Id, document.Id);
+            document.ExAssert(m => m.Member(x => x.Id).IsEqualTo(expectedDocument.Id));
+
+            locatorMock.Verify(x => x.GetInstance<IFileInfoSerializeService>(), Times.Once);
+            fileInfoSerializerMock.Verify(x => x.Deserialize(It.IsAny<string>()), Times.Once);
+            zipProviderMock.Verify(x => x.Extract(It.IsAny<string>(), It.IsAny<string>(), null), Times.Once);
         }
 
         [TestMethod]

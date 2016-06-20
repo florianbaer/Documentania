@@ -29,7 +29,10 @@ namespace DataAccess.RavenDB
         {
             if (string.IsNullOrEmpty(dataDirectory))
             {
-                this.DataDirectory = dataDirectory;
+                this.DataDirectory = @"C:\Documentania\Data\";
+            }
+            else { 
+            this.DataDirectory = dataDirectory;
             }
         }
     }
