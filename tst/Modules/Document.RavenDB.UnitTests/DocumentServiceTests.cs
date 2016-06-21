@@ -79,12 +79,12 @@ namespace Document.RavenDB.UnitTests
                                               Tags = new List<Tag>() { tagToAdd }
                                           };
 
-            repositoryMock.Setup(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
+            repositoryMock.Setup(x => x.Single<Document>(It.IsAny<string>()));
 
             IDocumentMetaDataService documentMetaDataService = new DocumentMetaDataService(repositoryMock.Object, storageMock.Object);
             documentMetaDataService.GetDocumentById(documentToFind.Id);
 
-            repositoryMock.Verify(x => x.Single<Document>(It.IsAny<Expression<Func<Document, bool>>>()));
+            repositoryMock.Verify(x => x.Single<Document>("ID"));
         }
 
         [TestMethod]
