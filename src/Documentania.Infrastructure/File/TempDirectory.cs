@@ -16,19 +16,35 @@ namespace Documentania.Infrastructure.File
         public string FilePath { get; set; }
         public bool DelteOnDispose { get; set; }
 
+        public TempDirectory() : this(true)
+        {
+        }
 
-        public TempDirectory(bool deleteOnDispose = true)
+        public TempDirectory(bool deleteOnDispose)
         {
             this.FilePath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             Directory.CreateDirectory(this.FilePath);
             this.DelteOnDispose = deleteOnDispose;
         }
 
+        ~TempDirectory()
+        {
+            this.Dispose(false);
+        }
         public void Dispose()
         {
-            if (this.DelteOnDispose)
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                Directory.Delete(this.FilePath, true);
+                if (this.DelteOnDispose)
+                {
+                    Directory.Delete(this.FilePath, true);
+                }
             }
         }
 
