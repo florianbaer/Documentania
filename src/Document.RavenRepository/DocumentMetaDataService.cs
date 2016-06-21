@@ -41,12 +41,12 @@ namespace Document.RavenRepository
 
         public void DeleteDocument(string id)
         {
-            this.repository.Delete<Document>(document => document.Id == id);
+            this.repository.Delete<Document>(this.GetDocumentById(id));
         }
         
         public Document GetDocumentById(string id)
         {
-            return this.repository.Single<Document>(document => document.Id == id);
+            return this.repository.Single<Document>(id);
         }
 
         public Document GetDocumentByName(string name)

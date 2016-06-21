@@ -3,21 +3,20 @@
     using System.Reflection;
     using System.Xml.Linq;
 
-    public class MetadataFileGenerator
-    {
-        private readonly string path;
+    using Document.Model.Interface;
 
-        public MetadataFileGenerator(string path)
+    public class XmlMetadataFileGenerator : IMetadataFileGenerator
+    {
+        public XmlMetadataFileGenerator()
         {
-            this.path = path;
         }
 
-        public void GenerateFile()
+        public void GenerateFile(string path)
         {
             XDocument doc = new XDocument(new XElement("Documentania",
                 new XElement("Version", new XAttribute("Version", Assembly.GetExecutingAssembly().GetName().Version))));
 
-            doc.Save(this.path);
+            doc.Save(path);
         }
     }
 }

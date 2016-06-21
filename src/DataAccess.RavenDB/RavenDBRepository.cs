@@ -72,6 +72,14 @@ namespace DataAccess.RavenDB
             }
         }
 
+        public T Single<T>(string id) where T : class, IStorable, new()
+        {
+            using (IDocumentSession session = this.store.OpenSession())
+            {
+                return session.Load<T>(id);
+            }
+        }
+
         public IQueryable<T> All<T>() where T : class, IStorable, new()
         {
             using (IDocumentSession session = this.store.OpenSession())

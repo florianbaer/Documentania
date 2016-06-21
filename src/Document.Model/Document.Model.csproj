@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DocumentStorage\Archiver\FastZipProvider.cs" />
+    <Compile Include="Interface\IMetadataFileGenerator.cs" />
     <Compile Include="Interface\IFileInfoSerializeService.cs" />
     <Compile Include="Filter\AllDocumentsFilter.cs" />
     <Compile Include="Filter\Decorator.cs" />
@@ -95,7 +96,7 @@
     <Compile Include="DocumentStorage\Archiver\DocumentArchiveZipper.cs" />
     <Compile Include="DocumentStorage\Archiver\DocumentParser.cs" />
     <Compile Include="DocumentStorage\Archiver\XmlFileInfoSerializeService.cs" />
-    <Compile Include="DocumentStorage\Archiver\MetadataFileGenerator.cs" />
+    <Compile Include="DocumentStorage\Archiver\XmlMetadataFileGenerator.cs" />
     <Compile Include="Events\FilterEvent.cs" />
     <Compile Include="Events\AddDocumentEvent.cs" />
     <Compile Include="Events\DocumentsCollectionUpdateEvent.cs" />

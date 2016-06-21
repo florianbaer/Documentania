@@ -48,6 +48,8 @@ namespace Document.Model
             Log.Info("Initialize DocumentModelModule");
             
             this.container.RegisterType<IDocumentStorage, DocumentArchiveService>(new ContainerControlledLifetimeManager());
+            this.container.RegisterType<IFileInfoSerializeService, XmlFileInfoSerializeService>();
+            this.container.RegisterType<IMetadataFileGenerator, XmlMetadataFileGenerator>();
         }
     }
 }

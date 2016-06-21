@@ -80,5 +80,27 @@ namespace Document.Model.UnitTests
             Document document = new DocumentParser(locatorMock.Object).ParseDocument(string.Empty, zipProviderMock.Object);
             Assert.AreEqual(expectedDocument.Id, document.Id);
         }
+
+        [TestMethod]
+        [TestCategory("DocumentParser")]
+        [TestCategory("DocumentModule")]
+        [TestProperty("Created", "2016-05-23")]
+        [TestProperty("Creator", "baerf")]
+        [TestCategory("SadCase")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ParseDocumenZipProviderNull()
+        {
+            Document expectedDocument = new Document() { Id = "d7bfe8af-ca61-4969-9f13-30a2db63d1d5" };
+
+            Mock<IServiceLocator> locatorMock = new Mock<IServiceLocator>();
+            Mock<IFileInfoSerializeService> fileInfoSerializerMock = new Mock<IFileInfoSerializeService>();
+
+            fileInfoSerializerMock.Setup(x => x.Deserialize(It.IsAny<string>())).Returns(expectedDocument);
+
+            locatorMock.Setup(x => x.GetInstance<IFileInfoSerializeService>()).Returns(fileInfoSerializerMock.Object);
+
+            Document document = new DocumentParser(locatorMock.Object).ParseDocument(Path.Combine(Environment.CurrentDirectory, expectedDocument.Id + ".document"), null);
+            Assert.AreEqual(expectedDocument.Id, document.Id);
+        }
     }
 }

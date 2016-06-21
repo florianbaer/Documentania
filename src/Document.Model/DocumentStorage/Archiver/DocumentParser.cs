@@ -29,6 +29,7 @@
         public Document ParseDocument(string path, IZipProvider zipProvider)
         {
             Guard.ArgumentNotNullOrEmpty(path, "path");
+            Guard.ArgumentNotNull(zipProvider, "zipProvider");
 
             using (TempDirectory directory = new TempDirectory())
             {

@@ -42,6 +42,14 @@ namespace Documentania.Infrastructure.Interfaces
         T Single<T>(Expression<Func<T, bool>> expression) where T : class, IStorable, new();
 
         /// <summary>
+        /// Gets the specified single expression.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns>One of the given type.</returns>
+        T Single<T>(string id) where T : class, IStorable, new();
+
+        /// <summary>
         /// Gets all from the given type.
         /// </summary>
         /// <typeparam name="T">The passed type.</typeparam>
