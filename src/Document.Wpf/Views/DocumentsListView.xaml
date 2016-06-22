@@ -7,7 +7,7 @@
              xmlns:mvvm="http://prismlibrary.com/"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <ListBox ItemsSource="{Binding Documents}" SelectedItem="{Binding Selected}">
+    <ListBox ItemsSource="{Binding DocumentViewModels}" SelectedItem="{Binding Selected}">
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <Grid>

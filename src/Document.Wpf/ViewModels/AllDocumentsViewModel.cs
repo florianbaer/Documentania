@@ -12,7 +12,7 @@ namespace Document.Wpf.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-
+    using System.Linq;
     using Document.Model;
     using Document.Model.Events;
     using Document.Model.Models;
@@ -43,7 +43,7 @@ namespace Document.Wpf.ViewModels
             set
             {
                 this.documentsFilter = value;
-                this.OnPropertyChanged(() => this.Documents);
+                this.OnPropertyChanged(() => this.DocumentViewModels);
             }
         }
 
@@ -94,7 +94,7 @@ namespace Document.Wpf.ViewModels
             }
         }
 
-        public ICollection<DocumentViewModel> Documents
+        public ICollection<DocumentViewModel> DocumentViewModels
         {
             get
             {
@@ -104,7 +104,7 @@ namespace Document.Wpf.ViewModels
                     this.documents.ForEach(x => list.Add(x.Model));
 
                     ICollection<DocumentViewModel> viewModels = new ObservableCollection<DocumentViewModel>();
-                    this.DocumentsFilter.Execute(list).ForEach(x => viewModels.Add(new DocumentViewModel(x, this.metaDataService)));
+                    this.DocumentsFilter.Execute((list.AsQueryable())).ForEach(x => viewModels.Add(new DocumentViewModel(x, this.metaDataService)));
                     return viewModels;
                 }
                 return this.documents;

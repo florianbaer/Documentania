@@ -48,7 +48,7 @@ namespace Document.Model.UnitTests.Filtering
                 });
 
             AllDocumentsFilter filter = new AllDocumentsFilter();
-            ICollection<Document> result = filter.Execute(documents);
+            ICollection<Document> result = filter.Execute((documents).AsQueryable()).ToList();
 
             result.ExAssert(m => m.Member(x => x.Count).IsEqualTo(2).Member(x => x.ElementAt(0)).Fulfills(t => t.Member(x => x.Id).IsEqualTo(documents.ElementAt(0).Id)));
         }

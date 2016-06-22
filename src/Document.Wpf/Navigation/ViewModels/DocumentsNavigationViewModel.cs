@@ -31,7 +31,7 @@ namespace Document.Wpf.Navigation.ViewModels
         {
             get
             {
-                return "All Documents";
+                return "All DocumentViewModels";
             }
         }
 

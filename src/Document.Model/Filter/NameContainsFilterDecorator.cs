@@ -22,13 +22,13 @@ namespace Document.Model.Filter
             this.filterText = filterText;
         }
 
-        public override ICollection<Document> Execute(ICollection<Document> documents)
+        public override IQueryable<Document> Execute(IQueryable<Document> documents)
         {
-            IEnumerable<Document> filteredDocuments = from selection in documents
+            IQueryable<Document> filteredDocuments = from selection in documents
                                                       where selection.Name.Contains(this.filterText)
                                                       select selection;
 
-            return base.Execute(filteredDocuments.ToList());
+            return base.Execute(filteredDocuments);
         }
     }
 }

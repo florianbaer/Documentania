@@ -34,7 +34,7 @@ namespace Document.Model.UnitTests
         [TestProperty("Creator", "baerf")]
         public void DocumentModuleInitializeTest()
         {
-            Mock<IServiceLocator> locatorMock = new Mock<IServiceLocator>();
+            Mock<IServiceLocator> locatorMock = new Mock<IServiceLocator>(); 
             Mock<IUnityContainer> unityMock = new Mock<IUnityContainer>();
             Mock<IEventAggregator> eventAggreagatorMock = new Mock<IEventAggregator>();
 

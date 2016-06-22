@@ -28,12 +28,12 @@ namespace Document.Model.Filter
             this.tagName = tagName;
         }
 
-        public override ICollection<Document> Execute(ICollection<Document> documents)
+        public override IQueryable<Document> Execute(IQueryable<Document> documents)
         {
-            var filteredDocuments = from selection in documents
+            IQueryable<Document> filteredDocuments = from selection in documents
                 where selection.Tags.Any(x => x.Value.Contains(this.tagName))
                 select selection;
-            return base.Execute(filteredDocuments.ToList());
+            return base.Execute(filteredDocuments);
         }
     }
 }

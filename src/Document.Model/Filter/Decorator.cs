@@ -9,6 +9,7 @@
 namespace Document.Model.Filter
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Document = Models.Document;
 
     public abstract class Decorator : Filter
@@ -20,7 +21,7 @@ namespace Document.Model.Filter
             this.filter = filter;
         }
 
-        public override ICollection<Document> Execute(ICollection<Document> documents)
+        public override IQueryable<Document> Execute(IQueryable<Document> documents)
         {
             return this.filter.Execute(documents);
         }
