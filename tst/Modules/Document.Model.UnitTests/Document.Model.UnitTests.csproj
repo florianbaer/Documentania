@@ -79,6 +79,7 @@
     <Compile Include="Model\DocumentTests.cs" />
     <Compile Include="Model\TagTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DocumentTemplate\DocumentTemplateTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

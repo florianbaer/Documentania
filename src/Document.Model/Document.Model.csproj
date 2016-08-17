@@ -109,6 +109,8 @@
     <Compile Include="Filter\NameContainsFilterDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Filter\TagNameContainsFilter.cs" />
+    <Compile Include="TemplateEngine\Type.cs" />
+    <Compile Include="TemplateEngine\DocumentTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DocumentStorage\Storage\" />

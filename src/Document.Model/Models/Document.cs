@@ -29,5 +29,7 @@ namespace Document.Model.Models
         public List<Tag> Tags { get; set; } = new List<Tag>();
 
         public virtual string Id { get; set; } = string.Empty;
+
+        public IDictionary<string, string> Properties { get; }
     }
 }
